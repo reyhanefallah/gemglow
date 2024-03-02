@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "293887307215",
+    "firebase_url": "https://gemglow-11a7a-default-rtdb.europe-west1.firebasedatabase.app",
+    "project_id": "gemglow-11a7a",
+    "storage_bucket": "gemglow-11a7a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:293887307215:android:3fad2e8fd9bb9bf4f8f6ba",
+        "android_client_info": {
+          "package_name": "com.example.gemglow"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "293887307215-t9h99cpg74k6bld7katj5unjpsdmcjb1.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.gemglow",
+            "certificate_hash": "956739f941cb253bd19e7a3b94dd3742513d7452"
+          }
+        },
+        {
+          "client_id": "293887307215-sts8o83ric2adktflqj4mjhjbbbh2trc.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBYjHLUs7m-wEeVK2D0DHLP-3WDQy07B0k"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "293887307215-sts8o83ric2adktflqj4mjhjbbbh2trc.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "293887307215-er31hasu9b15k3hdk57tjmr2ge5jbv66.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.gemglow"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
