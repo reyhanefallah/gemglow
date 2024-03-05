@@ -44,6 +44,7 @@ dependencies:
   flutter_svg: ^2.0.9
   iconsax: ^0.0.8
   get_storage: ^2.1.1
+  carousel_slider: ^4.2.1
 
 flutter_native_splash:
   # This package generates native code to customize Flutter's default white native splash screen

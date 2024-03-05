@@ -1,6 +1,8 @@
+import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:gemglow/constants/color-string.dart';
 import 'package:gemglow/constants/text-style.dart';
+import 'package:gemglow/constants/widgets/homewidgets.dart';
 import 'package:gemglow/constants/widgets/main-widgates.dart';
 import 'package:gemglow/constants/widgets/widgets.dart';
 import 'package:iconsax/iconsax.dart';
@@ -61,53 +63,16 @@ class HomeScreen extends StatelessWidget {
                 ],
               ),
             ),
-          ],
-        ),
-      ),
-    );
-  }
-}
-
-class VerticalCategory extends StatelessWidget {
-  const VerticalCategory({
-    super.key,
-    required this.image,
-    required this.title,
-    this.onTap,
-  });
-
-  final String image, title;
-  final void Function()? onTap;
-
-  @override
-  Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: onTap,
-      child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 10),
-        child: Column(
-          children: [
-            Container(
-              height: 56.0,
-              width: 56.0,
-              padding: EdgeInsets.all(8.0),
-              decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.circular(100),
+            Padding(
+              padding: const EdgeInsets.all(10),
+              child: PromoSlider(
+                banners: [
+                  'assets/images/promobanner1.jpg',
+                  'assets/images/promobanner2.jpg',
+                  'assets/images/promobanner3.jpg',
+                  'assets/images/promobanner4.jpg',
+                ],
               ),
-              child: Center(
-                child: Image(
-                  image: AssetImage(image),
-                  fit: BoxFit.cover,
-                ),
-              ),
-            ),
-            SizedBox(
-              height: 6,
-            ),
-            Text(
-              title,
-              style: GTextStyle.displaySmall,
             ),
           ],
         ),
@@ -116,6 +81,7 @@ class VerticalCategory extends StatelessWidget {
   }
 }
 
+//searchbar
 class SearchBar extends StatelessWidget {
   const SearchBar({
     super.key,
