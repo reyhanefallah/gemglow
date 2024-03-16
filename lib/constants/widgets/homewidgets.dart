@@ -2,6 +2,7 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:gemglow/constants/color-string.dart';
 import 'package:gemglow/constants/text-style.dart';
+import 'package:gemglow/constants/widgets-page/containers.dart';
 import 'package:gemglow/controller/home-controller.dart';
 import 'package:get/get.dart';
 
@@ -37,6 +38,9 @@ class GRoundedImage extends StatelessWidget {
     return GestureDetector(
       onTap: onPressed,
       child: Container(
+        height: height,
+        width: width,
+        padding: padding,
         decoration: BoxDecoration(
           border: border,
           color: backgroundColor,
@@ -102,40 +106,6 @@ class VerticalCategory extends StatelessWidget {
           ],
         ),
       ),
-    );
-  }
-}
-
-class CircularContainer extends StatelessWidget {
-  const CircularContainer({
-    super.key,
-    this.width = 400,
-    this.height = 400,
-    this.radius = 400,
-    this.padding = 0,
-    this.child,
-    this.backgroundColor = Colors.white,
-    this.margin,
-  });
-
-  final double? width;
-  final double? height;
-  final double radius;
-  final double padding;
-  final Widget? child;
-  final Color backgroundColor;
-  final EdgeInsets? margin;
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      width: width,
-      height: height,
-      margin: margin,
-      padding: EdgeInsets.all(padding),
-      decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(radius), color: backgroundColor),
-      child: child,
     );
   }
 }

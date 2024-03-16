@@ -1,7 +1,10 @@
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:gemglow/constants/color-string.dart';
 import 'package:gemglow/constants/text-style.dart';
+import 'package:gemglow/constants/widgets-page/grid-layout.dart';
+import 'package:gemglow/constants/widgets-page/product-card-v.dart';
 import 'package:gemglow/constants/widgets/homewidgets.dart';
 import 'package:gemglow/constants/widgets/main-widgates.dart';
 import 'package:gemglow/constants/widgets/widgets.dart';
@@ -65,12 +68,23 @@ class HomeScreen extends StatelessWidget {
             ),
             Padding(
               padding: const EdgeInsets.all(10),
-              child: PromoSlider(
-                banners: [
-                  'assets/images/promobanner1.jpg',
-                  'assets/images/promobanner2.jpg',
-                  'assets/images/promobanner3.jpg',
-                  'assets/images/promobanner4.jpg',
+              child: Column(
+                children: [
+                  PromoSlider(
+                    banners: [
+                      'assets/images/promobanner1.jpg',
+                      'assets/images/promobanner2.jpg',
+                      'assets/images/promobanner3.jpg',
+                      'assets/images/promobanner4.jpg',
+                    ],
+                  ),
+                  SizedBox(
+                    height: 15,
+                  ),
+                  GGridLayout(
+                    itemcount: 4,
+                    itembuilder: (_, index) => GProductCardVertical(),
+                  ),
                 ],
               ),
             ),
