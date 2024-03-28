@@ -156,7 +156,7 @@ class PrimaryHeader extends StatelessWidget {
         color: GColor.primaryColor1,
         padding: EdgeInsets.all(0.0),
         child: SizedBox(
-          height: 400,
+          height: 340,
           child: Stack(
             children: [
               Positioned(

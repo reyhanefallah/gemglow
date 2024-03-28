@@ -1,5 +1,3 @@
-import 'package:carousel_slider/carousel_slider.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:gemglow/constants/color-string.dart';
 import 'package:gemglow/constants/text-style.dart';
@@ -26,7 +24,7 @@ class HomeScreen extends StatelessWidget {
                   SizedBox(
                     height: 24,
                   ),
-                  SearchBar(
+                  GSearchBar(
                     text: 'جستجو در فروشگاه',
                     icon: Iconsax.search_normal,
                     onTap: () {},
@@ -85,6 +83,18 @@ class HomeScreen extends StatelessWidget {
                     itemcount: 4,
                     itembuilder: (_, index) => GProductCardVertical(),
                   ),
+                  SectionHeading(
+                    title: 'محبوب ترین ها',
+                    showActionButton: false,
+                    onPressed: () {},
+                  ),
+                  SizedBox(
+                    height: 16,
+                  ),
+                  GGridLayout(
+                    itemcount: 2,
+                    itembuilder: (_, index) => GProductCardVertical(),
+                  ),
                 ],
               ),
             ),
@@ -96,27 +106,29 @@ class HomeScreen extends StatelessWidget {
 }
 
 //searchbar
-class SearchBar extends StatelessWidget {
-  const SearchBar({
+class GSearchBar extends StatelessWidget {
+  const GSearchBar({
     super.key,
     required this.text,
     this.icon,
     this.showbackground = true,
     this.showborder = true,
     this.onTap,
+    this.padding = const EdgeInsets.symmetric(horizontal: 24.0),
   });
 
   final String text;
   final IconData? icon;
   final bool showbackground, showborder;
   final VoidCallback? onTap;
+  final EdgeInsetsGeometry padding;
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: onTap,
       child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 24.0),
+        padding: padding,
         child: Container(
           width: MediaQuery.sizeOf(context).width,
           padding: EdgeInsets.all(10),

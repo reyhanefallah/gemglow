@@ -125,7 +125,7 @@ class PromoSlider extends StatelessWidget {
       children: [
         CarouselSlider(
             options: CarouselOptions(
-              viewportFraction: 1.0,
+              viewportFraction: 0.90,
               onPageChanged: (index, _) =>
                   controller.updatePageIndicator(index),
             ),

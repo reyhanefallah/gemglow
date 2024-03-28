@@ -4,7 +4,7 @@ class GGridLayout extends StatelessWidget {
   const GGridLayout({
     super.key,
     required this.itemcount,
-    this.maxextent = 288,
+    this.maxextent = 271.5,
     required this.itembuilder,
   });
 

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:gemglow/constants/color-string.dart';
 import 'package:gemglow/view/home-screen.dart';
+import 'package:gemglow/view/store-screen.dart';
 import 'package:get/get.dart';
 
 class NavigationBarScreen extends StatelessWidget {
@@ -61,9 +62,7 @@ class NavigationController extends GetxController {
   final Rx<int> selectedIndex = 0.obs;
   final screens = [
     HomeScreen(),
-    Container(
-      color: Colors.red,
-    ),
+    StoreScreen(),
     Container(
       color: Colors.blue,
     ),

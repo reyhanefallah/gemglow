@@ -86,16 +86,19 @@ class SectionHeading extends StatelessWidget {
     required this.title,
     this.buttonTitle = 'نمایش همه',
     this.onPressed,
+    this.space = MainAxisAlignment.spaceBetween,
   });
 
   final Color? textColor;
   final bool showActionButton;
   final String title, buttonTitle;
   final void Function()? onPressed;
+  final MainAxisAlignment space;
 
   @override
   Widget build(BuildContext context) {
     return Row(
+      mainAxisAlignment: space,
       children: [
         Text(
           title,

@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:gemglow/constants/color-string.dart';
 import 'package:gemglow/constants/image-strings.dart';
 import 'package:gemglow/constants/widgets-page/containers.dart';
 import 'package:gemglow/constants/widgets-page/product-price.dart';
 import 'package:gemglow/constants/widgets/homewidgets.dart';
 import 'package:gemglow/constants/widgets/shadow.dart';
+import 'package:gemglow/constants/widgets/store-widgets.dart';
 import 'package:iconsax/iconsax.dart';
 
 class GProductCardVertical extends StatelessWidget {
@@ -67,70 +69,56 @@ class GProductCardVertical extends StatelessWidget {
             Padding(
               padding: EdgeInsets.only(left: 5),
             ),
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
+            Align(
+              alignment: Alignment.centerRight,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    'گردنبند',
+                    overflow: TextOverflow.ellipsis,
+                    maxLines: 2,
+                    textAlign: TextAlign.left,
+                    style: TextStyle(fontSize: 14),
+                  ),
+                  SizedBox(
+                    height: 3.5,
+                  ),
+                  BrandTitleWithVerifiedIcon(
+                    title: 'رز کوارتز',
+                  ),
+                ],
+              ),
+            ),
+            Spacer(),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text(
-                  'گردنبند',
-                  overflow: TextOverflow.ellipsis,
-                  maxLines: 2,
-                  textAlign: TextAlign.left,
-                  style: TextStyle(fontSize: 14),
+                Padding(
+                  padding: const EdgeInsets.only(right: 5),
+                  child: GProductPriceText(price: '250'),
                 ),
-                SizedBox(
-                  height: 3.5,
-                ),
-                Row(
-                  children: [
-                    Text(
-                      'رز کوارتز',
-                      overflow: TextOverflow.ellipsis,
-                      maxLines: 1,
-                      style: TextStyle(fontSize: 12),
+                Container(
+                  decoration: BoxDecoration(
+                    color: GColor.primaryColor2,
+                    borderRadius: BorderRadius.only(
+                      topRight: Radius.circular(12),
+                      bottomLeft: Radius.circular(10),
                     ),
-                    SizedBox(
-                      width: 5,
-                    ),
-                    Icon(
-                      Iconsax.verify5,
-                      color: GColor.primaryColor1,
-                    ),
-                  ],
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    GProductPriceText(price: '250'),
-                    // Text(
-                    //   '250',
-                    //   overflow: TextOverflow.ellipsis,
-                    //   maxLines: 1,
-                    //   textDirection: TextDirection.rtl,
-                    //   style: TextStyle(fontSize: 16),
-                    // ),
-                    Container(
-                      decoration: BoxDecoration(
-                        color: GColor.primaryColor2,
-                        borderRadius: BorderRadius.only(
-                          topRight: Radius.circular(12),
-                          bottomLeft: Radius.circular(10),
-                        ),
-                      ),
-                      child: SizedBox(
-                        width: 32 * 1.2,
-                        height: 32 * 1.2,
-                        child: Center(
-                          child: Icon(
-                            Iconsax.add,
-                            color: Colors.white,
-                          ),
-                        ),
+                  ),
+                  child: SizedBox(
+                    width: 32 * 1.2,
+                    height: 32 * 1.2,
+                    child: Center(
+                      child: Icon(
+                        Iconsax.add,
+                        color: Colors.white,
                       ),
                     ),
-                  ],
+                  ),
                 ),
               ],
-            )
+            ),
           ],
         ),
       ),
