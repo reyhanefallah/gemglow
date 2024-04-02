@@ -3,6 +3,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:gemglow/constants/color-string.dart';
 import 'package:gemglow/view/home-screen.dart';
 import 'package:gemglow/view/store-screen.dart';
+import 'package:gemglow/view/wishlist-screen.dart';
 import 'package:get/get.dart';
 
 class NavigationBarScreen extends StatelessWidget {
@@ -63,9 +64,7 @@ class NavigationController extends GetxController {
   final screens = [
     HomeScreen(),
     StoreScreen(),
-    Container(
-      color: Colors.blue,
-    ),
+    WishListScreen(),
     Container(
       color: Colors.yellow,
     ),

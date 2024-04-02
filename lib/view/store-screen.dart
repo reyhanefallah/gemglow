@@ -1,9 +1,4 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
-import 'package:gemglow/constants/color-string.dart';
-import 'package:gemglow/constants/image-strings.dart';
-import 'package:gemglow/constants/widgets-page/containers.dart';
 import 'package:gemglow/constants/widgets-page/grid-layout.dart';
 import 'package:gemglow/constants/widgets/appbar.dart';
 import 'package:gemglow/constants/widgets/brandcard.dart';
@@ -80,16 +75,16 @@ class StoreScreen extends StatelessWidget {
                 bottom: GTabBer(
                   tabs: [
                     Tab(
-                      text: 'طبیعی',
+                      text: 'جواهر',
                     ),
                     Tab(
                       text: 'طبیعی',
                     ),
                     Tab(
-                      text: 'طبیعی',
+                      text: 'درمانی',
                     ),
                     Tab(
-                      text: 'طبیعی',
+                      text: 'مصنوعی',
                     ),
                     Tab(
                       text: 'طبیعی',

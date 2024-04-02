@@ -68,10 +68,12 @@ class VerticalCategory extends StatelessWidget {
     required this.image,
     required this.title,
     this.onTap,
+    this.backgroundcolor,
   });
 
   final String image, title;
   final void Function()? onTap;
+  final Color? backgroundcolor;
 
   @override
   Widget build(BuildContext context) {
@@ -86,7 +88,8 @@ class VerticalCategory extends StatelessWidget {
               width: 56.0,
               padding: EdgeInsets.all(8.0),
               decoration: BoxDecoration(
-                color: Colors.white,
+                //color: Colors.white,
+                color: backgroundcolor,
                 borderRadius: BorderRadius.circular(100),
               ),
               child: Center(

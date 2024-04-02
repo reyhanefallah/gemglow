@@ -1,6 +1,5 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
-import 'package:flutter_native_splash/flutter_native_splash_web.dart';
 import 'package:gemglow/view/login-screen.dart';
 import 'package:gemglow/view/onboarding-screen.dart';
 import 'package:get/get.dart';

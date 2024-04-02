@@ -102,7 +102,7 @@ class SectionHeading extends StatelessWidget {
       children: [
         Text(
           title,
-          style: GTextStyle.bodyboldSmall!.apply(color: textColor),
+          style: GTextStyle.bodyboldSmall.apply(color: textColor),
           maxLines: 1,
         ),
         if (showActionButton)

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:gemglow/constants/color-string.dart';
 import 'package:gemglow/constants/image-strings.dart';
 import 'package:gemglow/constants/widgets-page/containers.dart';
@@ -58,6 +57,8 @@ class GProductCardVertical extends StatelessWidget {
                     child: GCircularIcon(
                       icon: Iconsax.heart5,
                       color: Colors.red,
+                      //Add Color
+                      backgroundColor: Colors.transparent,
                     ),
                   ),
                 ],
@@ -150,7 +151,8 @@ class GCircularIcon extends StatelessWidget {
       width: width,
       height: height,
       decoration: BoxDecoration(
-        color: Colors.white.withOpacity(0.9),
+        //color: Colors.white.withOpacity(0.9),
+        color: Colors.transparent,
         borderRadius: BorderRadius.circular(100),
       ),
       child: IconButton(

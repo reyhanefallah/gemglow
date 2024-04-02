@@ -51,6 +51,7 @@ class HomeScreen extends StatelessWidget {
                             scrollDirection: Axis.horizontal,
                             itemBuilder: (_, index) {
                               return VerticalCategory(
+                                backgroundcolor: Colors.white,
                                 image: 'assets/png/jewel.png',
                                 title: 'جواهر',
                                 onTap: () {},

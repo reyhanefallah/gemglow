@@ -6,7 +6,6 @@ import 'package:gemglow/data/repository/auth-repository.dart';
 import 'package:gemglow/firebase_options.dart';
 import 'package:gemglow/view/home-screen.dart';
 import 'package:get/get.dart';
-import 'package:get/get_navigation/src/root/get_material_app.dart';
 import 'package:get_storage/get_storage.dart';
 
 Future<void> main() async {

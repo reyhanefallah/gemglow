@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gemglow/view/login-screen.dart';
 import 'package:get/get.dart';
-import 'package:get/instance_manager.dart';
-import 'package:get/state_manager.dart';
 import 'package:get_storage/get_storage.dart';
 
 class OnBoardingController extends GetxController {
