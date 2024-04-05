@@ -45,7 +45,10 @@ class GPrimaryHeaderContainer extends StatelessWidget {
 class UserProfileTile extends StatelessWidget {
   const UserProfileTile({
     super.key,
+    this.onPressed,
   });
+
+  final VoidCallback? onPressed;
 
   @override
   Widget build(BuildContext context) {
@@ -70,7 +73,7 @@ class UserProfileTile extends StatelessWidget {
             Theme.of(context).textTheme.bodyMedium!.apply(color: Colors.white),
       ),
       trailing: IconButton(
-        onPressed: () {},
+        onPressed: onPressed,
         icon: Icon(
           Iconsax.edit,
           color: Colors.white,

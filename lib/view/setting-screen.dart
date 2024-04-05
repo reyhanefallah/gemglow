@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:gemglow/constants/widgets/appbar.dart';
 import 'package:gemglow/constants/widgets/main-widgates.dart';
 import 'package:gemglow/constants/widgets/setting-widgets.dart';
+import 'package:gemglow/view/profile-screen.dart';
+import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 
 class SettingScreen extends StatelessWidget {
@@ -25,7 +27,9 @@ class SettingScreen extends StatelessWidget {
                           .apply(color: Colors.white),
                     ),
                   ),
-                  UserProfileTile(),
+                  UserProfileTile(
+                    onPressed: () => Get.to(() => ProfileScreen()),
+                  ),
                   SizedBox(
                     height: 32.0,
                   ),
