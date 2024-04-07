@@ -6,6 +6,8 @@ import 'package:gemglow/constants/widgets-page/product-price.dart';
 import 'package:gemglow/constants/widgets/homewidgets.dart';
 import 'package:gemglow/constants/widgets/shadow.dart';
 import 'package:gemglow/constants/widgets/store-widgets.dart';
+import 'package:gemglow/view/product-detail-screen.dart';
+import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 
 class GProductCardVertical extends StatelessWidget {
@@ -14,7 +16,7 @@ class GProductCardVertical extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () {},
+      onTap: () => Get.to(() => ProductDetailScreen()),
       child: Container(
         width: 180,
         padding: EdgeInsets.all(1),

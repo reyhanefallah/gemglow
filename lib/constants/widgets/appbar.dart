@@ -12,7 +12,7 @@ class GAppBar extends StatelessWidget implements PreferredSizeWidget {
 
   final Widget? title;
   final bool backarrow;
-  final IconButton? leadingIcon;
+  final Widget? leadingIcon;
   final List<Widget>? actions;
   final VoidCallback? leadingOnpressed;
 
