@@ -154,7 +154,7 @@ class GCircularIcon extends StatelessWidget {
       height: height,
       decoration: BoxDecoration(
         //color: Colors.white.withOpacity(0.9),
-        color: Colors.transparent,
+        color: backgroundColor,
         borderRadius: BorderRadius.circular(100),
       ),
       child: IconButton(

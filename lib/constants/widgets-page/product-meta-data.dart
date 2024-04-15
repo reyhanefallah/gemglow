@@ -4,7 +4,6 @@ import 'package:gemglow/constants/widgets-page/containers.dart';
 import 'package:gemglow/constants/widgets-page/product-price.dart';
 import 'package:gemglow/constants/widgets/product-widgets.dart';
 import 'package:gemglow/constants/widgets/store-widgets.dart';
-import 'package:gemglow/enums.dart';
 
 class ProductMetaData extends StatelessWidget {
   const ProductMetaData({super.key});
