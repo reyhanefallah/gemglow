@@ -92,28 +92,28 @@ class ProductAttributes extends StatelessWidget {
             )
           ],
         ),
-        Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            SectionHeading(
-              title: 'اندازه',
-              textColor: Colors.black,
-              showActionButton: false,
-            ),
-            SizedBox(height: 24 / 2),
-            Wrap(
-              spacing: 8,
-              children: [
-                GChioceChip(
-                    text: '10 inch', selected: true, onSelected: (value) {}),
-                GChioceChip(
-                    text: '15 inch', selected: false, onSelected: (value) {}),
-                GChioceChip(
-                    text: '20 inch', selected: false, onSelected: (value) {}),
-              ],
-            )
-          ],
-        ),
+        // Column(
+        //   crossAxisAlignment: CrossAxisAlignment.start,
+        //   children: [
+        //     SectionHeading(
+        //       title: 'اندازه',
+        //       textColor: Colors.black,
+        //       showActionButton: false,
+        //     ),
+        //     SizedBox(height: 24 / 2),
+        //     Wrap(
+        //       spacing: 8,
+        //       children: [
+        //         GChioceChip(
+        //             text: '10 inch', selected: true, onSelected: (value) {}),
+        //         GChioceChip(
+        //             text: '15 inch', selected: false, onSelected: (value) {}),
+        //         GChioceChip(
+        //             text: '20 inch', selected: false, onSelected: (value) {}),
+        //       ],
+        //     )
+        //   ],
+        // ),
       ],
     );
   }

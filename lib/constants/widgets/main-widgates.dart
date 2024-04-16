@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:gemglow/constants/color-string.dart';
 import 'package:gemglow/constants/text-style.dart';
 import 'package:gemglow/constants/widgets/appbar.dart';
+import 'package:gemglow/view/card-screen.dart';
+import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 
 class CardCounter extends StatelessWidget {
@@ -19,7 +21,7 @@ class CardCounter extends StatelessWidget {
     return Stack(
       children: [
         IconButton(
-          onPressed: onPressed,
+          onPressed: () => Get.to(() => CardScreen()),
           icon: Icon(
             Iconsax.shopping_bag,
             color: iconColor,
@@ -58,10 +60,10 @@ class GHomeAppBar extends StatelessWidget {
       title: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
-          Text(
-            'روز خوبی برای خرید کردنه!',
-            style: GTextStyle.displaySmall,
-          ),
+          // Text(
+          //   'روز خوبی برای خرید کردنه!',
+          //   style: GTextStyle.displaySmall,
+          // ),
           Text(
             'GemGlow',
             style: GTextStyle.displayTitle,
