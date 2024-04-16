@@ -5,6 +5,8 @@ import 'package:gemglow/constants/widgets-page/product-attributes.dart';
 import 'package:gemglow/constants/widgets-page/product-meta-data.dart';
 import 'package:gemglow/constants/widgets/main-widgates.dart';
 import 'package:gemglow/constants/widgets/product-widgets.dart';
+import 'package:gemglow/view/product-reviews-screen.dart';
+import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:readmore/readmore.dart';
 
@@ -67,7 +69,7 @@ class ProductDetailScreen extends StatelessWidget {
                         onPressed: () {},
                       ),
                       IconButton(
-                        onPressed: () {},
+                        onPressed: () => Get.to(() => ProductReviewsScreen()),
                         icon: Icon(
                           Iconsax.arrow_left_3,
                           size: 18,
