@@ -25,7 +25,7 @@ class GElevatedButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 24.0),
+      padding: const EdgeInsets.symmetric(horizontal: 0.0),
       child: SizedBox(
         width: double.infinity,
         child: ElevatedButton(
@@ -72,7 +72,7 @@ class GFormField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 24.0),
+      padding: const EdgeInsets.symmetric(horizontal: 0.0),
       child: SizedBox(
         height: 60,
         child: TextFormField(

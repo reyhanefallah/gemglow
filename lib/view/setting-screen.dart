@@ -3,6 +3,7 @@ import 'package:gemglow/constants/widgets/appbar.dart';
 import 'package:gemglow/constants/widgets/main-widgates.dart';
 import 'package:gemglow/constants/widgets/setting-widgets.dart';
 import 'package:gemglow/view/profile-screen.dart';
+import 'package:gemglow/view/user-address-screen.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 
@@ -49,10 +50,11 @@ class SettingScreen extends StatelessWidget {
                     height: 16,
                   ),
                   SetteingMenuTile(
-                      icon: Iconsax.safe_home,
-                      title: 'ادرس من',
-                      subtitle: 'تنظیم ادرس ارسال',
-                      onTap: () {}),
+                    icon: Iconsax.safe_home,
+                    title: 'ادرس من',
+                    subtitle: 'تنظیم ادرس ارسال',
+                    onTap: () => Get.to(() => UserAddressScreen()),
+                  ),
                   SetteingMenuTile(
                       icon: Iconsax.shopping_cart,
                       title: 'کارت من',

@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_rating_bar/flutter_rating_bar.dart';
-import 'package:gemglow/constants/color-string.dart';
 import 'package:gemglow/constants/widgets/appbar.dart';
 import 'package:gemglow/constants/widgets/p-rating.dart';
 import 'package:get/get.dart';
