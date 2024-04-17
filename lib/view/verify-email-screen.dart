@@ -28,35 +28,42 @@ class VerifyEmailScreen extends StatelessWidget {
       ),
       body: Center(
         child: SingleChildScrollView(
-          child: Column(
-            children: [
-              Text('ایمیل خود را تایید کنید'),
-              SizedBox(
-                height: 25.0,
-              ),
-              Text(
-                  'تبریک! حساب کاربری شما در انتظار است: ایمیل خود را تایید کنید تا خرید را شروع کنید و دنیایی از معاملات بی نظیر پیشنهادهای شخصی را تجربه کنید'),
-              SizedBox(
-                height: 25.0,
-              ),
-              GElevatedButton(
-                Gcolor: GColor.primaryColor1,
-                Gtitle: 'ادامه',
-                Gstyle: GTextStyle.displayLarge1,
-                GonPressed: () => Get.to(
-                  () => SuccessScreen(
-                    onPressed: () => Get.to(() => LoginScreen()),
+          child: Padding(
+            padding: const EdgeInsets.all(24.0),
+            child: Column(
+              children: [
+                Text('ایمیل خود را تایید کنید'),
+                SizedBox(
+                  height: 25.0,
+                ),
+                Text(
+                    'تبریک! حساب کاربری شما در انتظار است: ایمیل خود را تایید کنید تا خرید را شروع کنید و دنیایی از معاملات بی نظیر پیشنهادهای شخصی را تجربه کنید'),
+                SizedBox(
+                  height: 25.0,
+                ),
+                GElevatedButton(
+                  Gcolor: GColor.primaryColor1,
+                  Gtitle: 'ادامه',
+                  Gstyle: GTextStyle.displayLarge1,
+                  GonPressed: () => Get.to(
+                    () => SuccessScreen(
+                      onPressed: () => Get.to(() => LoginScreen()),
+                      title: 'حساب شما با موفقیت ایجاد شد!',
+                      image: '',
+                      subtitle:
+                          'به مقصد نهایی خوش آمدید حساب شما ایجاد شده است. از خرید انلاین لذت ببرید',
+                    ),
                   ),
                 ),
-              ),
-              SizedBox(
-                height: 25.0,
-              ),
-              ElevatedButton(
-                onPressed: () {},
-                child: Text('ارسال دوباره ایمیل'),
-              )
-            ],
+                SizedBox(
+                  height: 25.0,
+                ),
+                ElevatedButton(
+                  onPressed: () {},
+                  child: Text('ارسال دوباره ایمیل'),
+                )
+              ],
+            ),
           ),
         ),
       ),

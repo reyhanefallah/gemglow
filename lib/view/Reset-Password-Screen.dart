@@ -26,31 +26,34 @@ class ResetPasswordScreen extends StatelessWidget {
       ),
       body: Center(
         child: SingleChildScrollView(
-          child: Column(
-            children: [
-              Text('بازیابی رمز عبور ارسال شد'),
-              SizedBox(
-                height: 25.0,
-              ),
-              Text(
-                  'امنیت حساب شما اولویت ماست! ما برای یک لینک امن برای تغییر رمز عبور ارسال کردیم'),
-              SizedBox(
-                height: 25.0,
-              ),
-              GElevatedButton(
-                Gcolor: GColor.primaryColor1,
-                Gtitle: 'انجام شد',
-                Gstyle: GTextStyle.displayLarge1,
-                GonPressed: () {},
-              ),
-              SizedBox(
-                height: 25.0,
-              ),
-              TextButton(
-                onPressed: () {},
-                child: Text('ارسال دوباره ایمیل'),
-              ),
-            ],
+          child: Padding(
+            padding: const EdgeInsets.all(24.0),
+            child: Column(
+              children: [
+                Text('بازیابی رمز عبور ارسال شد'),
+                SizedBox(
+                  height: 25.0,
+                ),
+                Text(
+                    'امنیت حساب شما اولویت ماست! ما برای یک لینک امن برای تغییر رمز عبور ارسال کردیم'),
+                SizedBox(
+                  height: 25.0,
+                ),
+                GElevatedButton(
+                  Gcolor: GColor.primaryColor1,
+                  Gtitle: 'انجام شد',
+                  Gstyle: GTextStyle.displayLarge1,
+                  GonPressed: () {},
+                ),
+                SizedBox(
+                  height: 25.0,
+                ),
+                TextButton(
+                  onPressed: () {},
+                  child: Text('ارسال دوباره ایمیل'),
+                ),
+              ],
+            ),
           ),
         ),
       ),

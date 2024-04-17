@@ -13,31 +13,35 @@ class ForgetPasswordScreen extends StatelessWidget {
     return Scaffold(
       body: Center(
         child: SingleChildScrollView(
-          child: Column(
-            children: [
-              Text('رمز عبور را فراموش کردید؟'),
-              SizedBox(
-                height: 25.0,
-              ),
-              Text(
-                  'نگران نباشید ایمیل خود را وارد کنید تا ما یک لینک بازنشانی رمز عبور برای شما ارسال کنیم'),
-              SizedBox(
-                height: 25.0,
-              ),
-              GFormField(
-                  Gstyle: GTextStyle.displayLarge2, Ghint: 'example@gmail.com'),
-              SizedBox(
-                height: 25.0,
-              ),
-              GElevatedButton(
-                Gcolor: GColor.primaryColor1,
-                Gtitle: 'ارسال',
-                Gstyle: GTextStyle.displayLarge1,
-                GonPressed: () => Get.off(
-                  () => ResetPasswordScreen(),
+          child: Padding(
+            padding: const EdgeInsets.all(24.0),
+            child: Column(
+              children: [
+                Text('رمز عبور را فراموش کردید؟'),
+                SizedBox(
+                  height: 25.0,
                 ),
-              ),
-            ],
+                Text(
+                    'نگران نباشید ایمیل خود را وارد کنید تا ما یک لینک بازنشانی رمز عبور برای شما ارسال کنیم'),
+                SizedBox(
+                  height: 25.0,
+                ),
+                GFormField(
+                    Gstyle: GTextStyle.displayLarge2,
+                    Ghint: 'example@gmail.com'),
+                SizedBox(
+                  height: 25.0,
+                ),
+                GElevatedButton(
+                  Gcolor: GColor.primaryColor1,
+                  Gtitle: 'ارسال',
+                  Gstyle: GTextStyle.displayLarge1,
+                  GonPressed: () => Get.off(
+                    () => ResetPasswordScreen(),
+                  ),
+                ),
+              ],
+            ),
           ),
         ),
       ),
