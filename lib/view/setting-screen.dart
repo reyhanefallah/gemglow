@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:gemglow/constants/widgets/appbar.dart';
 import 'package:gemglow/constants/widgets/main-widgates.dart';
 import 'package:gemglow/constants/widgets/setting-widgets.dart';
+import 'package:gemglow/view/order-screen.dart';
 import 'package:gemglow/view/profile-screen.dart';
 import 'package:gemglow/view/user-address-screen.dart';
 import 'package:get/get.dart';
@@ -61,10 +62,11 @@ class SettingScreen extends StatelessWidget {
                       subtitle: 'اضافه حذف محصول ',
                       onTap: () {}),
                   SetteingMenuTile(
-                      icon: Iconsax.bag_tick,
-                      title: 'سفارشات من',
-                      subtitle: 'در حال بررسی یا تکمیل شده',
-                      onTap: () {}),
+                    icon: Iconsax.bag_tick,
+                    title: 'سفارشات من',
+                    subtitle: 'در حال بررسی یا تکمیل شده',
+                    onTap: () => Get.to(() => OrderScreen()),
+                  ),
                   SetteingMenuTile(
                       icon: Iconsax.bank,
                       title: 'بانک من',
