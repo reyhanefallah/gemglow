@@ -1,13 +1,10 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:gemglow/constants/color-string.dart';
 import 'package:gemglow/constants/widgets-page/containers.dart';
 import 'package:gemglow/constants/widgets-page/product-card-v.dart';
 import 'package:gemglow/constants/widgets-page/product-price.dart';
 import 'package:gemglow/constants/widgets/homewidgets.dart';
 import 'package:gemglow/constants/widgets/product-widgets.dart';
-import 'package:gemglow/constants/widgets/shadow.dart';
 import 'package:gemglow/constants/widgets/store-widgets.dart';
 import 'package:iconsax/iconsax.dart';
 
