@@ -6,6 +6,8 @@ import 'package:gemglow/constants/widgets-page/product-card-v.dart';
 import 'package:gemglow/constants/widgets/homewidgets.dart';
 import 'package:gemglow/constants/widgets/main-widgates.dart';
 import 'package:gemglow/constants/widgets/widgets.dart';
+import 'package:gemglow/view/sub-categories-screen.dart';
+import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -54,7 +56,8 @@ class HomeScreen extends StatelessWidget {
                                 backgroundcolor: Colors.white,
                                 image: 'assets/png/jewel.png',
                                 title: 'جواهر',
-                                onTap: () {},
+                                onTap: () =>
+                                    Get.to(() => SubCategoriesScreen()),
                               );
                             },
                           ),

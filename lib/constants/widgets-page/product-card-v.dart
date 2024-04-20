@@ -40,16 +40,18 @@ class GProductCardVertical extends StatelessWidget {
                     width: MediaQuery.of(context).size.width,
                   ),
                   Positioned(
-                    top: 0,
+                    top: 12,
                     left: 0,
                     child: RoundedContainer(
                       radius: 10,
                       backgroundColor: GColor.primaryColor3.withOpacity(0.8),
-                      padding:
-                          EdgeInsets.symmetric(horizontal: 10, vertical: 15),
+                      padding: EdgeInsets.symmetric(horizontal: 8, vertical: 4),
                       child: Text(
                         '25%',
-                        style: TextStyle(color: Colors.black, fontSize: 12),
+                        style: Theme.of(context)
+                            .textTheme
+                            .labelLarge!
+                            .apply(color: Colors.black),
                       ),
                     ),
                   ),
@@ -59,7 +61,6 @@ class GProductCardVertical extends StatelessWidget {
                     child: GCircularIcon(
                       icon: Iconsax.heart5,
                       color: Colors.red,
-                      //Add Color
                       backgroundColor: Colors.transparent,
                     ),
                   ),
