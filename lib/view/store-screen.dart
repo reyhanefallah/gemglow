@@ -4,7 +4,9 @@ import 'package:gemglow/constants/widgets/appbar.dart';
 import 'package:gemglow/constants/widgets/brandcard.dart';
 import 'package:gemglow/constants/widgets/main-widgates.dart';
 import 'package:gemglow/constants/widgets/tabbar.dart';
+import 'package:gemglow/view/all-brands-screen.dart';
 import 'package:gemglow/view/home-screen.dart';
+import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 
 class StoreScreen extends StatelessWidget {
@@ -54,9 +56,9 @@ class StoreScreen extends StatelessWidget {
                         height: 15,
                       ),
                       SectionHeading(
-                        title: 'featured Brands',
+                        title: 'برند ها',
                         textColor: Colors.black,
-                        onPressed: () {},
+                        onPressed: () => Get.to(() => AllBrandsScreen()),
                         space: MainAxisAlignment.spaceBetween,
                       ),
                       SizedBox(

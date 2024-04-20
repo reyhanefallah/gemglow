@@ -43,7 +43,7 @@ class BrandCard extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   BrandTitleText(
-                    title: 'الماس',
+                    title: 'تیفانی',
                     brandTextSize: TextSizes.large,
                   ),
                   Text(
@@ -62,7 +62,6 @@ class BrandCard extends StatelessWidget {
 }
 
 // BrandShowCard
-
 class BrandShowCase extends StatelessWidget {
   const BrandShowCase({
     super.key,
