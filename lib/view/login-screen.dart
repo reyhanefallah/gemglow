@@ -1,13 +1,11 @@
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:gemglow/constants/color-string.dart';
-import 'package:gemglow/constants/text-style.dart';
+import 'package:gemglow/constants/widgets/login-widgets.dart';
 import 'package:gemglow/constants/widgets/widgets.dart';
-import 'package:gemglow/view/forget-password-screen.dart';
 import 'package:gemglow/view/navigation-bar-screen.dart';
 import 'package:gemglow/view/signup-screen.dart';
 import 'package:get/get.dart';
+import 'package:iconsax/iconsax.dart';
 
 class LoginScreen extends StatelessWidget {
   const LoginScreen({super.key});
@@ -15,119 +13,101 @@ class LoginScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
-        child: SingleChildScrollView(
-          child: Center(
-            child: Padding(
-              padding: const EdgeInsets.all(24),
-              child: Column(
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: EdgeInsets.all(24),
+          child: Column(
+            children: [
+              // logo & title & subtitle
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  SizedBox(
-                    child: Text('ورود به حساب کاربری'),
+                  Image(
+                    image: AssetImage(''),
+                    height: 150,
                   ),
-                  Form(
-                    child: Column(
+                  Text('title',
+                      style: Theme.of(context).textTheme.headlineMedium),
+                  SizedBox(height: 8),
+                  Text('subtitle',
+                      style: Theme.of(context).textTheme.headlineMedium),
+                ],
+              ),
+              Form(
+                child: Column(
+                  children: [
+                    TextFormField(
+                      decoration: InputDecoration(
+                        label: Text('ایمیل'),
+                        prefixIcon: Icon(Iconsax.direct_right),
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(10),
+                          borderSide: BorderSide(color: GColor.primaryColor2),
+                        ),
+                      ),
+                    ),
+                    SizedBox(height: 16),
+                    TextFormField(
+                      decoration: InputDecoration(
+                        label: Text('گذرواژه'),
+                        prefixIcon: Icon(Iconsax.password_check),
+                        suffixIcon: Icon(Iconsax.eye_slash),
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(10),
+                          borderSide: BorderSide(color: GColor.primaryColor2),
+                        ),
+                      ),
+                    ),
+                    SizedBox(height: 16 / 2),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Align(
-                          alignment: Alignment.centerRight,
-                          child: Text('ایمیل'),
+                        //remember me
+                        Row(
+                          children: [
+                            Checkbox(value: true, onChanged: (value) {}),
+                            SizedBox(width: 16),
+                            Text('مرا بخاطر داشته باش'),
+                          ],
                         ),
-                        GFormField(
-                            Gstyle: GTextStyle.displayLarge2,
-                            Ghint: 'example@gmail.com'),
-                        SizedBox(
-                          height: 25.0,
-                        ),
-                        Align(
-                          alignment: Alignment.centerRight,
-                          child: Text('گذرواژه'),
-                        ),
-                        GFormField(
-                          Gstyle: GTextStyle.displayLarge2,
-                          Ghint: '****************',
-                          Gicon: Icon(Icons.visibility_off_outlined),
+                        //forget password
+                        TextButton(
+                          onPressed: () {},
+                          child: Text('فراموشی رمز'),
                         ),
                       ],
                     ),
-                  ),
-                  SizedBox(
-                    height: 25.0,
-                  ),
-                  RichText(
-                    text: TextSpan(
-                      recognizer: TapGestureRecognizer()
-                        ..onTap = () => Get.to(() => ForgetPasswordScreen()),
-                      text: 'رمز عبور را فراموش کردید؟',
-                      style: TextStyle(
-                          color: GColor.primaryColor1,
-                          decoration: TextDecoration.underline),
-                    ),
-                  ),
-                  SizedBox(
-                    height: 25.0,
-                  ),
-                  GElevatedButton(
-                      GonPressed: () => Get.to(() => NavigationBarScreen()),
+                    SizedBox(height: 32),
+                    GElevatedButton(
                       Gcolor: GColor.primaryColor1,
                       Gtitle: 'ورود',
-                      Gstyle: GTextStyle.displayLarge1),
-                  SizedBox(
-                    height: 25.0,
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Flexible(
-                          child: Divider(
-                        color: Colors.black,
-                        thickness: 0.5,
-                        indent: 60,
-                        endIndent: 5,
-                      )),
-                      Text('یا ورود به حساب از طریق'),
-                      Flexible(
-                          child: Divider(
-                        color: Colors.black,
-                        thickness: 0.5,
-                        indent: 5,
-                        endIndent: 60,
-                      )),
-                    ],
-                  ),
-                  SizedBox(
-                    height: 25.0,
-                  ),
-                  GElevatedButton(
-                    GonPressed: () {},
-                    Gcolor: Colors.white,
-                    Gtitle: 'google',
-                    Gstyle: GTextStyle.displayLarge2,
-                    Gicon: SvgPicture.asset(
-                      "assets/svg/google.svg",
-                      height: 45,
-                      width: 45,
+                      Gstyle: TextStyle(color: Colors.white),
+                      GonPressed: () => Get.to(() => NavigationBarScreen()),
                     ),
-                    GborderSide: BorderSide(color: GColor.primaryColor2),
-                    Gelevation: 0.0,
-                  ),
-                  SizedBox(
-                    height: 25.0,
-                  ),
-                  RichText(
-                    text: TextSpan(text: 'حساب کاربری ندارید؟', children: [
-                      TextSpan(
-                        recognizer: TapGestureRecognizer()
-                          ..onTap = () => Get.to(() => SignUpScreen()),
-                        text: 'ثبت نام کنید',
-                        style: TextStyle(
-                            decoration: TextDecoration.underline,
-                            color: GColor.primaryColor1),
+                    SizedBox(height: 16),
+                    SizedBox(
+                      width: double.infinity,
+                      height: 60,
+                      child: OutlinedButton(
+                        style: ButtonStyle(
+                          shape: MaterialStateProperty.all(
+                            RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(10),
+                            ),
+                          ),
+                        ),
+                        onPressed: () => Get.to(() => SignUpScreen()),
+                        child: Text('ساخت حساب'),
                       ),
-                    ]),
-                  )
-                ],
+                    )
+                  ],
+                ),
               ),
-            ),
+              SizedBox(height: 32),
+              GFormDivider(dividerText: 'یا ورود از طریق'),
+              SizedBox(height: 32),
+              GSocialButtons(),
+            ],
           ),
         ),
       ),
