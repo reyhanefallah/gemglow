@@ -1,44 +1,16 @@
-import 'package:firebase_auth/firebase_auth.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_native_splash/flutter_native_splash.dart';
-import 'package:gemglow/view/login-screen.dart';
-import 'package:gemglow/view/onboarding-screen.dart';
+import 'package:gemglow/model/user-model.dart';
 import 'package:get/get.dart';
-import 'package:get_storage/get_storage.dart';
 
-class AuthenticationRepository extends GetxController {
-  static AuthenticationRepository get instance => Get.find();
+class UserRepository extends GetxController {
+  static UserRepository get instance => Get.find();
 
-  final deviceStorage = GetStorage();
-  final _auth = FirebaseAuth.instance;
+  final FirebaseFirestore _db = FirebaseFirestore.instance;
 
-  @override
-  void onReady() {
-    FlutterNativeSplash.remove();
-    screenRedirect();
-  }
-
-  // @override
-  // void onInit(){
-  // }
-
-  screenRedirect() async {
-    deviceStorage.writeIfNull('IsFirstTime', true);
-    deviceStorage.read('IsFirstTime') != true
-        ? Get.offAll(() => LoginScreen())
-        : Get.offAll(OnBoardingScreen());
-  }
-
-  /********************  email and password sign in  ***********************/
-
-  //email register
-  Future<UserCredential> registerWithEmailAndPassword(
-      String email, String password) async {
+  Future<void> saveUserRecord(UserModel user) async {
     try {
-      return await _auth.createUserWithEmailAndPassword(
-          email: email, password: password);
-    } on FirebaseAuthException catch (e) {
-      throw GFirebaseAuthException(e.code).message;
+      await _db.collection("Users").doc(user.id).set(user.toJson());
     } on FirebaseException catch (e) {
       throw GFirebaseException(e.code).message;
     } on FormatException catch (_) {
@@ -46,7 +18,7 @@ class AuthenticationRepository extends GetxController {
     } on PlatformException catch (e) {
       throw GPlatformException(e.code).message;
     } catch (e) {
-      throw 'مشکلی پیش آمده. دوباره سعی کنید';
+      throw 'مشکلی پیش آمده. دوباره امتحان کنید';
     }
   }
 }
@@ -57,12 +29,6 @@ class GFirebaseException {
   final String message;
 
   GFirebaseException(this.message);
-}
-
-class GFirebaseAuthException {
-  final String message;
-
-  GFirebaseAuthException(this.message);
 }
 
 class GFormatException {

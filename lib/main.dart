@@ -2,6 +2,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
+import 'package:gemglow/bindings/general_bindings.dart';
 import 'package:gemglow/data/repository/auth-repository.dart';
 import 'package:gemglow/firebase_options.dart';
 import 'package:gemglow/view/home-screen.dart';
@@ -40,6 +41,7 @@ class MyApp extends StatelessWidget {
         Locale("fa", "IR"),
       ],
       locale: Locale("fa", "IR"),
+      initialBinding: GeneralBindings(),
       home: HomeScreen(),
     );
   }

@@ -75,23 +75,26 @@ class GProductCardVertical extends StatelessWidget {
             ),
             Align(
               alignment: Alignment.centerRight,
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    'گردنبند',
-                    overflow: TextOverflow.ellipsis,
-                    maxLines: 2,
-                    textAlign: TextAlign.left,
-                    style: TextStyle(fontSize: 14),
-                  ),
-                  SizedBox(
-                    height: 3.5,
-                  ),
-                  BrandTitleWithVerifiedIcon(
-                    title: 'رز کوارتز',
-                  ),
-                ],
+              child: Padding(
+                padding: const EdgeInsets.only(right: 5),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      'گردنبند',
+                      overflow: TextOverflow.ellipsis,
+                      maxLines: 2,
+                      textAlign: TextAlign.left,
+                      style: TextStyle(fontSize: 14),
+                    ),
+                    SizedBox(
+                      height: 3.5,
+                    ),
+                    BrandTitleWithVerifiedIcon(
+                      title: 'رز کوارتز',
+                    ),
+                  ],
+                ),
               ),
             ),
             Spacer(),
