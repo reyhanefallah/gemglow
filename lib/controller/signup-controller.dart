@@ -1,4 +1,3 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:gemglow/constants/helper-function.dart';
 import 'package:gemglow/constants/widgets-page/loader.dart';
@@ -30,10 +29,16 @@ class SignupController extends GetxController {
 
       //check internet connection
       final isConnected = await NetworkManager.instance.isConnected();
-      if (!isConnected) return;
+      if (!isConnected) {
+        GFullScreenLoader.stopLoading();
+        return;
+      }
 
       //form validation
-      if (signupFormKey.currentState!.validate()) return;
+      if (signupFormKey.currentState!.validate()) {
+        GFullScreenLoader.stopLoading();
+        return;
+      }
 
       //privacy policy check
       if (!privacyPolicy.value) {
@@ -63,13 +68,19 @@ class SignupController extends GetxController {
       final userRepository = Get.put(UserRepository());
       await userRepository.saveUserRecord(newUser);
 
+      GFullScreenLoader.stopLoading();
+
       //success message
       GLoaders.successSnackBar(
           title: 'تبریک',
           message:
               'حساب شما با موفقیت ساخته شد. برای ادامه ایمیل خود را تایید کنید.');
 
-      Get.to(() => VerifyEmailScreen());
+      Get.to(
+        () => VerifyEmailScreen(
+          email: email.text.trim(),
+        ),
+      );
     } catch (e) {
       GLoaders.errorSnackBar(title: 'خطا', message: e.toString());
     } finally {

@@ -4,7 +4,6 @@ import 'package:gemglow/constants/widgets/widgets.dart';
 import 'package:gemglow/controller/signup-controller.dart';
 import 'package:gemglow/data/utils/validation.dart';
 import 'package:get/get.dart';
-import 'package:get/get_state_manager/get_state_manager.dart';
 import 'package:iconsax/iconsax.dart';
 
 class GSingupForm extends StatelessWidget {

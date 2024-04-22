@@ -1,8 +1,11 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
+import 'package:gemglow/data/utils/firebase-auth-exception.dart';
 import 'package:gemglow/view/login-screen.dart';
+import 'package:gemglow/view/navigation-bar-screen.dart';
 import 'package:gemglow/view/onboarding-screen.dart';
+import 'package:gemglow/view/verify-email-screen.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 
@@ -23,10 +26,19 @@ class AuthenticationRepository extends GetxController {
   // }
 
   screenRedirect() async {
-    deviceStorage.writeIfNull('IsFirstTime', true);
-    deviceStorage.read('IsFirstTime') != true
-        ? Get.offAll(() => LoginScreen())
-        : Get.offAll(OnBoardingScreen());
+    final user = _auth.currentUser;
+    if (user != null) {
+      if (user.emailVerified) {
+        Get.offAll(() => NavigationBarScreen());
+      } else {
+        Get.offAll(() => VerifyEmailScreen(email: _auth.currentUser?.email));
+      }
+    } else {
+      deviceStorage.writeIfNull('IsFirstTime', true);
+      deviceStorage.read('IsFirstTime') != true
+          ? Get.offAll(() => LoginScreen())
+          : Get.offAll(OnBoardingScreen());
+    }
   }
 
   /********************  email and password sign in  ***********************/
@@ -49,57 +61,39 @@ class AuthenticationRepository extends GetxController {
       throw 'مشکلی پیش آمده. دوباره سعی کنید';
     }
   }
-}
 
-//write by myself
+  Future<void> sendEmailVerification() async {
+    try {
+      await _auth.currentUser?.sendEmailVerification();
+    } on FirebaseAuthException catch (e) {
+      throw GFirebaseAuthException(e.code).message;
+    } on FirebaseException catch (e) {
+      throw GFirebaseException(e.code).message;
+    } on FormatException catch (_) {
+      throw GFormatException();
+    } on PlatformException catch (e) {
+      throw GPlatformException(e.code).message;
+    } catch (e) {
+      throw 'مشکلی پیش آمده دوباره سعی کنید';
+    }
+  }
 
-class GFirebaseException {
-  final String message;
+/****************************  ./end identity and social sign in  ****************************************** */
 
-  GFirebaseException(this.message);
-}
-
-class GFirebaseAuthException {
-  final String message;
-
-  GFirebaseAuthException(this.message);
-}
-
-class GFormatException {
-  String get message => 'فرمت ورودی نادرست است';
-}
-
-class GPlatformException {
-  final String code;
-
-  GPlatformException(this.code);
-
-  String get message {
-    switch (code) {
-      case 'ERROR_OPERATION_NOT_ALLOWED':
-        return 'عملیات مجاز نیست';
-      case 'ERROR_TOO_MANY_REQUESTS':
-        return 'درخواست های بیش از حد';
-      case 'ERROR_USER_DISABLED':
-        return 'کاربر غیرفعال شده است';
-      case 'ERROR_USER_NOT_FOUND':
-        return 'کاربر یافت نشد';
-      case 'ERROR_INVALID_CREDENTIAL':
-        return 'اطلاعات ورودی نادرست است';
-      case 'ERROR_WRONG_PASSWORD':
-        return 'رمز عبور اشتباه است';
-      case 'ERROR_USER_NOT_FOUND':
-        return 'کاربر یافت نشد';
-      case 'ERROR_EMAIL_ALREADY_IN_USE':
-        return 'ایمیل قبلا استفاده شده است';
-      case 'ERROR_WEAK_PASSWORD':
-        return 'رمز عبور ضعیف است';
-      case 'ERROR_INVALID_EMAIL':
-        return 'ایمیل نادرست است';
-      case 'ERROR_ACCOUNT_EXISTS_WITH_DIFFERENT_CREDENTIAL':
-        return 'حساب کاربری با اطلاعات دیگری وجود دارد';
-      default:
-        return 'خطای ناشناخته رخ داده است';
+  Future<void> logout() async {
+    try {
+      await FirebaseAuth.instance.signOut();
+      Get.offAll(() => LoginScreen());
+    } on FirebaseAuthException catch (e) {
+      throw GFirebaseAuthException(e.code).message;
+    } on FirebaseException catch (e) {
+      throw GFirebaseException(e.code).message;
+    } on FormatException catch (_) {
+      throw GFormatException();
+    } on PlatformException catch (e) {
+      throw GPlatformException(e.code).message;
+    } catch (e) {
+      throw 'مشکلی پیش آمده دوباره سعی کنید';
     }
   }
 }
