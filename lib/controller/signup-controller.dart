@@ -24,8 +24,7 @@ class SignupController extends GetxController {
   void signup() async {
     try {
       //start loading
-      GFullScreenLoader.openLoadingDialog(
-          'در حال پردازش اطلاعات...', 'assets/png/jewel.png');
+      GFullScreenLoader.openLoadingDialog('در حال پردازش اطلاعات...', '');
 
       //check internet connection
       final isConnected = await NetworkManager.instance.isConnected();
@@ -35,10 +34,10 @@ class SignupController extends GetxController {
       }
 
       //form validation
-      if (signupFormKey.currentState!.validate()) {
-        GFullScreenLoader.stopLoading();
-        return;
-      }
+      // if (signupFormKey.currentState!.validate()) {
+      //   GFullScreenLoader.stopLoading();
+      //   return;
+      // }
 
       //privacy policy check
       if (!privacyPolicy.value) {

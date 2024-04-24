@@ -1,4 +1,3 @@
-
 // class FirebaseAuthException implements Exception {
 //   final String code;
 
@@ -69,8 +68,6 @@ class GPlatformException {
         return 'اطلاعات ورودی نادرست است';
       case 'ERROR_WRONG_PASSWORD':
         return 'رمز عبور اشتباه است';
-      case 'ERROR_USER_NOT_FOUND':
-        return 'کاربر یافت نشد';
       case 'ERROR_EMAIL_ALREADY_IN_USE':
         return 'ایمیل قبلا استفاده شده است';
       case 'ERROR_WEAK_PASSWORD':
