@@ -2,14 +2,18 @@ import 'package:flutter/material.dart';
 import 'package:gemglow/constants/color-string.dart';
 import 'package:gemglow/constants/text-style.dart';
 import 'package:gemglow/constants/widgets/widgets.dart';
+import 'package:gemglow/controller/forget-password-controller.dart';
+import 'package:gemglow/data/utils/validation.dart';
 import 'package:gemglow/view/Reset-Password-Screen.dart';
 import 'package:get/get.dart';
+import 'package:iconsax/iconsax.dart';
 
 class ForgetPasswordScreen extends StatelessWidget {
   const ForgetPasswordScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final controller = Get.put(ForgetPasswordController());
     return Scaffold(
       body: Center(
         child: SingleChildScrollView(
@@ -26,9 +30,21 @@ class ForgetPasswordScreen extends StatelessWidget {
                 SizedBox(
                   height: 25.0,
                 ),
-                GFormField(
-                    Gstyle: GTextStyle.displayLarge2,
-                    Ghint: 'example@gmail.com'),
+                Form(
+                  key: controller.forgetPasswordFormKey,
+                  child: TextFormField(
+                    controller: controller.email,
+                    validator: GValidator.validateEmail,
+                    decoration: InputDecoration(
+                      label: Text('ایمیل'),
+                      prefixIcon: Icon(Iconsax.direct_right),
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(10),
+                        borderSide: BorderSide(color: GColor.primaryColor2),
+                      ),
+                    ),
+                  ),
+                ),
                 SizedBox(
                   height: 25.0,
                 ),
@@ -36,9 +52,7 @@ class ForgetPasswordScreen extends StatelessWidget {
                   Gcolor: GColor.primaryColor1,
                   Gtitle: 'ارسال',
                   Gstyle: GTextStyle.displayLarge1,
-                  GonPressed: () => Get.off(
-                    () => ResetPasswordScreen(),
-                  ),
+                  GonPressed: () => controller.sendPasswordResetEmail(),
                 ),
               ],
             ),
