@@ -70,9 +70,7 @@ class UserModel {
         phoneNumber: data['PhoneNumber'] ?? '',
         profilePicture: data['ProfilePicture'] ?? '',
       );
-    }
-    // add and check
-    else {
+    } else {
       return UserModel.empty();
     }
   }

@@ -4,7 +4,6 @@ import 'package:gemglow/constants/text-style.dart';
 import 'package:gemglow/constants/widgets/widgets.dart';
 import 'package:gemglow/controller/forget-password-controller.dart';
 import 'package:gemglow/data/utils/validation.dart';
-import 'package:gemglow/view/Reset-Password-Screen.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 

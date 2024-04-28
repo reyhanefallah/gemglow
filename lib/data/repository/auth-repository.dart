@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
+import 'package:gemglow/data/repository/user-repository.dart';
 import 'package:gemglow/data/utils/firebase-auth-exception.dart';
 import 'package:gemglow/view/login-screen.dart';
 import 'package:gemglow/view/navigation-bar-screen.dart';
@@ -17,6 +18,8 @@ class AuthenticationRepository extends GetxController {
   final deviceStorage = GetStorage();
   final _auth = FirebaseAuth.instance;
 
+  User? get authUser => _auth.currentUser;
+
   @override
   void onReady() {
     FlutterNativeSplash.remove();
@@ -27,7 +30,7 @@ class AuthenticationRepository extends GetxController {
   // void onInit(){
   // }
 
-  screenRedirect() async {
+  void screenRedirect() async {
     final user = _auth.currentUser;
     if (user != null) {
       if (user.emailVerified) {
@@ -115,6 +118,25 @@ class AuthenticationRepository extends GetxController {
     }
   }
 
+  Future<void> reAuthenticateWuthEmailAndPassword(
+      String email, String password) async {
+    try {
+      AuthCredential credential =
+          EmailAuthProvider.credential(email: email, password: password);
+      await _auth.currentUser!.reauthenticateWithCredential(credential);
+    } on FirebaseAuthException catch (e) {
+      throw GFirebaseAuthException(e.code).message;
+    } on FirebaseException catch (e) {
+      throw GFirebaseException(e.code).message;
+    } on FormatException catch (_) {
+      throw GFormatException();
+    } on PlatformException catch (e) {
+      throw GPlatformException(e.code).message;
+    } catch (e) {
+      throw 'مشکلی پیش آمده دوباره سعی کنید';
+    }
+  }
+
 /****************************  federated identity and social sign in  ************************************** */
 
   Future<UserCredential?> signInWithGoogle() async {
@@ -148,6 +170,23 @@ class AuthenticationRepository extends GetxController {
       await GoogleSignIn().signOut();
       await FirebaseAuth.instance.signOut();
       Get.offAll(() => LoginScreen());
+    } on FirebaseAuthException catch (e) {
+      throw GFirebaseAuthException(e.code).message;
+    } on FirebaseException catch (e) {
+      throw GFirebaseException(e.code).message;
+    } on FormatException catch (_) {
+      throw GFormatException();
+    } on PlatformException catch (e) {
+      throw GPlatformException(e.code).message;
+    } catch (e) {
+      throw 'مشکلی پیش آمده دوباره سعی کنید';
+    }
+  }
+
+  Future<void> deleteAccount() async {
+    try {
+      await UserRepository.instance.removeUserRecord(_auth.currentUser!.uid);
+      await _auth.currentUser?.delete();
     } on FirebaseAuthException catch (e) {
       throw GFirebaseAuthException(e.code).message;
     } on FirebaseException catch (e) {

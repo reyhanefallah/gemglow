@@ -3,6 +3,8 @@ import 'package:gemglow/constants/widgets/appbar.dart';
 import 'package:gemglow/constants/widgets/main-widgates.dart';
 import 'package:gemglow/constants/widgets/profile-widgets.dart';
 import 'package:gemglow/constants/widgets/store-widgets.dart';
+import 'package:gemglow/controller/user-controller.dart';
+import 'package:gemglow/view/change-name-screen.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 
@@ -11,6 +13,7 @@ class ProfileScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final controller = UserController.instance;
     return Scaffold(
       appBar: GAppBar(
         actions: [
@@ -55,12 +58,12 @@ class ProfileScreen extends StatelessWidget {
               ),
               GProfileMenu(
                 title: 'نام',
-                value: 'علیرضا',
-                onPressed: () {},
+                value: controller.user.value.fullName,
+                onPressed: () => Get.to(() => ChangeNameScreen()),
               ),
               GProfileMenu(
                 title: 'نام کاربری',
-                value: 'فلاح',
+                value: controller.user.value.userName,
                 onPressed: () {},
               ),
               SizedBox(
@@ -80,18 +83,18 @@ class ProfileScreen extends StatelessWidget {
               ),
               GProfileMenu(
                 title: 'ID کاربر',
-                value: '55731',
+                value: controller.user.value.id,
                 icon: Iconsax.copy,
                 onPressed: () {},
               ),
               GProfileMenu(
                 title: 'ایمیل',
-                value: 'alirezafallah@gmail.com',
+                value: controller.user.value.email,
                 onPressed: () {},
               ),
               GProfileMenu(
                 title: 'شماره تلفن',
-                value: '+۹۸ 9178466165',
+                value: controller.user.value.phoneNumber,
                 onPressed: () {},
               ),
               GProfileMenu(
@@ -110,7 +113,7 @@ class ProfileScreen extends StatelessWidget {
               ),
               Center(
                 child: TextButton(
-                  onPressed: () {},
+                  onPressed: () => controller.deleteAccountWarningPopup(),
                   child: Text(
                     'حذف حساب کاربری',
                     style: TextStyle(color: Colors.red),

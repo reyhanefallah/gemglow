@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:gemglow/constants/color-string.dart';
 import 'package:gemglow/constants/text-style.dart';
+import 'package:gemglow/constants/widgets-page/shimmer.dart';
 import 'package:gemglow/constants/widgets/appbar.dart';
+import 'package:gemglow/controller/user-controller.dart';
 import 'package:gemglow/view/card-screen.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
@@ -56,6 +58,7 @@ class GHomeAppBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final controller = Get.put(UserController());
     return GAppBar(
       title: Column(
         mainAxisAlignment: MainAxisAlignment.start,
@@ -67,6 +70,18 @@ class GHomeAppBar extends StatelessWidget {
           Text(
             'GemGlow',
             style: GTextStyle.displayTitle,
+          ),
+          Obx(
+            () {
+              if (controller.profileLoading.value) {
+                return GShimmerEffect(width: 80, height: 15);
+              } else {
+                return Text(
+                  controller.user.value.fullName,
+                  style: Theme.of(context).textTheme.headlineSmall,
+                );
+              }
+            },
           ),
         ],
       ),

@@ -34,10 +34,11 @@ class SignupController extends GetxController {
       }
 
       //form validation
-      // if (signupFormKey.currentState!.validate()) {
-      //   GFullScreenLoader.stopLoading();
-      //   return;
-      // }
+      //if it not work-comment this line
+      if (!signupFormKey.currentState!.validate()) {
+        GFullScreenLoader.stopLoading();
+        return;
+      }
 
       //privacy policy check
       if (!privacyPolicy.value) {
@@ -49,13 +50,13 @@ class SignupController extends GetxController {
       }
 
       //register user in firebase
-      final UserCredential = await AuthenticationRepository.instance
+      final userCredential = await AuthenticationRepository.instance
           .registerWithEmailAndPassword(
               email.text.trim(), password.text.trim());
 
       //save auth user data
       final newUser = UserModel(
-        id: UserCredential.user!.uid,
+        id: userCredential.user!.uid,
         firstName: firstName.text.trim(),
         lastName: lastName.text.trim(),
         userName: userName.text.trim(),

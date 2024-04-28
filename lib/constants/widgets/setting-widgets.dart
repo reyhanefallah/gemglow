@@ -3,6 +3,7 @@ import 'package:gemglow/constants/color-string.dart';
 import 'package:gemglow/constants/widgets-page/containers.dart';
 import 'package:gemglow/constants/widgets/store-widgets.dart';
 import 'package:gemglow/constants/widgets/widgets.dart';
+import 'package:gemglow/controller/user-controller.dart';
 import 'package:iconsax/iconsax.dart';
 
 class GPrimaryHeaderContainer extends StatelessWidget {
@@ -52,6 +53,7 @@ class UserProfileTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final controller = UserController.instance;
     return ListTile(
       leading: CircleImage(
         image: 'assets/png/profile-image.png',
@@ -61,14 +63,14 @@ class UserProfileTile extends StatelessWidget {
         padding: 0.0,
       ),
       title: Text(
-        'علیرضا فلاح',
+        controller.user.value.fullName,
         style: Theme.of(context)
             .textTheme
             .headlineSmall!
             .apply(color: Colors.white),
       ),
       subtitle: Text(
-        'alirezafallah1368@gmail.com',
+        controller.user.value.email,
         style:
             Theme.of(context).textTheme.bodyMedium!.apply(color: Colors.white),
       ),
