@@ -1,9 +1,10 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:gemglow/constants/helper-function.dart';
 import 'package:gemglow/constants/widgets-page/loader.dart';
+import 'package:gemglow/controller/user-controller.dart';
 import 'package:gemglow/data/repository/auth-repository.dart';
 import 'package:gemglow/data/utils/network-manager.dart';
+import 'package:gemglow/view/navigation-bar-screen.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 
@@ -14,6 +15,7 @@ class LoginController extends GetxController {
   final email = TextEditingController();
   final password = TextEditingController();
   GlobalKey<FormState> loginFormKey = GlobalKey<FormState>();
+  final userController = Get.put(UserController());
 
   // void onInit() {
   //   email.text = localStorage.read('remember me email');
@@ -50,6 +52,33 @@ class LoginController extends GetxController {
     } catch (e) {
       GFullScreenLoader.stopLoading();
       GLoaders.errorSnackBar(title: 'خطایی رخ داده', message: e.toString());
+    }
+  }
+
+  Future<void> googleSignIn() async {
+    try {
+      GFullScreenLoader.openLoadingDialog('در حال وارد شدن به حساب ...', '');
+
+      final isConnected = await NetworkManager.instance.isConnected();
+      if (!isConnected) {
+        GFullScreenLoader.stopLoading();
+        return;
+      }
+
+      final userCredentials =
+          await AuthenticationRepository.instance.signInWithGoogle();
+
+      await userController.saveUserRecord(userCredentials);
+
+      GFullScreenLoader.stopLoading();
+
+      // add from chatgpt
+      Get.to(() => NavigationBarScreen());
+    } catch (e) {
+      GFullScreenLoader.stopLoading();
+
+      GLoaders.errorSnackBar(
+          title: 'خطایی رخ داده دوباره امتحان کنید', message: e.toString());
     }
   }
 }

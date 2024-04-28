@@ -5,7 +5,6 @@ import 'package:gemglow/constants/widgets/widgets.dart';
 import 'package:gemglow/controller/login-controller.dart';
 import 'package:gemglow/data/utils/validation.dart';
 import 'package:gemglow/view/forget-password-screen.dart';
-import 'package:gemglow/view/navigation-bar-screen.dart';
 import 'package:gemglow/view/signup-screen.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';

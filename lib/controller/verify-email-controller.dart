@@ -9,12 +9,12 @@ import 'package:get/get.dart';
 class VerifyEmailController extends GetxController {
   static VerifyEmailController get instance => Get.find();
 
-  // @override
-  // void onInit() {
-  //   sendEmailVerification();
-  //   setTimerForAutoRedirect();
-  //   super.onInit();
-  // }
+  @override
+  void onInit() {
+    sendEmailVerification();
+    setTimerForAutoRedirect();
+    super.onInit();
+  }
 
   sendEmailVerification() async {
     try {

@@ -1,6 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/services.dart';
-import 'package:gemglow/data/utils/firebase-auth-exception.dart';
 import 'package:gemglow/model/user-model.dart';
 import 'package:get/get.dart';
 
