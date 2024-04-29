@@ -83,7 +83,6 @@ class SignupController extends GetxController {
       );
     } catch (e) {
       GLoaders.errorSnackBar(title: 'خطا', message: e.toString());
-    } finally {
       GFullScreenLoader.stopLoading();
     }
   }

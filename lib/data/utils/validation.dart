@@ -1,4 +1,3 @@
-
 class GValidator {
   static String? validateEmptyText(String? fieldName, String? value) {
     if (value == null || value.isEmpty) {
@@ -42,7 +41,7 @@ class GValidator {
     if (value == null || value.isEmpty) {
       return 'شماره موبایل را وارد کنید';
     }
-    final phoneRegExp = RegExp(r'^\d{10}$');
+    final phoneRegExp = RegExp(r'^\d{11}$');
     if (!phoneRegExp.hasMatch(value)) {
       return 'شماره موبایل نامعتبر است';
     }

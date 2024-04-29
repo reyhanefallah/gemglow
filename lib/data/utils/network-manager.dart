@@ -21,7 +21,7 @@ class NetworkManager extends GetxController {
   //       as StreamSubscription<ConnectivityResult>;
   // }
 
-  //  @override
+  // @override
   // void onInit() {
   //   super.onInit();
   //   _connectivitySubscription =

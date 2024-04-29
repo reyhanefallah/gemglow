@@ -1,6 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:gemglow/constants/helper-function.dart';
 import 'package:gemglow/constants/widgets-page/loader.dart';
 import 'package:gemglow/data/repository/auth-repository.dart';
