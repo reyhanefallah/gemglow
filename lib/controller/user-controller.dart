@@ -9,6 +9,7 @@ import 'package:gemglow/model/user-model.dart';
 import 'package:gemglow/view/login-screen.dart';
 import 'package:gemglow/view/re-authenticate-screen.dart';
 import 'package:get/get.dart';
+import 'package:image_picker/image_picker.dart';
 
 class UserController extends GetxController {
   static UserController get instance => Get.find();
@@ -19,6 +20,7 @@ class UserController extends GetxController {
   final verifyEmail = TextEditingController();
   final verifyPassword = TextEditingController();
   final hidePassword = false.obs;
+  final imageUploading = false.obs;
   final userRepository = Get.put(UserRepository());
   GlobalKey<FormState> reAuthFormKey = GlobalKey<FormState>();
 
@@ -42,23 +44,27 @@ class UserController extends GetxController {
 
   Future<void> saveUserRecord(UserCredential? userCredentials) async {
     try {
-      if (userCredentials != null) {
-        final nameParts =
-            UserModel.nameParts(userCredentials.user!.displayName ?? '');
-        final username =
-            UserModel.generateUsername(userCredentials.user!.displayName ?? '');
+      await fetchUserRecord();
+      if (user.value.id.isEmpty) {
+        if (userCredentials != null) {
+          final nameParts =
+              UserModel.nameParts(userCredentials.user!.displayName ?? '');
+          final username = UserModel.generateUsername(
+              userCredentials.user!.displayName ?? '');
 
-        final user = UserModel(
-          id: userCredentials.user!.uid,
-          firstName: nameParts[0],
-          lastName: nameParts.length > 1 ? nameParts.sublist(1).join(' ') : '',
-          userName: username,
-          email: userCredentials.user!.email ?? '',
-          phoneNumber: userCredentials.user!.phoneNumber ?? '',
-          profilePicture: userCredentials.user!.photoURL ?? '',
-        );
+          final user = UserModel(
+            id: userCredentials.user!.uid,
+            firstName: nameParts[0],
+            lastName:
+                nameParts.length > 1 ? nameParts.sublist(1).join(' ') : '',
+            userName: username,
+            email: userCredentials.user!.email ?? '',
+            phoneNumber: userCredentials.user!.phoneNumber ?? '',
+            profilePicture: userCredentials.user!.photoURL ?? '',
+          );
 
-        await userRepository.saveUserRecord(user);
+          await userRepository.saveUserRecord(user);
+        }
       }
     } catch (e) {
       GLoaders.warningSnackBar(
@@ -139,6 +145,35 @@ class UserController extends GetxController {
     } catch (e) {
       GFullScreenLoader.stopLoading();
       GLoaders.warningSnackBar(title: 'خطایی رخ داده', message: e.toString());
+    }
+  }
+
+  uploadUserProfilePicture() async {
+    try {
+      final image = await ImagePicker().pickImage(
+          source: ImageSource.gallery,
+          imageQuality: 70,
+          maxHeight: 512,
+          maxWidth: 512);
+      if (image != null) {
+        imageUploading.value = true;
+
+        final imageUrl =
+            await userRepository.uploadImage('Users/images/Profile', image);
+        Map<String, dynamic> json = {'ProfilePicture': imageUrl};
+        await userRepository.updateSingleField(json);
+
+        user.value.profilePicture = imageUrl;
+        user.value.profilePicture = imageUrl;
+        user.refresh();
+
+        GLoaders.successSnackBar(
+            title: 'تبریک!', message: 'تصویر بروزرسانی شد');
+      }
+    } catch (e) {
+      GLoaders.errorSnackBar(title: 'خطایی رخ داده', message: e.toString());
+    } finally {
+      imageUploading.value = false;
     }
   }
 }

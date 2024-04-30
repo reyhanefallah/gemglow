@@ -1,4 +1,6 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:gemglow/constants/widgets-page/shimmer.dart';
 import 'package:gemglow/enums.dart';
 import 'package:iconsax/iconsax.dart';
 
@@ -35,12 +37,21 @@ class CircleImage extends StatelessWidget {
       // --add clipRRect
       child: ClipRRect(
         borderRadius: BorderRadius.circular(100),
-        child: Image(
-          fit: fit,
-          image: isNetworkImage
-              ? NetworkImage(image)
-              : AssetImage(image) as ImageProvider,
-          color: overlayColor,
+        child: Center(
+          child: isNetworkImage
+              ? CachedNetworkImage(
+                  imageUrl: image,
+                  fit: fit,
+                  color: overlayColor,
+                  progressIndicatorBuilder: (context, url, downloadprogress) =>
+                      GShimmerEffect(width: 55, height: 55),
+                  errorWidget: (context, url, error) => Icon(Icons.error),
+                )
+              : Image(
+                  fit: fit,
+                  image: AssetImage(image),
+                  color: overlayColor,
+                ),
         ),
       ),
     );

@@ -33,6 +33,7 @@ class ChangeNameScreen extends StatelessWidget {
             Text(
                 'از نام واقعی خود برای تأیید آسان استفاده کنید، این نام در چندین صفحه ظاهر می شود',
                 style: Theme.of(context).textTheme.labelMedium),
+            SizedBox(height: 32),
             Form(
               key: controller.updateUserNameFormKey,
               child: Column(

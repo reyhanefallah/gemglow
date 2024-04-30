@@ -56,6 +56,9 @@ dependencies:
   firebase_auth: ^4.19.2
   google_sign_in: ^6.2.1
   shimmer: ^3.0.0
+  image_picker: ^1.1.0
+  firebase_storage: ^11.7.4
+  cached_network_image: ^3.3.1
 
 flutter_native_splash:
   # This package generates native code to customize Flutter's default white native splash screen

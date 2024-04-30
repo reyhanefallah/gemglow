@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gemglow/constants/widgets-page/shimmer.dart';
 import 'package:gemglow/constants/widgets/appbar.dart';
 import 'package:gemglow/constants/widgets/main-widgates.dart';
 import 'package:gemglow/constants/widgets/profile-widgets.dart';
@@ -33,9 +34,19 @@ class ProfileScreen extends StatelessWidget {
                 width: double.infinity,
                 child: Column(
                   children: [
-                    CircleImage(image: 'assets/png/profile-image.png'),
+                    Obx(() {
+                      final networkImage = controller.user.value.profilePicture;
+                      final image = networkImage.isNotEmpty
+                          ? networkImage
+                          : 'assets/png/profile-image.png';
+                      return controller.imageUploading.value
+                          ? GShimmerEffect(width: 55, height: 55, radius: 80)
+                          : CircleImage(
+                              image: image,
+                              isNetworkImage: networkImage.isNotEmpty);
+                    }),
                     TextButton(
-                      onPressed: () {},
+                      onPressed: () => controller.uploadUserProfilePicture(),
                       child: Text('تغییر عکس'),
                     ),
                   ],
