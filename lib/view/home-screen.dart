@@ -8,7 +8,6 @@ import 'package:gemglow/constants/widgets/homewidgets.dart';
 import 'package:gemglow/constants/widgets/main-widgates.dart';
 import 'package:gemglow/constants/widgets/widgets.dart';
 import 'package:gemglow/view/all-products-screen.dart';
-import 'package:gemglow/view/sub-categories-screen.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 
@@ -58,14 +57,7 @@ class HomeScreen extends StatelessWidget {
               padding: const EdgeInsets.all(24),
               child: Column(
                 children: [
-                  PromoSlider(
-                    banners: [
-                      'assets/images/promobanner1.jpg',
-                      'assets/images/promobanner2.jpg',
-                      'assets/images/promobanner3.jpg',
-                      'assets/images/promobanner4.jpg',
-                    ],
-                  ),
+                  PromoSlider(),
                   SizedBox(
                     height: 15,
                   ),

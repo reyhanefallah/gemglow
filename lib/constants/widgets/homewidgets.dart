@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:gemglow/constants/color-string.dart';
 import 'package:gemglow/constants/text-style.dart';
 import 'package:gemglow/constants/widgets-page/containers.dart';
+import 'package:gemglow/constants/widgets-page/shimmer.dart';
+import 'package:gemglow/controller/banner-controller.dart';
 import 'package:gemglow/controller/home-controller.dart';
 import 'package:get/get.dart';
 
@@ -116,46 +118,61 @@ class VerticalCategory extends StatelessWidget {
 class PromoSlider extends StatelessWidget {
   const PromoSlider({
     super.key,
-    required this.banners,
   });
-
-  final List<String> banners;
 
   @override
   Widget build(BuildContext context) {
-    final controller = Get.put(HomeController());
-    return Column(
-      children: [
-        CarouselSlider(
-            options: CarouselOptions(
-              viewportFraction: 0.90,
-              onPageChanged: (index, _) =>
-                  controller.updatePageIndicator(index),
+    final controller = Get.put(BannerController());
+    return Obx(() {
+      if (controller.isLoading.value)
+        return GShimmerEffect(width: double.infinity, height: 190);
+
+      if (controller.banners.isEmpty) {
+        return Center(
+          child: Text('داده ای برای نمایش وجود ندارد'),
+        );
+      } else {
+        return Column(
+          children: [
+            CarouselSlider(
+                options: CarouselOptions(
+                  viewportFraction: 0.90,
+                  onPageChanged: (index, _) =>
+                      controller.updatePageIndicator(index),
+                ),
+                items: controller.banners
+                    .map((banner) => GRoundedImage(
+                          imageUrl: banner.imageUrl,
+                          isNetworkImage: true,
+                          onPressed: () => Get.toNamed(banner.targetScreen),
+                        ))
+                    .toList()),
+            SizedBox(
+              height: 25.0,
             ),
-            items: banners.map((url) => GRoundedImage(imageUrl: url)).toList()),
-        SizedBox(
-          height: 25.0,
-        ),
-        Center(
-          child: Obx(
-            () => Row(
-              mainAxisSize: MainAxisSize.min,
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                for (int i = 0; i < banners.length; i++)
-                  CircularContainer(
-                    width: 20,
-                    height: 4,
-                    margin: EdgeInsets.only(left: 10),
-                    backgroundColor: controller.carousalCurrentIndex.value == i
-                        ? GColor.primaryColor1
-                        : GColor.primaryColor2,
-                  ),
-              ],
-            ),
-          ),
-        )
-      ],
-    );
+            Center(
+              child: Obx(
+                () => Row(
+                  mainAxisSize: MainAxisSize.min,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    for (int i = 0; i < controller.banners.length; i++)
+                      CircularContainer(
+                        width: 20,
+                        height: 4,
+                        margin: EdgeInsets.only(left: 10),
+                        backgroundColor:
+                            controller.carousalCurrentIndex.value == i
+                                ? GColor.primaryColor1
+                                : GColor.primaryColor2,
+                      ),
+                  ],
+                ),
+              ),
+            )
+          ],
+        );
+      }
+    });
   }
 }

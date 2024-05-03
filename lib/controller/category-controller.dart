@@ -27,7 +27,7 @@ class CategoryController extends GetxController {
 
       featuredCategories.assignAll(allCategories
           .where((category) => category.isFeatured && category.parentId.isEmpty)
-          .take(8)
+          .take(5)
           .toList());
     } catch (e) {
       GLoaders.errorSnackBar(title: 'خطایی رخ داده', message: e.toString());

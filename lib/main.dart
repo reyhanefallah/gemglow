@@ -3,8 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:gemglow/bindings/general_bindings.dart';
+import 'package:gemglow/constants/color-string.dart';
 import 'package:gemglow/data/repository/auth-repository.dart';
 import 'package:gemglow/firebase_options.dart';
+import 'package:gemglow/routes/app-routes.dart';
 import 'package:gemglow/view/home-screen.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
@@ -42,7 +44,15 @@ class MyApp extends StatelessWidget {
       ],
       locale: Locale("fa", "IR"),
       initialBinding: GeneralBindings(),
-      home: HomeScreen(),
+      getPages: AppRoutes.pages,
+      home: Scaffold(
+        backgroundColor: GColor.primaryColor1,
+        body: Center(
+          child: CircularProgressIndicator(
+            color: Colors.white,
+          ),
+        ),
+      ),
     );
   }
 }
