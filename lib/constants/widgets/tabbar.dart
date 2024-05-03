@@ -4,6 +4,7 @@ import 'package:gemglow/constants/widgets-page/grid-layout.dart';
 import 'package:gemglow/constants/widgets-page/product-card-v.dart';
 import 'package:gemglow/constants/widgets/brandcard.dart';
 import 'package:gemglow/constants/widgets/main-widgates.dart';
+import 'package:gemglow/model/categories-model.dart';
 
 class GTabBer extends StatelessWidget implements PreferredSizeWidget {
   const GTabBer({super.key, required this.tabs});
@@ -34,7 +35,12 @@ class GTabBer extends StatelessWidget implements PreferredSizeWidget {
 
 //CategoryTab
 class CategoryTab extends StatelessWidget {
-  const CategoryTab({super.key});
+  const CategoryTab({
+    super.key,
+    required this.category,
+  });
+
+  final CategoryModel category;
 
   @override
   Widget build(BuildContext context) {

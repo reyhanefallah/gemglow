@@ -29,3 +29,35 @@ class GShimmerEffect extends StatelessWidget {
     );
   }
 }
+
+class GCategoryShimmer extends StatelessWidget {
+  const GCategoryShimmer({
+    super.key,
+    this.itemCount = 5,
+  });
+
+  final int itemCount;
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      height: 80,
+      child: ListView.separated(
+        shrinkWrap: true,
+        scrollDirection: Axis.horizontal,
+        itemBuilder: (_, __) {
+          return Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              GShimmerEffect(width: 55, height: 55, radius: 55),
+              SizedBox(height: 32 / 2),
+              GShimmerEffect(width: 55, height: 8),
+            ],
+          );
+        },
+        separatorBuilder: (_, __) => SizedBox(width: 32),
+        itemCount: itemCount,
+      ),
+    );
+  }
+}

@@ -1,9 +1,11 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:gemglow/constants/widgets-page/grid-layout.dart';
 import 'package:gemglow/constants/widgets/appbar.dart';
 import 'package:gemglow/constants/widgets/brandcard.dart';
 import 'package:gemglow/constants/widgets/main-widgates.dart';
 import 'package:gemglow/constants/widgets/tabbar.dart';
+import 'package:gemglow/controller/category-controller.dart';
 import 'package:gemglow/view/all-brands-screen.dart';
 import 'package:gemglow/view/home-screen.dart';
 import 'package:get/get.dart';
@@ -14,8 +16,9 @@ class StoreScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final categories = CategoryController.instance.featuredCategories;
     return DefaultTabController(
-      length: 5,
+      length: categories.length,
       child: Scaffold(
         appBar: GAppBar(
           title: Text(
@@ -75,36 +78,44 @@ class StoreScreen extends StatelessWidget {
                   ),
                 ),
                 bottom: GTabBer(
-                  tabs: [
-                    Tab(
-                      text: 'جواهر',
-                    ),
-                    Tab(
-                      text: 'طبیعی',
-                    ),
-                    Tab(
-                      text: 'درمانی',
-                    ),
-                    Tab(
-                      text: 'مصنوعی',
-                    ),
-                    Tab(
-                      text: 'طبیعی',
-                    ),
-                  ],
+                  tabs: categories
+                      .map(
+                        (Category) => Tab(child: Text(Category.name)),
+                      )
+                      .toList(),
+                  // [
+                  //   Tab(
+                  //     text: 'جواهر',
+                  //   ),
+                  //   Tab(
+                  //     text: 'طبیعی',
+                  //   ),
+                  //   Tab(
+                  //     text: 'درمانی',
+                  //   ),
+                  //   Tab(
+                  //     text: 'مصنوعی',
+                  //   ),
+                  //   Tab(
+                  //     text: 'طبیعی',
+                  //   ),
+                  // ],
                 ),
               ),
             ];
           },
           body: TabBarView(
-            children: [
-              CategoryTab(),
-              CategoryTab(),
-              CategoryTab(),
-              CategoryTab(),
-              CategoryTab(),
-            ],
-          ),
+              children: categories
+                  .map((category) => CategoryTab(category: category))
+                  .toList()
+              // [
+              //   CategoryTab(),
+              //   CategoryTab(),
+              //   CategoryTab(),
+              //   CategoryTab(),
+              //   CategoryTab(),
+              // ],
+              ),
         ),
       ),
     );

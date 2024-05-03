@@ -3,6 +3,7 @@ import 'package:gemglow/constants/color-string.dart';
 import 'package:gemglow/constants/text-style.dart';
 import 'package:gemglow/constants/widgets-page/grid-layout.dart';
 import 'package:gemglow/constants/widgets-page/product-card-v.dart';
+import 'package:gemglow/constants/widgets/home-widgets.dart';
 import 'package:gemglow/constants/widgets/homewidgets.dart';
 import 'package:gemglow/constants/widgets/main-widgates.dart';
 import 'package:gemglow/constants/widgets/widgets.dart';
@@ -46,23 +47,7 @@ class HomeScreen extends StatelessWidget {
                         SizedBox(
                           height: 16,
                         ),
-                        SizedBox(
-                          height: 80.0,
-                          child: ListView.builder(
-                            shrinkWrap: true,
-                            itemCount: 5,
-                            scrollDirection: Axis.horizontal,
-                            itemBuilder: (_, index) {
-                              return VerticalCategory(
-                                backgroundcolor: Colors.white,
-                                image: 'assets/png/jewel.png',
-                                title: 'جواهر',
-                                onTap: () =>
-                                    Get.to(() => SubCategoriesScreen()),
-                              );
-                            },
-                          ),
-                        ),
+                        GHomeCategories(),
                       ],
                     ),
                   ),
