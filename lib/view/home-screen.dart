@@ -3,10 +3,12 @@ import 'package:gemglow/constants/color-string.dart';
 import 'package:gemglow/constants/text-style.dart';
 import 'package:gemglow/constants/widgets-page/grid-layout.dart';
 import 'package:gemglow/constants/widgets-page/product-card-v.dart';
+import 'package:gemglow/constants/widgets-page/shimmer.dart';
 import 'package:gemglow/constants/widgets/home-widgets.dart';
 import 'package:gemglow/constants/widgets/homewidgets.dart';
 import 'package:gemglow/constants/widgets/main-widgates.dart';
 import 'package:gemglow/constants/widgets/widgets.dart';
+import 'package:gemglow/controller/product-controller.dart';
 import 'package:gemglow/view/all-products-screen.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
@@ -16,6 +18,7 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final controller = Get.put(ProductController());
     return Scaffold(
       body: SingleChildScrollView(
         child: Column(
@@ -61,10 +64,23 @@ class HomeScreen extends StatelessWidget {
                   SizedBox(
                     height: 15,
                   ),
-                  GGridLayout(
-                    itemcount: 4,
-                    itembuilder: (_, index) => GProductCardVertical(),
-                  ),
+                  Obx(() {
+                    if (controller.isLoading.value)
+                      return GVerticalProductShimmer();
+
+                    if (controller.featuredProducts.isEmpty) {
+                      return Center(
+                          child: Text(
+                        'داده ای یافت نشد',
+                        style: Theme.of(context).textTheme.bodyMedium,
+                      ));
+                    }
+                    return GGridLayout(
+                      itemcount: controller.featuredProducts.length,
+                      itembuilder: (_, index) => GProductCardVertical(
+                          product: controller.featuredProducts[index]),
+                    );
+                  }),
                   SectionHeading(
                     title: 'محبوب ترین ها',
                     textColor: Colors.black,
@@ -74,10 +90,23 @@ class HomeScreen extends StatelessWidget {
                   SizedBox(
                     height: 16,
                   ),
-                  GGridLayout(
-                    itemcount: 2,
-                    itembuilder: (_, index) => GProductCardVertical(),
-                  ),
+                  Obx(() {
+                    if (controller.isLoading.value)
+                      return GVerticalProductShimmer();
+
+                    if (controller.featuredProducts.isEmpty) {
+                      return Center(
+                          child: Text(
+                        'داده ای یافت نشد',
+                        style: Theme.of(context).textTheme.bodyMedium,
+                      ));
+                    }
+                    return GGridLayout(
+                      itemcount: controller.featuredProducts.length,
+                      itembuilder: (_, index) => GProductCardVertical(
+                          product: controller.featuredProducts[index]),
+                    );
+                  }),
                 ],
               ),
             ),

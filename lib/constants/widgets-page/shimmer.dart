@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gemglow/constants/widgets-page/grid-layout.dart';
 import 'package:shimmer/shimmer.dart';
 
 class GShimmerEffect extends StatelessWidget {
@@ -57,6 +58,35 @@ class GCategoryShimmer extends StatelessWidget {
         },
         separatorBuilder: (_, __) => SizedBox(width: 32),
         itemCount: itemCount,
+      ),
+    );
+  }
+}
+
+class GVerticalProductShimmer extends StatelessWidget {
+  const GVerticalProductShimmer({
+    super.key,
+    this.itemCount = 4,
+  });
+
+  final int itemCount;
+
+  @override
+  Widget build(BuildContext context) {
+    return GGridLayout(
+      itemcount: itemCount,
+      itembuilder: (_, __) => SizedBox(
+        width: 180,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            GShimmerEffect(width: 180, height: 180),
+            SizedBox(height: 32),
+            GShimmerEffect(width: 160, height: 15),
+            SizedBox(height: 32 / 2),
+            GShimmerEffect(width: 110, height: 15),
+          ],
+        ),
       ),
     );
   }

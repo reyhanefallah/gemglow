@@ -5,6 +5,7 @@ import 'package:gemglow/constants/widgets-page/product-attributes.dart';
 import 'package:gemglow/constants/widgets-page/product-meta-data.dart';
 import 'package:gemglow/constants/widgets/main-widgates.dart';
 import 'package:gemglow/constants/widgets/product-widgets.dart';
+import 'package:gemglow/model/product-model.dart';
 import 'package:gemglow/view/product-reviews-screen.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
@@ -13,7 +14,12 @@ import 'package:readmore/readmore.dart';
 import '../constants/widgets/widgets.dart';
 
 class ProductDetailScreen extends StatelessWidget {
-  const ProductDetailScreen({super.key});
+  const ProductDetailScreen({
+    super.key,
+    required this.product,
+  });
+
+  final ProductModel product;
 
   @override
   Widget build(BuildContext context) {

@@ -22,9 +22,9 @@ class GProductPriceText extends StatelessWidget {
       maxLines: maxLine,
       overflow: TextOverflow.ellipsis,
       style: isLarg
-          ? Theme.of(context).textTheme.headlineMedium!.apply(
+          ? Theme.of(context).textTheme.bodyMedium!.apply(
               decoration: lineThrough ? TextDecoration.lineThrough : null)
-          : Theme.of(context).textTheme.titleLarge!.apply(
+          : Theme.of(context).textTheme.bodyMedium!.apply(
               decoration: lineThrough ? TextDecoration.lineThrough : null),
     );
   }

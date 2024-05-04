@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:gemglow/constants/color-string.dart';
 import 'package:gemglow/constants/image-strings.dart';
 import 'package:gemglow/constants/widgets-page/containers.dart';
@@ -6,17 +7,29 @@ import 'package:gemglow/constants/widgets-page/product-price.dart';
 import 'package:gemglow/constants/widgets/homewidgets.dart';
 import 'package:gemglow/constants/widgets/shadow.dart';
 import 'package:gemglow/constants/widgets/store-widgets.dart';
+import 'package:gemglow/controller/product-controller.dart';
+import 'package:gemglow/enums.dart';
+import 'package:gemglow/model/product-model.dart';
 import 'package:gemglow/view/product-detail-screen.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 
 class GProductCardVertical extends StatelessWidget {
-  const GProductCardVertical({super.key});
+  const GProductCardVertical({
+    super.key,
+    required this.product,
+  });
+
+  final ProductModel product;
 
   @override
   Widget build(BuildContext context) {
+    final controller = ProductController.instance;
+    final salePercentage =
+        controller.calculateSalePercentage(product.price, product.salePrice);
+
     return GestureDetector(
-      onTap: () => Get.to(() => ProductDetailScreen()),
+      onTap: () => Get.to(() => ProductDetailScreen(product: product)),
       child: Container(
         width: 180,
         padding: EdgeInsets.all(1),
@@ -33,11 +46,14 @@ class GProductCardVertical extends StatelessWidget {
               backgroundColor: Colors.white,
               child: Stack(
                 children: [
-                  GRoundedImage(
-                    imageUrl: GImages.ProductImage4,
-                    applyImageRadius: true,
-                    fit: BoxFit.cover,
-                    width: MediaQuery.of(context).size.width,
+                  Center(
+                    child: GRoundedImage(
+                      imageUrl: product.thumbnail,
+                      isNetworkImage: true,
+                      applyImageRadius: true,
+                      fit: BoxFit.cover,
+                      width: MediaQuery.of(context).size.width,
+                    ),
                   ),
                   Positioned(
                     top: 12,
@@ -47,7 +63,7 @@ class GProductCardVertical extends StatelessWidget {
                       backgroundColor: GColor.primaryColor3.withOpacity(0.8),
                       padding: EdgeInsets.symmetric(horizontal: 8, vertical: 4),
                       child: Text(
-                        '25%',
+                        '$salePercentage',
                         style: Theme.of(context)
                             .textTheme
                             .labelLarge!
@@ -81,7 +97,7 @@ class GProductCardVertical extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      'گردنبند',
+                      product.title,
                       overflow: TextOverflow.ellipsis,
                       maxLines: 2,
                       textAlign: TextAlign.left,
@@ -91,19 +107,57 @@ class GProductCardVertical extends StatelessWidget {
                       height: 3.5,
                     ),
                     BrandTitleWithVerifiedIcon(
-                      title: 'رز کوارتز',
+                      title: product.brand!.name,
                     ),
                   ],
                 ),
               ),
             ),
-            Spacer(),
+            // Spacer(),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Padding(
-                  padding: const EdgeInsets.only(right: 5),
-                  child: GProductPriceText(price: '250'),
+                Flexible(
+                  child: Column(
+                    children: [
+                      // if (product.productType ==
+                      //         ProductType.single.toString() &&
+                      //     product.salePrice > 0)
+                      //   Padding(
+                      //     padding: const EdgeInsets.only(right: 5),
+                      //     child: Text(
+                      //       product.price.toString(),
+                      //       style: Theme.of(context)
+                      //           .textTheme
+                      //           .labelMedium!
+                      //           .apply(decoration: TextDecoration.lineThrough),
+                      //     ),
+                      //   ),
+                      // Padding(
+                      //   padding: const EdgeInsets.only(right: 5),
+                      //   child: GProductPriceText(
+                      //       price: controller.getProductPrice(product)),
+                      // ),
+                      if (product.salePrice >
+                          0) // فقط اگر تخفیف وجود داشته باشد، قیمت اصلی را نمایش بده
+                        Padding(
+                          padding: const EdgeInsets.only(right: 5),
+                          child: Text(
+                            '${double.parse(product.price.toString()).toStringAsFixed(0)} تومان',
+                            style:
+                                Theme.of(context).textTheme.labelMedium!.apply(
+                                      decoration: TextDecoration.lineThrough,
+                                    ),
+                          ),
+                        ),
+                      Padding(
+                        padding: const EdgeInsets.only(right: 5),
+                        child: GProductPriceText(
+                          price: controller.getProductPrice(product),
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
                 Container(
                   decoration: BoxDecoration(
