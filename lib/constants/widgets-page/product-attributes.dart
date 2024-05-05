@@ -5,12 +5,23 @@ import 'package:gemglow/constants/widgets-page/product-price.dart';
 import 'package:gemglow/constants/widgets/main-widgates.dart';
 import 'package:gemglow/constants/widgets/p-attributes.dart';
 import 'package:gemglow/constants/widgets/product-widgets.dart';
+import 'package:gemglow/controller/product-controller.dart';
+import 'package:gemglow/model/product-model.dart';
 
 class ProductAttributes extends StatelessWidget {
-  const ProductAttributes({super.key});
+  const ProductAttributes({
+    super.key,
+    required this.product,
+  });
+
+  final ProductModel product;
 
   @override
   Widget build(BuildContext context) {
+    final controller = ProductController.instance;
+    final salePercentage =
+        controller.calculateSalePercentage(product.price, product.salePrice);
+
     return Column(
       children: [
         RoundedContainer(
@@ -21,10 +32,10 @@ class ProductAttributes extends StatelessWidget {
               Row(
                 children: [
                   SectionHeading(
-                    title: 'variation',
+                    title: 'توضیحات',
                     showActionButton: false,
                   ),
-                  SizedBox(width: 24),
+                  SizedBox(width: 16),
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
@@ -35,14 +46,15 @@ class ProductAttributes extends StatelessWidget {
                             smallSize: true,
                           ),
                           Text(
-                            '250 تومان',
+                            '${product.price.toString()} تومان',
                             style: Theme.of(context)
                                 .textTheme
                                 .titleSmall!
                                 .apply(decoration: TextDecoration.lineThrough),
                           ),
-                          SizedBox(width: 24),
-                          GProductPriceText(price: '175'),
+                          SizedBox(width: 8),
+                          GProductPriceText(
+                              price: '${controller.getProductPrice(product)}'),
                         ],
                       ),
                       Row(
@@ -52,7 +64,7 @@ class ProductAttributes extends StatelessWidget {
                             smallSize: true,
                           ),
                           Text(
-                            'موجود در انبار',
+                            controller.getProductStockStatus(product.stock),
                             style: Theme.of(context).textTheme.titleMedium,
                           ),
                         ],
@@ -61,37 +73,38 @@ class ProductAttributes extends StatelessWidget {
                   ),
                 ],
               ),
-              ProductTitleText(
-                title: 'توضیحات محصول در این قسمت قرار میگیرد حداکثر ۴ خط',
-                smallSize: true,
-                maxLines: 4,
-              ),
+              // SizedBox(height: 8),
+              // ProductTitleText(
+              //   title: 'توضیحات محصول در این قسمت قرار میگیرد حداکثر ۴ خط',
+              //   smallSize: true,
+              //   maxLines: 4,
+              // ),
             ],
           ),
         ),
-        SizedBox(height: 24),
-        Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            SectionHeading(
-              title: 'رنگبندی',
-              textColor: Colors.black,
-              showActionButton: false,
-            ),
-            SizedBox(height: 24 / 2),
-            Wrap(
-              spacing: 8,
-              children: [
-                GChioceChip(
-                    text: 'سبز', selected: true, onSelected: (value) {}),
-                GChioceChip(
-                    text: 'آبی', selected: false, onSelected: (value) {}),
-                GChioceChip(
-                    text: 'قرمز', selected: false, onSelected: (value) {}),
-              ],
-            )
-          ],
-        ),
+        // SizedBox(height: 24),
+        // Column(
+        //   crossAxisAlignment: CrossAxisAlignment.start,
+        //   children: [
+        //     SectionHeading(
+        //       title: 'رنگبندی',
+        //       textColor: Colors.black,
+        //       showActionButton: false,
+        //     ),
+        //     SizedBox(height: 24 / 2),
+        //     Wrap(
+        //       spacing: 8,
+        //       children: [
+        //         GChioceChip(
+        //             text: 'سبز', selected: true, onSelected: (value) {}),
+        //         GChioceChip(
+        //             text: 'آبی', selected: false, onSelected: (value) {}),
+        //         GChioceChip(
+        //             text: 'قرمز', selected: false, onSelected: (value) {}),
+        //       ],
+        //     )
+        //   ],
+        // ),
         // Column(
         //   crossAxisAlignment: CrossAxisAlignment.start,
         //   children: [

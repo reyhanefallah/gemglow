@@ -63,7 +63,7 @@ class GProductCardVertical extends StatelessWidget {
                       backgroundColor: GColor.primaryColor3.withOpacity(0.8),
                       padding: EdgeInsets.symmetric(horizontal: 8, vertical: 4),
                       child: Text(
-                        '$salePercentage',
+                        '$salePercentage%',
                         style: Theme.of(context)
                             .textTheme
                             .labelLarge!
@@ -119,6 +119,7 @@ class GProductCardVertical extends StatelessWidget {
               children: [
                 Flexible(
                   child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       // if (product.productType ==
                       //         ProductType.single.toString() &&
@@ -138,8 +139,7 @@ class GProductCardVertical extends StatelessWidget {
                       //   child: GProductPriceText(
                       //       price: controller.getProductPrice(product)),
                       // ),
-                      if (product.salePrice >
-                          0) // فقط اگر تخفیف وجود داشته باشد، قیمت اصلی را نمایش بده
+                      if (product.salePrice > 0)
                         Padding(
                           padding: const EdgeInsets.only(right: 5),
                           child: Text(

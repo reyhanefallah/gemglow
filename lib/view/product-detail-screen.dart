@@ -5,6 +5,7 @@ import 'package:gemglow/constants/widgets-page/product-attributes.dart';
 import 'package:gemglow/constants/widgets-page/product-meta-data.dart';
 import 'package:gemglow/constants/widgets/main-widgates.dart';
 import 'package:gemglow/constants/widgets/product-widgets.dart';
+import 'package:gemglow/enums.dart';
 import 'package:gemglow/model/product-model.dart';
 import 'package:gemglow/view/product-reviews-screen.dart';
 import 'package:get/get.dart';
@@ -28,20 +29,22 @@ class ProductDetailScreen extends StatelessWidget {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            ProductImageSlider(),
+            ProductImageSlider(product: product),
             Padding(
               padding: EdgeInsets.all(16),
               child: Column(
                 children: [
                   RatingAndShare(),
-                  ProductMetaData(),
-                  ProductAttributes(),
-                  SizedBox(height: 32),
+                  ProductMetaData(product: product),
+                  if (product.productType == ProductType.variable.toString())
+                    ProductAttributes(product: product),
+                  if (product.productType == ProductType.variable.toString())
+                    SizedBox(height: 32),
                   GElevatedButton(
                     Gcolor: GColor.primaryColor1,
                     Gstyle: TextStyle(color: Colors.white),
                     GonPressed: () {},
-                    Gtitle: 'checkout',
+                    Gtitle: 'پرداخت',
                   ),
                   SizedBox(height: 32),
                   SectionHeading(
@@ -51,7 +54,7 @@ class ProductDetailScreen extends StatelessWidget {
                   ),
                   SizedBox(height: 32),
                   ReadMoreText(
-                    'مثلا الان توی اینجا یسری توضیحات درباره محصول و این چیزا میداریم که خیلی طولانیه و بلا بلا بلا بلا بلا بلا بلا بلا.... بله به این شکل که می بینید',
+                    product.description ?? '',
                     trimLines: 2,
                     trimMode: TrimMode.Line,
                     trimCollapsedText: 'نمایش بیشتر',

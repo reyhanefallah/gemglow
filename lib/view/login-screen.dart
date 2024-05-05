@@ -29,7 +29,7 @@ class LoginScreen extends StatelessWidget {
                         style: Theme.of(context).textTheme.headlineMedium),
                     SizedBox(height: 8),
                     Text('به دنیای درخشان سنگ‌های قیمتی خوش آمدید!',
-                        style: Theme.of(context).textTheme.headlineMedium),
+                        style: Theme.of(context).textTheme.headlineSmall),
                   ],
                 ),
                 SizedBox(height: 32),

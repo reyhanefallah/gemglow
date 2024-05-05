@@ -1,19 +1,28 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:gemglow/constants/color-string.dart';
 import 'package:gemglow/constants/widgets-page/product-card-v.dart';
 import 'package:gemglow/constants/widgets/appbar.dart';
 import 'package:gemglow/constants/widgets/homewidgets.dart';
 import 'package:gemglow/constants/widgets/widgets.dart';
+import 'package:gemglow/controller/images-controller.dart';
+import 'package:gemglow/model/product-model.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 
 class ProductImageSlider extends StatelessWidget {
   const ProductImageSlider({
     super.key,
+    required this.product,
   });
+
+  final ProductModel product;
 
   @override
   Widget build(BuildContext context) {
+    final controller = Get.put(ImagesController());
+    final images = controller.getAllProductImages(product);
+
     return CurveHome(
       child: Container(
         color: Colors.white,
@@ -24,11 +33,20 @@ class ProductImageSlider extends StatelessWidget {
               child: Padding(
                 padding: EdgeInsets.all(16),
                 child: Center(
-                  child: Image(
-                    width: double.infinity,
-                    fit: BoxFit.cover,
-                    image: AssetImage('assets/images/product2.jpg'),
-                  ),
+                  child: Obx(() {
+                    final image = controller.selectedProductImage.value;
+                    return GestureDetector(
+                      onTap: () => controller.showEnlargedImage(image),
+                      child: CachedNetworkImage(
+                        imageUrl: image,
+                        progressIndicatorBuilder: (_, __, downloadProgress) =>
+                            CircularProgressIndicator(
+                          value: downloadProgress.progress,
+                          color: GColor.primaryColor1,
+                        ),
+                      ),
+                    );
+                  }),
                 ),
               ),
             ),
@@ -45,14 +63,24 @@ class ProductImageSlider extends StatelessWidget {
                   shrinkWrap: true,
                   scrollDirection: Axis.horizontal,
                   physics: AlwaysScrollableScrollPhysics(),
-                  itemCount: 4,
-                  itemBuilder: (_, index) => GRoundedImage(
-                    width: 80,
-                    backgroundColor: Colors.white,
-                    border: Border.all(color: GColor.primaryColor1),
-                    padding: EdgeInsets.all(8),
-                    imageUrl: 'assets/images/product3.jpg',
-                  ),
+                  itemCount: images.length,
+                  itemBuilder: (_, index) => Obx(() {
+                    final imageSelected =
+                        controller.selectedProductImage.value == images[index];
+                    return GRoundedImage(
+                      width: 80,
+                      isNetworkImage: true,
+                      backgroundColor: Colors.white,
+                      border: Border.all(
+                          color: imageSelected
+                              ? GColor.primaryColor1
+                              : Colors.transparent),
+                      padding: EdgeInsets.all(8),
+                      imageUrl: images[index],
+                      onPressed: () =>
+                          controller.selectedProductImage.value = images[index],
+                    );
+                  }),
                 ),
               ),
             ),

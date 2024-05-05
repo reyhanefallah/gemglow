@@ -50,7 +50,10 @@ class GBottomAddToCart extends StatelessWidget {
               backgroundColor: Colors.black,
               side: BorderSide(color: Colors.black),
             ),
-            child: Text('افزودن به سبد خرید'),
+            child: Text(
+              'افزودن به سبد خرید',
+              style: TextStyle(color: Colors.white),
+            ),
           ),
         ],
       ),

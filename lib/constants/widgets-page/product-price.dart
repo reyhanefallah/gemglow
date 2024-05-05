@@ -18,7 +18,7 @@ class GProductPriceText extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Text(
-      price + currentSign,
+      price,
       maxLines: maxLine,
       overflow: TextOverflow.ellipsis,
       style: isLarg
