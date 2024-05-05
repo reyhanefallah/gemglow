@@ -1,5 +1,4 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:gemglow/constants/widgets-page/product-attributes.dart';
 import 'package:gemglow/model/brand-model.dart';
 
 class ProductModel {
@@ -68,6 +67,26 @@ class ProductModel {
       id: document.id,
       sku: data['SKU'],
       title: data['Title'],
+      stock: data['Stock'] ?? 0,
+      price: double.parse((data['Price'] ?? 0.0).toString()),
+      isFeatured: data['IsFeatured'] ?? false,
+      salePrice: double.parse((data['SalePrice'] ?? 0.0).toString()),
+      thumbnail: data['Thumbnail'] ?? '',
+      categoryId: data['CategoryId'] ?? '',
+      description: data['Description'] ?? '',
+      productType: data['ProductType'] ?? '',
+      brand: BrandModel.fromJson(data['Brand']),
+      images: data['Images'] != null ? List<String>.from(data['Images']) : [],
+    );
+  }
+
+  factory ProductModel.fromQuerySnapshot(
+      QueryDocumentSnapshot<Object?> document) {
+    final data = document.data() as Map<String, dynamic>;
+    return ProductModel(
+      id: document.id,
+      sku: data['SKU'] ?? '',
+      title: data['Title'] ?? '',
       stock: data['Stock'] ?? 0,
       price: double.parse((data['Price'] ?? 0.0).toString()),
       isFeatured: data['IsFeatured'] ?? false,

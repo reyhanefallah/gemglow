@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:gemglow/constants/color-string.dart';
 import 'package:gemglow/constants/text-style.dart';
@@ -85,7 +86,14 @@ class HomeScreen extends StatelessWidget {
                     title: 'محبوب ترین ها',
                     textColor: Colors.black,
                     showActionButton: true,
-                    onPressed: () => Get.to(() => AllProductsScreen()),
+                    onPressed: () => Get.to(() => AllProductsScreen(
+                          title: 'محبوب ترین ها',
+                          query: FirebaseFirestore.instance
+                              .collection('Products')
+                              .where('IsFeatured', isEqualTo: true)
+                              .limit(6),
+                          futureMethod: controller.fetchAllFeaturedProducts(),
+                        )),
                   ),
                   SizedBox(
                     height: 16,

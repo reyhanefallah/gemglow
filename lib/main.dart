@@ -7,7 +7,6 @@ import 'package:gemglow/constants/color-string.dart';
 import 'package:gemglow/data/repository/auth-repository.dart';
 import 'package:gemglow/firebase_options.dart';
 import 'package:gemglow/routes/app-routes.dart';
-import 'package:gemglow/view/home-screen.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 

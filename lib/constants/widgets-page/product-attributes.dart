@@ -3,7 +3,6 @@ import 'package:gemglow/constants/color-string.dart';
 import 'package:gemglow/constants/widgets-page/containers.dart';
 import 'package:gemglow/constants/widgets-page/product-price.dart';
 import 'package:gemglow/constants/widgets/main-widgates.dart';
-import 'package:gemglow/constants/widgets/p-attributes.dart';
 import 'package:gemglow/constants/widgets/product-widgets.dart';
 import 'package:gemglow/controller/product-controller.dart';
 import 'package:gemglow/model/product-model.dart';

@@ -5,7 +5,6 @@ import 'package:gemglow/constants/text-style.dart';
 import 'package:gemglow/constants/widgets-page/containers.dart';
 import 'package:gemglow/constants/widgets-page/shimmer.dart';
 import 'package:gemglow/controller/banner-controller.dart';
-import 'package:gemglow/controller/home-controller.dart';
 import 'package:get/get.dart';
 
 class GRoundedImage extends StatelessWidget {

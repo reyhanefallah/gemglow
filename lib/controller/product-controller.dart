@@ -1,6 +1,5 @@
 import 'package:gemglow/constants/widgets-page/loader.dart';
 import 'package:gemglow/data/repository/product-repository.dart';
-import 'package:gemglow/enums.dart';
 import 'package:gemglow/model/product-model.dart';
 import 'package:get/get.dart';
 
@@ -28,6 +27,18 @@ class ProductController extends GetxController {
       GLoaders.errorSnackBar(title: 'خطایی رخ داده ', message: e.toString());
     } finally {
       isLoading.value = false;
+    }
+  }
+
+  Future<List<ProductModel>> fetchAllFeaturedProducts() async {
+    try {
+      //final products = await productRepository.getFeaturedProducts();
+      final products = await productRepository.getAllFeaturedProducts();
+
+      return products;
+    } catch (e) {
+      GLoaders.errorSnackBar(title: 'خطایی رخ داده ', message: e.toString());
+      return [];
     }
   }
 

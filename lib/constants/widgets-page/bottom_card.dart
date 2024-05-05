@@ -49,6 +49,8 @@ class GBottomAddToCart extends StatelessWidget {
               padding: EdgeInsets.all(10),
               backgroundColor: Colors.black,
               side: BorderSide(color: Colors.black),
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(10)),
             ),
             child: Text(
               'افزودن به سبد خرید',
