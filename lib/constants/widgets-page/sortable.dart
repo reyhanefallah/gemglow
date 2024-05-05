@@ -39,7 +39,7 @@ class GSortableProducts extends StatelessWidget {
             'ارزان ترین',
             'تخفیف دار',
             'جدیدترین',
-            'محبوب ترین'
+            //'محبوب ترین'
           ]
               .map((option) => DropdownMenuItem(
                     child: Text(option),

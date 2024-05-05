@@ -8,7 +8,7 @@ class AllProductsController extends GetxController {
   static AllProductsController get instance => Get.find();
 
   final repository = ProductRepository.instance;
-  final RxString selectedSortOption = 'Name'.obs;
+  final RxString selectedSortOption = 'نام'.obs;
   final RxList<ProductModel> products = <ProductModel>[].obs;
 
   Future<List<ProductModel>> fetchProductsByQuery(Query? query) async {
@@ -57,6 +57,6 @@ class AllProductsController extends GetxController {
 
   void assignProducts(List<ProductModel> products) {
     this.products.assignAll(products);
-    sortProducts('Name');
+    sortProducts('نام');
   }
 }
