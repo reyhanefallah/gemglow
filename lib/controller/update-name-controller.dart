@@ -29,7 +29,8 @@ class UpdateNameController extends GetxController {
 
   Future<void> updateUserName() async {
     try {
-      GFullScreenLoader.openLoadingDialog('اطلاعات در حال بروزرسانی ...', '');
+      GFullScreenLoader.openLoadingDialog(
+          'اطلاعات در حال بروزرسانی ...', 'assets/png/loading.png');
 
       final isConnected = await NetworkManager.instance.isConnected();
       if (!isConnected) {

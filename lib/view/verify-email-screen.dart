@@ -65,7 +65,7 @@ class VerifyEmailScreen extends StatelessWidget {
                 SizedBox(
                   height: 25.0,
                 ),
-                ElevatedButton(
+                TextButton(
                   onPressed: () => controller.sendEmailVerification(),
                   child: Text('ارسال دوباره ایمیل'),
                 )

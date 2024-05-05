@@ -25,17 +25,14 @@ class LoginScreen extends StatelessWidget {
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Image(
-                      image: AssetImage(''),
-                      height: 150,
-                    ),
-                    Text('title',
+                    Text('GemGlow',
                         style: Theme.of(context).textTheme.headlineMedium),
                     SizedBox(height: 8),
-                    Text('subtitle',
+                    Text('به دنیای درخشان سنگ‌های قیمتی خوش آمدید!',
                         style: Theme.of(context).textTheme.headlineMedium),
                   ],
                 ),
+                SizedBox(height: 32),
                 GLoginForm(),
                 SizedBox(height: 32),
                 GFormDivider(dividerText: 'یا ورود از طریق'),

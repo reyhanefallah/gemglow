@@ -38,7 +38,7 @@ class VerifyEmailController extends GetxController {
             () => SuccessScreen(
                 onPressed: () =>
                     AuthenticationRepository.instance.screenRedirect(),
-                image: '',
+                image: 'assets/png/check .png',
                 title: 'حساب شما با موفقیت ساخته شد',
                 subtitle: 'به فروشگاه gemglow خوش آمدید'),
           );
@@ -53,7 +53,7 @@ class VerifyEmailController extends GetxController {
       Get.off(
         () => SuccessScreen(
             onPressed: () => AuthenticationRepository.instance.screenRedirect(),
-            image: '',
+            image: 'assets/png/check .png',
             title: 'حساب شما با موفقیت ساخته شد',
             subtitle: 'به فروشگاه gemglow خوش آمدید'),
       );

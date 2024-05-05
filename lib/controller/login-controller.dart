@@ -25,7 +25,8 @@ class LoginController extends GetxController {
 
   Future<void> emailAndPasswordSignIn() async {
     try {
-      GFullScreenLoader.openLoadingDialog('در حال وارد شدن به حساب...', '');
+      GFullScreenLoader.openLoadingDialog(
+          'در حال وارد شدن به حساب...', 'assets/png/loading.png');
 
       final isConnected = await NetworkManager.instance.isConnected();
       if (!isConnected) {
@@ -57,7 +58,8 @@ class LoginController extends GetxController {
 
   Future<void> googleSignIn() async {
     try {
-      GFullScreenLoader.openLoadingDialog('در حال وارد شدن به حساب ...', '');
+      GFullScreenLoader.openLoadingDialog(
+          'در حال وارد شدن به حساب ...', 'assets/png/loading.png');
 
       final isConnected = await NetworkManager.instance.isConnected();
       if (!isConnected) {

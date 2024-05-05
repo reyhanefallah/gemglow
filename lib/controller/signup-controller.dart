@@ -24,7 +24,8 @@ class SignupController extends GetxController {
   void signup() async {
     try {
       //start loading
-      GFullScreenLoader.openLoadingDialog('در حال پردازش اطلاعات...', '');
+      GFullScreenLoader.openLoadingDialog(
+          'در حال پردازش اطلاعات...', 'assets/png/proccesing.png');
 
       //check internet connection
       final isConnected = await NetworkManager.instance.isConnected();
