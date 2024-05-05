@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:gemglow/constants/color-string.dart';
 import 'package:gemglow/constants/widgets-page/containers.dart';
+import 'package:gemglow/constants/widgets-page/shimmer.dart';
 import 'package:gemglow/constants/widgets/store-widgets.dart';
 import 'package:gemglow/constants/widgets/widgets.dart';
 import 'package:gemglow/controller/user-controller.dart';
+import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 
 class GPrimaryHeaderContainer extends StatelessWidget {
@@ -55,13 +57,28 @@ class UserProfileTile extends StatelessWidget {
   Widget build(BuildContext context) {
     final controller = UserController.instance;
     return ListTile(
-      leading: CircleImage(
-        image: 'assets/png/profile-image.png',
-        fit: BoxFit.cover,
-        width: 50,
-        height: 50,
-        padding: 0.0,
-      ),
+      leading: Obx(() {
+        final networkImage = controller.user.value.profilePicture;
+        final image = networkImage.isNotEmpty
+            ? networkImage
+            : 'assets/png/profile-image.png';
+        return controller.imageUploading.value
+            ? GShimmerEffect(width: 55, height: 55, radius: 80)
+            : CircleImage(
+                image: image,
+                fit: BoxFit.cover,
+                width: 50,
+                height: 50,
+                padding: 0.0,
+                isNetworkImage: networkImage.isNotEmpty);
+      }),
+      //  CircleImage(
+      //   image: 'assets/png/profile-image.png',
+      //   fit: BoxFit.cover,
+      //   width: 50,
+      //   height: 50,
+      //   padding: 0.0,
+      // ),
       title: Text(
         controller.user.value.fullName,
         style: Theme.of(context)

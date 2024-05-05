@@ -43,6 +43,10 @@ class ProfileScreen extends StatelessWidget {
                           ? GShimmerEffect(width: 55, height: 55, radius: 80)
                           : CircleImage(
                               image: image,
+                              fit: BoxFit.cover,
+                              width: 50,
+                              height: 50,
+                              padding: 0.0,
                               isNetworkImage: networkImage.isNotEmpty);
                     }),
                     TextButton(
