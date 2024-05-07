@@ -1,11 +1,16 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:gemglow/constants/widgets-page/grid-layout.dart';
+import 'package:gemglow/constants/widgets-page/shimmer.dart';
 import 'package:gemglow/constants/widgets/appbar.dart';
 import 'package:gemglow/constants/widgets/brandcard.dart';
 import 'package:gemglow/constants/widgets/main-widgates.dart';
 import 'package:gemglow/constants/widgets/tabbar.dart';
+import 'package:gemglow/controller/brand-controller.dart';
 import 'package:gemglow/controller/category-controller.dart';
 import 'package:gemglow/view/all-brands-screen.dart';
+import 'package:gemglow/view/brand-products-screen.dart';
 import 'package:gemglow/view/home-screen.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
@@ -16,6 +21,8 @@ class StoreScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final categories = CategoryController.instance.featuredCategories;
+    final brandController = Get.put(BrandController());
+
     return DefaultTabController(
       length: categories.length,
       child: Scaffold(
@@ -66,13 +73,34 @@ class StoreScreen extends StatelessWidget {
                       SizedBox(
                         height: 24 / 1.5,
                       ),
-                      GGridLayout(
-                        itemcount: 4,
-                        maxextent: 80,
-                        itembuilder: (_, index) {
-                          return BrandCard(showBorder: true);
-                        },
-                      ),
+                      Obx(() {
+                        if (brandController.isLoading.value)
+                          return GBrandsShimmer();
+
+                        if (brandController.featureBrands.isEmpty) {
+                          return Center(
+                            child: Text('داده ای یافت نشد!',
+                                style: Theme.of(context)
+                                    .textTheme
+                                    .bodyMedium!
+                                    .apply(color: Colors.white)),
+                          );
+                        }
+
+                        return GGridLayout(
+                          itemcount: brandController.featureBrands.length,
+                          maxextent: 80,
+                          itembuilder: (_, index) {
+                            final brand = brandController.featureBrands[index];
+
+                            return BrandCard(
+                                showBorder: true,
+                                brand: brand,
+                                onTap: () => Get.to(
+                                    () => BrandProductsScreen(brand: brand)));
+                          },
+                        );
+                      }),
                     ],
                   ),
                 ),
@@ -82,23 +110,6 @@ class StoreScreen extends StatelessWidget {
                         (Category) => Tab(child: Text(Category.name)),
                       )
                       .toList(),
-                  // [
-                  //   Tab(
-                  //     text: 'جواهر',
-                  //   ),
-                  //   Tab(
-                  //     text: 'طبیعی',
-                  //   ),
-                  //   Tab(
-                  //     text: 'درمانی',
-                  //   ),
-                  //   Tab(
-                  //     text: 'مصنوعی',
-                  //   ),
-                  //   Tab(
-                  //     text: 'طبیعی',
-                  //   ),
-                  // ],
                 ),
               ),
             ];
@@ -106,15 +117,7 @@ class StoreScreen extends StatelessWidget {
           body: TabBarView(
               children: categories
                   .map((category) => CategoryTab(category: category))
-                  .toList()
-              // [
-              //   CategoryTab(),
-              //   CategoryTab(),
-              //   CategoryTab(),
-              //   CategoryTab(),
-              //   CategoryTab(),
-              // ],
-              ),
+                  .toList()),
         ),
       ),
     );

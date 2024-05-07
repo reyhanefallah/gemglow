@@ -52,22 +52,24 @@ class GProductCardVertical extends StatelessWidget {
                       width: MediaQuery.of(context).size.width,
                     ),
                   ),
-                  Positioned(
-                    top: 12,
-                    left: 0,
-                    child: RoundedContainer(
-                      radius: 10,
-                      backgroundColor: GColor.primaryColor3.withOpacity(0.8),
-                      padding: EdgeInsets.symmetric(horizontal: 8, vertical: 4),
-                      child: Text(
-                        '$salePercentage%',
-                        style: Theme.of(context)
-                            .textTheme
-                            .labelLarge!
-                            .apply(color: Colors.black),
+                  if (salePercentage != null)
+                    Positioned(
+                      top: 12,
+                      left: 0,
+                      child: RoundedContainer(
+                        radius: 10,
+                        backgroundColor: GColor.primaryColor3.withOpacity(0.8),
+                        padding:
+                            EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+                        child: Text(
+                          '$salePercentage%',
+                          style: Theme.of(context)
+                              .textTheme
+                              .labelLarge!
+                              .apply(color: Colors.black),
+                        ),
                       ),
                     ),
-                  ),
                   Positioned(
                     top: 0,
                     right: 0,

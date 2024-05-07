@@ -91,3 +91,20 @@ class GVerticalProductShimmer extends StatelessWidget {
     );
   }
 }
+
+class GBrandsShimmer extends StatelessWidget {
+  const GBrandsShimmer({
+    super.key,
+    this.itemCount = 4,
+  });
+
+  final int itemCount;
+
+  @override
+  Widget build(BuildContext context) {
+    return GGridLayout(
+        maxextent: 80,
+        itemcount: itemCount,
+        itembuilder: (_, __) => GShimmerEffect(width: 300, height: 80));
+  }
+}

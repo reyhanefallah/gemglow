@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:gemglow/constants/widgets-page/grid-layout.dart';
+import 'package:gemglow/constants/widgets-page/shimmer.dart';
 import 'package:gemglow/constants/widgets/appbar.dart';
 import 'package:gemglow/constants/widgets/brandcard.dart';
 import 'package:gemglow/constants/widgets/main-widgates.dart';
+import 'package:gemglow/controller/brand-controller.dart';
 import 'package:gemglow/view/brand-products-screen.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
@@ -12,6 +14,8 @@ class AllBrandsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final brandController = BrandController.instance;
+
     return Scaffold(
       appBar: GAppBar(
         title: Text('برند ها'),
@@ -32,14 +36,43 @@ class AllBrandsScreen extends StatelessWidget {
                 showActionButton: false,
               ),
               SizedBox(height: 16),
-              GGridLayout(
-                itemcount: 8,
-                maxextent: 80,
-                itembuilder: (context, index) => BrandCard(
-                  showBorder: true,
-                  onTap: () => Get.to(() => BrandProductsScreen()),
-                ),
-              ),
+              Obx(() {
+                if (brandController.isLoading.value) return GBrandsShimmer();
+
+                if (brandController.allBrands.isEmpty) {
+                  return Center(
+                    child: Text('داده ای یافت نشد!',
+                        style: Theme.of(context)
+                            .textTheme
+                            .bodyMedium!
+                            .apply(color: Colors.white)),
+                  );
+                }
+
+                return GGridLayout(
+                  itemcount: brandController.allBrands.length,
+                  maxextent: 80,
+                  itembuilder: (_, index) {
+                    final brand = brandController.allBrands[index];
+
+                    return BrandCard(
+                      showBorder: true,
+                      brand: brand,
+                      onTap: () =>
+                          Get.to(() => BrandProductsScreen(brand: brand)),
+                    );
+                  },
+                );
+              }),
+              // GGridLayout(
+              //   itemcount: 8,
+              //   maxextent: 80,
+              //   itembuilder: (context, index) => BrandCard(
+              //     showBorder: true,
+              //     onTap: () => Get.to(() => BrandProductsScreen()),
+              //     brand: BrandModel.empty(),
+              //   ),
+              // ),
             ],
           ),
         ),

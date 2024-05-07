@@ -1,33 +1,30 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
+import 'package:gemglow/constants/helper-function.dart';
 import 'package:gemglow/constants/widgets-page/shimmer.dart';
 import 'package:gemglow/constants/widgets-page/sortable.dart';
 import 'package:gemglow/constants/widgets/appbar.dart';
 import 'package:gemglow/constants/widgets/brandcard.dart';
-import 'package:gemglow/controller/all-products-controller.dart';
-import 'package:gemglow/model/product-model.dart';
+import 'package:gemglow/controller/brand-controller.dart';
+import 'package:gemglow/model/brand-model.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 
 class BrandProductsScreen extends StatelessWidget {
   const BrandProductsScreen({
     super.key,
-    // required this.title,
-    // this.query,
-    // this.futureMethod,
+    required this.brand,
   });
 
-  // final String title;
-  // final Query? query;
-  // final Future<List<ProductModel>>? futureMethod;
+  final BrandModel brand;
 
   @override
   Widget build(BuildContext context) {
-    // final controller = Get.put(AllProductsController());
+    final controller = BrandController.instance;
 
     return Scaffold(
       appBar: GAppBar(
-        title: Text('تیفانی'),
+        title: Text(brand.name),
         leadingIcon: IconButton(
           icon: Icon(Iconsax.arrow_right_3),
           onPressed: () => Get.back(),
@@ -38,33 +35,23 @@ class BrandProductsScreen extends StatelessWidget {
           padding: EdgeInsets.all(24),
           child: Column(
             children: [
-              BrandCard(showBorder: true),
+              BrandCard(showBorder: true, brand: brand),
               SizedBox(height: 32),
-              // FutureBuilder(
-              //     future:
-              //         futureMethod ?? controller.fetchProductsByQuery(query),
-              //     builder: (context, snapshot) {
-              //       const loader = GVerticalProductShimmer();
+              FutureBuilder(
+                future: controller.getBrandProducts(brand.id),
+                builder: (context, snapshot) {
+                  const loader = GVerticalProductShimmer();
 
-              //       if (snapshot.connectionState == ConnectionState.waiting) {
-              //         return loader;
-              //       }
+                  final widget = GCloudHelperFunctions.checkMultiRecordState(
+                      snapshot: snapshot, loader: loader);
 
-              //       if (!snapshot.hasData ||
-              //           snapshot.data == null ||
-              //           snapshot.data!.isEmpty) {
-              //         return Center(child: Text('داده ای یافت نشد'));
-              //       }
+                  if (widget != null) return widget;
 
-              //       if (snapshot.hasError) {
-              //         return Center(child: Text('خطایی رخ داده'));
-              //       }
+                  final brandProducts = snapshot.data!;
 
-              //       final products = snapshot.data!;
-
-              //       return GSortableProducts(products: products);
-              //     }),
-              // GSortableProducts(),
+                  return GSortableProducts(products: brandProducts);
+                },
+              ),
             ],
           ),
         ),

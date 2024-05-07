@@ -2,7 +2,6 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/services.dart';
 import 'package:gemglow/data/utils/firebase-auth-exception.dart';
-import 'package:gemglow/data/utils/firebase-storage-service.dart';
 import 'package:gemglow/model/categories-model.dart';
 import 'package:get/get.dart';
 
@@ -31,29 +30,29 @@ class CategoryRepository extends GetxController {
     }
   }
 
-  Future<void> uploadDummyData(List<CategoryModel> categories) async {
-    try {
-      final storage = Get.put(GFirebaseStorageService());
+  // Future<void> uploadDummyData(List<CategoryModel> categories) async {
+  //   try {
+  //     final storage = Get.put(GFirebaseStorageService());
 
-      for (var category in categories) {
-        final file = await storage.getImageDataFromAssets(category.image);
+  //     for (var category in categories) {
+  //       final file = await storage.getImageDataFromAssets(category.image);
 
-        final url =
-            await storage.uploadImageData('Categories', file, category.name);
+  //       final url =
+  //           await storage.uploadImageData('Categories', file, category.name);
 
-        category.image = url;
+  //       category.image = url;
 
-        await _db
-            .collection("Categories")
-            .doc(category.id)
-            .set(category.toJson());
-      }
-    } on FirebaseException catch (e) {
-      throw GFirebaseException(e.code).message;
-    } on PlatformException catch (e) {
-      throw GPlatformException(e.code).message;
-    } catch (e) {
-      throw 'مشکلی پیش آمده. دوباره سعی کنید';
-    }
-  }
+  //       await _db
+  //           .collection("Categories")
+  //           .doc(category.id)
+  //           .set(category.toJson());
+  //     }
+  //   } on FirebaseException catch (e) {
+  //     throw GFirebaseException(e.code).message;
+  //   } on PlatformException catch (e) {
+  //     throw GPlatformException(e.code).message;
+  //   } catch (e) {
+  //     throw 'مشکلی پیش آمده. دوباره سعی کنید';
+  //   }
+  // }
 }

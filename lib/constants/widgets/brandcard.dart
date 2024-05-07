@@ -3,16 +3,19 @@ import 'package:gemglow/constants/color-string.dart';
 import 'package:gemglow/constants/widgets-page/containers.dart';
 import 'package:gemglow/constants/widgets/store-widgets.dart';
 import 'package:gemglow/enums.dart';
+import 'package:gemglow/model/brand-model.dart';
 
 class BrandCard extends StatelessWidget {
   const BrandCard({
     super.key,
     required this.showBorder,
     this.onTap,
+    required this.brand,
   });
 
   final bool showBorder;
   final void Function()? onTap;
+  final BrandModel brand;
 
   @override
   Widget build(BuildContext context) {
@@ -28,8 +31,8 @@ class BrandCard extends StatelessWidget {
           children: [
             Flexible(
               child: CircleImage(
-                isNetworkImage: false,
-                image: 'assets/png/therapy.png',
+                isNetworkImage: true,
+                image: brand.image,
                 backgroundColor: Colors.transparent,
                 overlayColor: Colors.black,
               ),
@@ -43,11 +46,11 @@ class BrandCard extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   BrandTitleText(
-                    title: 'تیفانی',
+                    title: brand.name,
                     brandTextSize: TextSizes.large,
                   ),
                   Text(
-                    '267 محصول',
+                    '${brand.productCount ?? 0} محصول',
                     overflow: TextOverflow.ellipsis,
                     style: Theme.of(context).textTheme.labelMedium,
                   ),
@@ -80,7 +83,7 @@ class BrandShowCase extends StatelessWidget {
       padding: EdgeInsets.all(10),
       child: Column(
         children: [
-          BrandCard(showBorder: false),
+          BrandCard(showBorder: false, brand: BrandModel.empty()),
           SizedBox(
             height: 15,
           ),
