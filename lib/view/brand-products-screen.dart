@@ -38,7 +38,7 @@ class BrandProductsScreen extends StatelessWidget {
               BrandCard(showBorder: true, brand: brand),
               SizedBox(height: 32),
               FutureBuilder(
-                future: controller.getBrandProducts(brand.id),
+                future: controller.getBrandProducts(brandId: brand.id),
                 builder: (context, snapshot) {
                   const loader = GVerticalProductShimmer();
 

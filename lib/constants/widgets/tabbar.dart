@@ -1,11 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:gemglow/constants/color-string.dart';
+import 'package:gemglow/constants/helper-function.dart';
+import 'package:gemglow/constants/widgets-page/cat-brand.dart';
 import 'package:gemglow/constants/widgets-page/grid-layout.dart';
 import 'package:gemglow/constants/widgets-page/product-card-v.dart';
 import 'package:gemglow/constants/widgets-page/shimmer.dart';
-import 'package:gemglow/constants/widgets/brandcard.dart';
 import 'package:gemglow/constants/widgets/main-widgates.dart';
+import 'package:gemglow/controller/category-controller.dart';
 import 'package:gemglow/model/categories-model.dart';
+import 'package:gemglow/model/product-model.dart';
+import 'package:gemglow/view/all-products-screen.dart';
 import 'package:get/get.dart';
 
 import '../../controller/product-controller.dart';
@@ -48,7 +53,8 @@ class CategoryTab extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final controller = Get.put(ProductController());
+    //final controller = Get.put(ProductController());
+    final controller = CategoryController.instance;
 
     return ListView(
       shrinkWrap: true,
@@ -58,47 +64,48 @@ class CategoryTab extends StatelessWidget {
           padding: EdgeInsets.all(15),
           child: Column(
             children: [
-              BrandShowCase(
-                images: [
-                  'assets/images/promobanner2.jpg',
-                  'assets/images/promobanner3.jpg',
-                  'assets/images/promobanner4.jpg',
-                ],
-              ),
+              CategoryBrands(category: category),
               SizedBox(
                 height: 15,
               ),
-              SectionHeading(
-                title: 'علاقمندی ها',
-                textColor: Colors.black,
-                showActionButton: true,
-                onPressed: () {},
-              ),
-              SizedBox(
-                height: 15,
-              ),
-              Obx(() {
-                if (controller.isLoading.value)
-                  return GVerticalProductShimmer();
+              FutureBuilder(
+                  future:
+                      controller.getCategoryProducts(categoryId: category.id),
+                  builder: (context, snapshot) {
+                    final response =
+                        GCloudHelperFunctions.checkMultiRecordState(
+                            snapshot: snapshot,
+                            loader: GVerticalProductShimmer());
 
-                if (controller.featuredProducts.isEmpty) {
-                  return Center(
-                      child: Text(
-                    'داده ای یافت نشد',
-                    style: Theme.of(context).textTheme.bodyMedium,
-                  ));
-                }
-                return GGridLayout(
-                  itemcount: controller.featuredProducts.length,
-                  itembuilder: (_, index) => GProductCardVertical(
-                      product: controller.featuredProducts[index]),
-                );
-              }),
-              // GGridLayout(
-              //     itemcount: 4,
-              //     itembuilder: (_, index) => GProductCardVertical(
-              //           product: ProductModel.empty(),
-              //         ))
+                    if (response != null) return response;
+
+                    final products = snapshot.data!;
+
+                    return Column(
+                      children: [
+                        SectionHeading(
+                          title: 'علاقمندی ها',
+                          textColor: Colors.black,
+                          showActionButton: true,
+                          onPressed: () => Get.to(
+                            AllProductsScreen(
+                              title: category.name,
+                              futureMethod: controller.getCategoryProducts(
+                                  categoryId: category.id, limit: -1),
+                            ),
+                          ),
+                        ),
+                        SizedBox(
+                          height: 15,
+                        ),
+                        GGridLayout(
+                          itemcount: products.length,
+                          itembuilder: (_, index) =>
+                              GProductCardVertical(product: products[index]),
+                        ),
+                      ],
+                    );
+                  }),
             ],
           ),
         ),

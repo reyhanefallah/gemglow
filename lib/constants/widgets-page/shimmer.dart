@@ -108,3 +108,49 @@ class GBrandsShimmer extends StatelessWidget {
         itembuilder: (_, __) => GShimmerEffect(width: 300, height: 80));
   }
 }
+
+class GListTileShimmer extends StatelessWidget {
+  const GListTileShimmer({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        Row(
+          children: [
+            GShimmerEffect(width: 50, height: 50, radius: 50),
+            SizedBox(width: 32),
+            Column(
+              children: [
+                GShimmerEffect(width: 100, height: 15),
+                SizedBox(height: 32 / 2),
+                GShimmerEffect(width: 80, height: 12),
+              ],
+            )
+          ],
+        )
+      ],
+    );
+  }
+}
+
+class GBoxesShimmer extends StatelessWidget {
+  const GBoxesShimmer({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        Row(
+          children: [
+            Expanded(child: GShimmerEffect(width: 150, height: 100)),
+            SizedBox(width: 32),
+            Expanded(child: GShimmerEffect(width: 150, height: 100)),
+            SizedBox(width: 32),
+            Expanded(child: GShimmerEffect(width: 150, height: 100)),
+          ],
+        )
+      ],
+    );
+  }
+}

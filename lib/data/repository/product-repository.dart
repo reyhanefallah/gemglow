@@ -85,4 +85,41 @@ class ProductRepository extends GetxController {
       throw 'مشکلی پیش آمده. دوباره سعی کنید';
     }
   }
+
+  Future<List<ProductModel>> getProductsForCategory(
+      {required String categoryId, int limit = 4}) async {
+    try {
+      QuerySnapshot productCategoryQuery = limit == -1
+          ? await _db
+              .collection('ProductCategory')
+              .where('categoryId', isEqualTo: categoryId)
+              .get()
+          : await _db
+              .collection('ProductCategory')
+              .where('categoryId', isEqualTo: categoryId)
+              .limit(limit)
+              .get();
+
+      List<String> productId = productCategoryQuery.docs
+          .map((doc) => doc['productId'] as String)
+          .toList();
+
+      final productsQuery = await _db
+          .collection('Products')
+          .where(FieldPath.documentId, whereIn: productId)
+          .get();
+
+      List<ProductModel> products = productsQuery.docs
+          .map((doc) => ProductModel.fromSnapshot(doc))
+          .toList();
+
+      return products;
+    } on FirebaseException catch (e) {
+      throw GFirebaseException(e.code).message;
+    } on PlatformException catch (e) {
+      throw GPlatformException(e.code).message;
+    } catch (e) {
+      throw 'مشکلی پیش آمده. دوباره سعی کنید';
+    }
+  }
 }

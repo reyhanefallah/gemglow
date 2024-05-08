@@ -1,5 +1,3 @@
-import 'dart:io';
-
 import 'package:flutter/material.dart';
 import 'package:gemglow/constants/widgets-page/grid-layout.dart';
 import 'package:gemglow/constants/widgets-page/shimmer.dart';
@@ -83,7 +81,7 @@ class StoreScreen extends StatelessWidget {
                                 style: Theme.of(context)
                                     .textTheme
                                     .bodyMedium!
-                                    .apply(color: Colors.white)),
+                                    .apply(color: Colors.black)),
                           );
                         }
 

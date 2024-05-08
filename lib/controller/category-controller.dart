@@ -1,6 +1,8 @@
 import 'package:gemglow/constants/widgets-page/loader.dart';
 import 'package:gemglow/data/repository/cate-repository.dart';
+import 'package:gemglow/data/repository/product-repository.dart';
 import 'package:gemglow/model/categories-model.dart';
+import 'package:gemglow/model/product-model.dart';
 import 'package:get/get.dart';
 
 class CategoryController extends GetxController {
@@ -34,5 +36,12 @@ class CategoryController extends GetxController {
     } finally {
       isLoading.value = false;
     }
+  }
+
+  Future<List<ProductModel>> getCategoryProducts(
+      {required String categoryId, int limit = 4}) async {
+    final products = await ProductRepository.instance
+        .getProductsForCategory(categoryId: categoryId, limit: limit);
+    return products;
   }
 }
