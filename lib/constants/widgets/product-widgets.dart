@@ -1,7 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:gemglow/constants/color-string.dart';
-import 'package:gemglow/constants/widgets-page/product-card-v.dart';
 import 'package:gemglow/constants/widgets/appbar.dart';
 import 'package:gemglow/constants/widgets/favourit-icon.dart';
 import 'package:gemglow/constants/widgets/homewidgets.dart';

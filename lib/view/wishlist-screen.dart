@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:gemglow/constants/helper-function.dart';
 import 'package:gemglow/constants/widgets-page/animation-loader.dart';
 import 'package:gemglow/constants/widgets-page/grid-layout.dart';
@@ -7,8 +6,6 @@ import 'package:gemglow/constants/widgets-page/product-card-v.dart';
 import 'package:gemglow/constants/widgets-page/shimmer.dart';
 import 'package:gemglow/constants/widgets/appbar.dart';
 import 'package:gemglow/controller/favourit-controller.dart';
-import 'package:gemglow/controller/product-controller.dart';
-import 'package:gemglow/model/product-model.dart';
 import 'package:gemglow/view/home-screen.dart';
 import 'package:gemglow/view/navigation-bar-screen.dart';
 import 'package:get/get.dart';

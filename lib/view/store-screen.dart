@@ -1,14 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:gemglow/constants/widgets-page/grid-layout.dart';
-import 'package:gemglow/constants/widgets-page/shimmer.dart';
 import 'package:gemglow/constants/widgets/appbar.dart';
-import 'package:gemglow/constants/widgets/brandcard.dart';
 import 'package:gemglow/constants/widgets/main-widgates.dart';
 import 'package:gemglow/constants/widgets/tabbar.dart';
 import 'package:gemglow/controller/brand-controller.dart';
 import 'package:gemglow/controller/category-controller.dart';
-import 'package:gemglow/view/all-brands-screen.dart';
-import 'package:gemglow/view/brand-products-screen.dart';
 import 'package:gemglow/view/home-screen.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';

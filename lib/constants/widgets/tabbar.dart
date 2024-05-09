@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gemglow/constants/color-string.dart';
 import 'package:gemglow/constants/helper-function.dart';
-import 'package:gemglow/constants/widgets-page/cat-brand.dart';
 import 'package:gemglow/constants/widgets-page/grid-layout.dart';
 import 'package:gemglow/constants/widgets-page/product-card-v.dart';
 import 'package:gemglow/constants/widgets-page/shimmer.dart';
