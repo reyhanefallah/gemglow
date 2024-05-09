@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:gemglow/constants/color-string.dart';
 import 'package:gemglow/constants/widgets-page/containers.dart';
 import 'package:gemglow/constants/widgets-page/product-price.dart';
+import 'package:gemglow/constants/widgets/favourit-icon.dart';
 import 'package:gemglow/constants/widgets/homewidgets.dart';
 import 'package:gemglow/constants/widgets/shadow.dart';
 import 'package:gemglow/constants/widgets/store-widgets.dart';
@@ -73,11 +74,7 @@ class GProductCardVertical extends StatelessWidget {
                   Positioned(
                     top: 0,
                     right: 0,
-                    child: GCircularIcon(
-                      icon: Iconsax.heart5,
-                      color: Colors.red,
-                      backgroundColor: Colors.transparent,
-                    ),
+                    child: GFavouriteIcon(productId: product.id),
                   ),
                 ],
               ),

@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:gemglow/constants/color-string.dart';
 import 'package:gemglow/constants/widgets-page/product-card-v.dart';
 import 'package:gemglow/constants/widgets/appbar.dart';
+import 'package:gemglow/constants/widgets/favourit-icon.dart';
 import 'package:gemglow/constants/widgets/homewidgets.dart';
 import 'package:gemglow/constants/widgets/widgets.dart';
 import 'package:gemglow/controller/images-controller.dart';
@@ -92,10 +93,7 @@ class ProductImageSlider extends StatelessWidget {
                   icon: Icon(Icons.arrow_forward),
                 ),
               ],
-              leadingIcon: GCircularIcon(
-                icon: Iconsax.heart5,
-                color: Colors.red,
-              ),
+              leadingIcon: GFavouriteIcon(productId: product.id),
             ),
           ],
         ),

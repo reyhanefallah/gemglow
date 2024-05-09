@@ -4,6 +4,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:gemglow/data/repository/user-repository.dart';
 import 'package:gemglow/data/utils/firebase-auth-exception.dart';
+import 'package:gemglow/data/utils/local-storage.dart';
 import 'package:gemglow/view/login-screen.dart';
 import 'package:gemglow/view/navigation-bar-screen.dart';
 import 'package:gemglow/view/onboarding-screen.dart';
@@ -34,6 +35,8 @@ class AuthenticationRepository extends GetxController {
     final user = _auth.currentUser;
     if (user != null) {
       if (user.emailVerified) {
+        await GLocalStorage.init(user.uid);
+
         Get.offAll(() => NavigationBarScreen());
       } else {
         Get.offAll(() => VerifyEmailScreen(email: _auth.currentUser?.email));

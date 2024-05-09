@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:gemglow/constants/color-string.dart';
 import 'package:gemglow/constants/helper-function.dart';
 import 'package:gemglow/constants/widgets-page/cat-brand.dart';
@@ -9,11 +8,8 @@ import 'package:gemglow/constants/widgets-page/shimmer.dart';
 import 'package:gemglow/constants/widgets/main-widgates.dart';
 import 'package:gemglow/controller/category-controller.dart';
 import 'package:gemglow/model/categories-model.dart';
-import 'package:gemglow/model/product-model.dart';
 import 'package:gemglow/view/all-products-screen.dart';
 import 'package:get/get.dart';
-
-import '../../controller/product-controller.dart';
 
 class GTabBer extends StatelessWidget implements PreferredSizeWidget {
   const GTabBer({super.key, required this.tabs});
@@ -64,7 +60,7 @@ class CategoryTab extends StatelessWidget {
           padding: EdgeInsets.all(15),
           child: Column(
             children: [
-              CategoryBrands(category: category),
+              //CategoryBrands(category: category),
               SizedBox(
                 height: 15,
               ),

@@ -3,13 +3,20 @@ import 'package:gemglow/constants/color-string.dart';
 import 'package:gemglow/constants/widgets-page/containers.dart';
 import 'package:gemglow/constants/widgets-page/product-card-v.dart';
 import 'package:gemglow/constants/widgets-page/product-price.dart';
+import 'package:gemglow/constants/widgets/favourit-icon.dart';
 import 'package:gemglow/constants/widgets/homewidgets.dart';
 import 'package:gemglow/constants/widgets/product-widgets.dart';
 import 'package:gemglow/constants/widgets/store-widgets.dart';
+import 'package:gemglow/model/product-model.dart';
 import 'package:iconsax/iconsax.dart';
 
 class GProductCardHorizontal extends StatelessWidget {
-  const GProductCardHorizontal({super.key});
+  const GProductCardHorizontal({
+    super.key,
+    //  required this.product,
+  });
+
+  //final ProductModel product;
 
   @override
   Widget build(BuildContext context) {
@@ -55,11 +62,7 @@ class GProductCardHorizontal extends StatelessWidget {
                 Positioned(
                   top: 0,
                   right: 0,
-                  child: GCircularIcon(
-                    icon: Iconsax.heart5,
-                    color: Colors.red,
-                    backgroundColor: Colors.transparent,
-                  ),
+                  child: GFavouriteIcon(productId: ''),
                 ),
               ],
             ),

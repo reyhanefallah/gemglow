@@ -1,10 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
+import 'package:gemglow/constants/helper-function.dart';
+import 'package:gemglow/constants/widgets-page/animation-loader.dart';
 import 'package:gemglow/constants/widgets-page/grid-layout.dart';
 import 'package:gemglow/constants/widgets-page/product-card-v.dart';
 import 'package:gemglow/constants/widgets-page/shimmer.dart';
 import 'package:gemglow/constants/widgets/appbar.dart';
+import 'package:gemglow/controller/favourit-controller.dart';
 import 'package:gemglow/controller/product-controller.dart';
+import 'package:gemglow/model/product-model.dart';
 import 'package:gemglow/view/home-screen.dart';
+import 'package:gemglow/view/navigation-bar-screen.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 
@@ -13,7 +19,7 @@ class WishListScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final controller = Get.put(ProductController());
+    final controller = FavouritesController.instance;
 
     return Scaffold(
       appBar: GAppBar(
@@ -31,32 +37,34 @@ class WishListScreen extends StatelessWidget {
       body: SingleChildScrollView(
         child: Padding(
           padding: EdgeInsets.all(24),
-          child: Column(
-            children: [
-              Obx(() {
-                if (controller.isLoading.value)
-                  return GVerticalProductShimmer();
+          // column was here
+          child: Obx(
+            () => FutureBuilder(
+                future: controller.favoriteProducts(),
+                builder: (context, snapshot) {
+                  final emptyWidget = GAnimationLoaderWidget(
+                    text: 'لیست علاقه مندی ها خالی است...',
+                    animation: 'assets/png/proccesing.png',
+                    showAcction: true,
+                    actionText: 'افزودن محصول',
+                    onActionPressed: () => Get.off(() => NavigationBarScreen()),
+                  );
 
-                if (controller.featuredProducts.isEmpty) {
-                  return Center(
-                      child: Text(
-                    'داده ای یافت نشد',
-                    style: Theme.of(context).textTheme.bodyMedium,
-                  ));
-                }
-                return GGridLayout(
-                  itemcount: controller.featuredProducts.length,
-                  itembuilder: (_, index) => GProductCardVertical(
-                      product: controller.featuredProducts[index]),
-                );
-              }),
-              // GGridLayout(
-              //   itemcount: 4,
-              //   itembuilder: (_, index) => GProductCardVertical(
-              //     product: ProductModel.empty(),
-              //   ),
-              // ),
-            ],
+                  const loder = GVerticalProductShimmer(itemCount: 6);
+                  final widget = GCloudHelperFunctions.checkMultiRecordState(
+                      snapshot: snapshot,
+                      loader: loder,
+                      nothingFound: emptyWidget);
+                  if (widget != null) return widget;
+
+                  final products = snapshot.data!;
+
+                  return GGridLayout(
+                    itemcount: products.length,
+                    itembuilder: (_, index) =>
+                        GProductCardVertical(product: products[index]),
+                  );
+                }),
           ),
         ),
       ),
