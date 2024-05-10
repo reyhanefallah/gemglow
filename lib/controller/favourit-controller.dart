@@ -31,18 +31,31 @@ class FavouritesController extends GetxController {
   }
 
   void toggleFavoriteProduct(String productId) {
-    if (favorites.containsKey(productId)) {
-      favorites[productId] = true;
-      saveFavoritesToStorage();
-      GLoaders.customToast(message: 'محصول به لیست علاقه مندی ها اضافه شد');
-    } else {
-      GLocalStorage.instance().removeData(productId);
+    bool isCurrentlyFavorite = isFavourite(productId);
+    if (isCurrentlyFavorite) {
       favorites.remove(productId);
-      saveFavoritesToStorage();
-      favorites.refresh();
-      GLoaders.customToast(message: 'محصول از لیت علاقه مندی ها حذف شد');
+      GLoaders.customToast(message: 'محصول از لیست علاقه مندی ها حذف شد');
+    } else {
+      favorites[productId] = true;
+      GLoaders.customToast(message: 'محصول به لیست علاقه مندی ها اضافه شد');
     }
+    saveFavoritesToStorage();
+    favorites.refresh();
   }
+
+  // void toggleFavoriteProduct(String productId) {
+  //   if (favorites.containsKey(productId)) {
+  //     favorites[productId] = true;
+  //     saveFavoritesToStorage();
+  //     GLoaders.customToast(message: 'محصول به لیست علاقه مندی ها اضافه شد');
+  //   } else {
+  //     GLocalStorage.instance().removeData(productId);
+  //     favorites.remove(productId);
+  //     saveFavoritesToStorage();
+  //     favorites.refresh();
+  //     GLoaders.customToast(message: 'محصول از لیست علاقه مندی ها حذف شد');
+  //   }
+  // }
 
   void saveFavoritesToStorage() {
     final encodeFavorites = json.encode(favorites);
