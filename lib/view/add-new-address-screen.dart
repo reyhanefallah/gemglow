@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:gemglow/constants/color-string.dart';
 import 'package:gemglow/constants/widgets/appbar.dart';
 import 'package:gemglow/constants/widgets/widgets.dart';
+import 'package:gemglow/controller/address-controller.dart';
+import 'package:gemglow/data/utils/validation.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 
@@ -12,6 +14,8 @@ class AddNewAddressScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final controller = AddressController.instance;
+
     return Scaffold(
       appBar: GAppBar(
         leadingIcon: IconButton(
@@ -23,9 +27,13 @@ class AddNewAddressScreen extends StatelessWidget {
       body: SingleChildScrollView(
         padding: EdgeInsets.all(24),
         child: Form(
+          key: controller.addressFormKey,
           child: Column(
             children: [
               TextFormField(
+                controller: controller.name,
+                validator: (value) =>
+                    GValidator.validateEmptyText('Name', value),
                 decoration: InputDecoration(
                   prefixIcon: Icon(Iconsax.user),
                   labelText: 'نام',
@@ -36,6 +44,8 @@ class AddNewAddressScreen extends StatelessWidget {
               ),
               SizedBox(height: 16),
               TextFormField(
+                controller: controller.phoneNumber,
+                validator: (value) => GValidator.validatePhoneNumber(value),
                 decoration: InputDecoration(
                   prefixIcon: Icon(Iconsax.mobile),
                   labelText: 'شماره تلفن',
@@ -49,6 +59,9 @@ class AddNewAddressScreen extends StatelessWidget {
                 children: [
                   Expanded(
                     child: TextFormField(
+                      controller: controller.street,
+                      validator: (value) =>
+                          GValidator.validateEmptyText('Street', value),
                       decoration: InputDecoration(
                         prefixIcon: Icon(Iconsax.building_31),
                         labelText: 'خیابان',
@@ -61,6 +74,9 @@ class AddNewAddressScreen extends StatelessWidget {
                   SizedBox(width: 16),
                   Expanded(
                     child: TextFormField(
+                      controller: controller.postalCode,
+                      validator: (value) =>
+                          GValidator.validateEmptyText('PostalCode', value),
                       decoration: InputDecoration(
                         prefixIcon: Icon(Iconsax.code),
                         labelText: 'کد پستی',
@@ -77,6 +93,9 @@ class AddNewAddressScreen extends StatelessWidget {
                 children: [
                   Expanded(
                     child: TextFormField(
+                      controller: controller.city,
+                      validator: (value) =>
+                          GValidator.validateEmptyText('City', value),
                       decoration: InputDecoration(
                         prefixIcon: Icon(Iconsax.building),
                         labelText: 'شهر',
@@ -89,6 +108,9 @@ class AddNewAddressScreen extends StatelessWidget {
                   SizedBox(width: 16),
                   Expanded(
                     child: TextFormField(
+                      controller: controller.state,
+                      validator: (value) =>
+                          GValidator.validateEmptyText('State', value),
                       decoration: InputDecoration(
                         prefixIcon: Icon(Iconsax.activity),
                         labelText: 'منطقه',
@@ -102,6 +124,9 @@ class AddNewAddressScreen extends StatelessWidget {
               ),
               SizedBox(height: 16),
               TextFormField(
+                controller: controller.country,
+                validator: (value) =>
+                    GValidator.validateEmptyText('Country', value),
                 decoration: InputDecoration(
                   prefixIcon: Icon(Iconsax.global),
                   labelText: 'کشور',
