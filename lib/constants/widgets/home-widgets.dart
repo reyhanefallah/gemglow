@@ -39,7 +39,8 @@ class GHomeCategories extends StatelessWidget {
               backgroundcolor: Colors.white,
               image: category.image,
               title: category.name,
-              onTap: () => Get.to(() => SubCategoriesScreen()),
+              onTap: () =>
+                  Get.to(() => SubCategoriesScreen(category: category)),
             );
           },
         ),

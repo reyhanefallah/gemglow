@@ -154,3 +154,41 @@ class GBoxesShimmer extends StatelessWidget {
     );
   }
 }
+
+class GHorizontalProductShimmer extends StatelessWidget {
+  const GHorizontalProductShimmer({
+    super.key,
+    this.itemCount = 4,
+  });
+
+  final int itemCount;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      margin: EdgeInsets.only(bottom: 32),
+      height: 120,
+      child: ListView.separated(
+        itemBuilder: (_, __) => Row(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            GShimmerEffect(width: 120, height: 120),
+            SizedBox(width: 16),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                SizedBox(height: 16 / 2),
+                GShimmerEffect(width: 20, height: 20),
+              ],
+            )
+          ],
+        ),
+        separatorBuilder: (context, index) => SizedBox(width: 16),
+        itemCount: itemCount,
+        shrinkWrap: true,
+        scrollDirection: Axis.horizontal,
+      ),
+    );
+  }
+}
