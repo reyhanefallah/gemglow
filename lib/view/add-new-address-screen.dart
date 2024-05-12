@@ -139,7 +139,8 @@ class AddNewAddressScreen extends StatelessWidget {
               SizedBox(
                 width: double.infinity,
                 child: GElevatedButton(
-                  GonPressed: () {},
+                  //  GonPressed: () {},
+                  GonPressed: () => controller.addNewAddresses(),
                   Gtitle: 'دخیره',
                   Gcolor: GColor.primaryColor1,
                   Gstyle: GTextStyle.bodyboldSmall,

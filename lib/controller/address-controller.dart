@@ -1,4 +1,3 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:gemglow/constants/helper-function.dart';
 import 'package:gemglow/constants/widgets-page/loader.dart';
@@ -6,7 +5,6 @@ import 'package:gemglow/data/repository/address-repository.dart';
 import 'package:gemglow/data/utils/network-manager.dart';
 import 'package:gemglow/model/address-model.dart';
 import 'package:get/get.dart';
-import 'package:get/get_connect/http/src/utils/utils.dart';
 
 class AddressController extends GetxController {
   static AddressController get instance => Get.find();
@@ -39,15 +37,15 @@ class AddressController extends GetxController {
 
   Future selectAddress(AddressModel newSelectedAddress) async {
     try {
-      Get.defaultDialog(
-        title: '',
-        onWillPop: () async {
-          return false;
-        },
-        barrierDismissible: false,
-        backgroundColor: Colors.transparent,
-        //content: GCircularLoader(),
-      );
+      // Get.defaultDialog(
+      //   title: '',
+      //   onWillPop: () async {
+      //     return false;
+      //   },
+      //   barrierDismissible: false,
+      //   backgroundColor: Colors.transparent,
+      //   //content: GCircularLoader(),
+      // );
 
       if (selectedAddress.value.id.isNotEmpty) {
         await addressRepository.updateSelectedField(
