@@ -3,6 +3,7 @@ import 'package:gemglow/constants/color-string.dart';
 import 'package:gemglow/constants/text-style.dart';
 import 'package:gemglow/constants/widgets-page/shimmer.dart';
 import 'package:gemglow/constants/widgets/appbar.dart';
+import 'package:gemglow/controller/cart-controller.dart';
 import 'package:gemglow/controller/user-controller.dart';
 import 'package:gemglow/view/card-screen.dart';
 import 'package:get/get.dart';
@@ -11,15 +12,15 @@ import 'package:iconsax/iconsax.dart';
 class CardCounter extends StatelessWidget {
   const CardCounter({
     super.key,
-    required this.onPressed,
     this.iconColor,
   });
 
-  final VoidCallback onPressed;
   final Color? iconColor;
 
   @override
   Widget build(BuildContext context) {
+    final controller = Get.put(CartController());
+
     return Stack(
       children: [
         IconButton(
@@ -39,9 +40,11 @@ class CardCounter extends StatelessWidget {
               borderRadius: BorderRadius.circular(100),
             ),
             child: Center(
-              child: Text(
-                '5',
-                style: GTextStyle.displaySmall,
+              child: Obx(
+                () => Text(
+                  controller.noOfCartItems.value.toString(),
+                  style: GTextStyle.displaySmall,
+                ),
               ),
             ),
           ),
@@ -87,7 +90,7 @@ class GHomeAppBar extends StatelessWidget {
       ),
       actions: [
         CardCounter(
-          onPressed: () {},
+          // onPressed: () {},
           iconColor: Colors.white,
         ),
       ],

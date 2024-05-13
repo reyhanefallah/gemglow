@@ -26,8 +26,8 @@ class StoreScreen extends StatelessWidget {
           ),
           actions: [
             CardCounter(
-              onPressed: () {},
-            ),
+                // onPressed: () {},
+                ),
           ],
         ),
         body: NestedScrollView(

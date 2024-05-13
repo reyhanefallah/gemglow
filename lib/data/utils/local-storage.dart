@@ -5,6 +5,7 @@ class GLocalStorage {
 
   static GLocalStorage? _instance;
   late final GetStorage _storage;
+
   GLocalStorage._internal();
 
   factory GLocalStorage.instance() {
@@ -35,5 +36,9 @@ class GLocalStorage {
 
   Future<void> clearAll() async {
     await _storage.erase();
+  }
+
+  Future<void> writeData<T>(String key, T value) async {
+    await _storage.write(key, value);
   }
 }

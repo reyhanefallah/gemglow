@@ -25,7 +25,7 @@ class ProductDetailScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      bottomNavigationBar: GBottomAddToCart(),
+      bottomNavigationBar: GBottomAddToCart(product: product),
       body: SingleChildScrollView(
         child: Column(
           children: [
