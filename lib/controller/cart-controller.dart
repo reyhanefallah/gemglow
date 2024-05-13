@@ -1,5 +1,4 @@
 import 'package:gemglow/constants/widgets-page/loader.dart';
-import 'package:gemglow/controller/variation-controller.dart';
 import 'package:gemglow/data/utils/local-storage.dart';
 import 'package:gemglow/enums.dart';
 import 'package:gemglow/model/cart-item-model.dart';

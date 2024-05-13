@@ -11,7 +11,6 @@ import 'package:gemglow/controller/product-controller.dart';
 import 'package:gemglow/model/product-model.dart';
 import 'package:gemglow/view/product-detail-screen.dart';
 import 'package:get/get.dart';
-import 'package:iconsax/iconsax.dart';
 
 class GProductCardVertical extends StatelessWidget {
   const GProductCardVertical({

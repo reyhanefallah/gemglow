@@ -8,7 +8,6 @@ import 'package:gemglow/controller/cart-controller.dart';
 import 'package:gemglow/view/checkout-screen.dart';
 import 'package:gemglow/view/navigation-bar-screen.dart';
 import 'package:get/get.dart';
-import 'package:get/get_connect/http/src/utils/utils.dart';
 import 'package:iconsax/iconsax.dart';
 
 class CardScreen extends StatelessWidget {
