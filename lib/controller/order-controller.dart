@@ -33,7 +33,8 @@ class OrderController extends GetxController {
 
   void processOrder(double totalAmount) async {
     try {
-      GFullScreenLoader.openLoadingDialog('در حال پردازش سفارش', '');
+      GFullScreenLoader.openLoadingDialog(
+          'در حال پردازش سفارش', 'assets/animation/item-cart.json');
 
       final userId = AuthenticationRepository.instance.authUser!.uid;
       if (userId.isEmpty) return;

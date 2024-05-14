@@ -233,6 +233,7 @@ flutter:
     - assets/png/
     - assets/product-image/brands/
     - assets/product-image/products/
+    - assets/animation/
 
   #   - images/a_dot_ham.jpeg
 

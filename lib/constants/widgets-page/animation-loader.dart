@@ -24,8 +24,11 @@ class GAnimationLoaderWidget extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Lottie.asset(animation,
-              width: MediaQuery.of(context).size.width * 0.8),
+          Lottie.asset(
+            animation,
+            //height: 120,
+            width: MediaQuery.of(context).size.width * 0.8,
+          ),
           SizedBox(height: 16),
           Text(text,
               style: Theme.of(context).textTheme.bodyMedium,

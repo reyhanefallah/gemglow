@@ -70,7 +70,8 @@ class AddressController extends GetxController {
 
   Future addNewAddresses() async {
     try {
-      GFullScreenLoader.openLoadingDialog('ذخیره سازی ادرس...', '');
+      GFullScreenLoader.openLoadingDialog(
+          'ذخیره سازی ادرس...', 'assets/animation/save.json');
 
       final isConnected = await NetworkManager.instance.isConnected();
       if (!isConnected) {

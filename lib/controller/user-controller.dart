@@ -98,7 +98,7 @@ class UserController extends GetxController {
   void deleteUserAccount() async {
     try {
       GFullScreenLoader.openLoadingDialog(
-          'در حال پردازش', 'assets/png/proccesing.png');
+          'در حال پردازش', 'assets/animation/loading.json');
       final auth = AuthenticationRepository.instance;
       final provider =
           auth.authUser!.providerData.map((e) => e.providerId).first;
@@ -122,7 +122,7 @@ class UserController extends GetxController {
   Future<void> reAuthenticateEmailAndPasswordUser() async {
     try {
       GFullScreenLoader.openLoadingDialog(
-          'در حال پردازش', 'assets/png/proccesing.png');
+          'در حال پردازش', 'assets/animation/loading.json');
 
       final isConnected = await NetworkManager.instance.isConnected();
       if (!isConnected) {
