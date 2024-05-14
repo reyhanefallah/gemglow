@@ -9,8 +9,6 @@ import 'package:gemglow/constants/widgets/checkout-widgets.dart';
 import 'package:gemglow/constants/widgets/widgets.dart';
 import 'package:gemglow/controller/cart-controller.dart';
 import 'package:gemglow/controller/order-controller.dart';
-import 'package:gemglow/view/navigation-bar-screen.dart';
-import 'package:gemglow/view/success-screen.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 

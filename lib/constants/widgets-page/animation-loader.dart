@@ -37,13 +37,13 @@ class GAnimationLoaderWidget extends StatelessWidget {
                   child: OutlinedButton(
                     onPressed: onActionPressed,
                     style: OutlinedButton.styleFrom(
-                        backgroundColor: GColor.primaryColor2),
+                        backgroundColor: GColor.primaryColor1),
                     child: Text(
                       actionText!,
                       style: Theme.of(context)
                           .textTheme
                           .bodyMedium!
-                          .apply(color: GColor.primaryColor1),
+                          .apply(color: Colors.white),
                     ),
                   ),
                 )
