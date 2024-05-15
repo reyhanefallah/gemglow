@@ -40,7 +40,9 @@ class GAnimationLoaderWidget extends StatelessWidget {
                   child: OutlinedButton(
                     onPressed: onActionPressed,
                     style: OutlinedButton.styleFrom(
-                        backgroundColor: GColor.primaryColor1),
+                        backgroundColor: GColor.primaryColor1,
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(10))),
                     child: Text(
                       actionText!,
                       style: Theme.of(context)

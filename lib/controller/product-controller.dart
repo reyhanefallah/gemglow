@@ -9,6 +9,7 @@ class ProductController extends GetxController {
   final isLoading = false.obs;
   final productRepository = Get.put(ProductRepository());
   RxList<ProductModel> featuredProducts = <ProductModel>[].obs;
+  final RxList<ProductModel> searchResults = <ProductModel>[].obs;
 
   @override
   void onInit() {
@@ -89,5 +90,17 @@ class ProductController extends GetxController {
 
   String getProductStockStatus(int stock) {
     return stock > 0 ? 'موجود در انبار' : 'ناموجود';
+  }
+
+  Future<void> searchProducts(String name) async {
+    try {
+      isLoading.value = true;
+      final products = await productRepository.searchProductsByName(name);
+      searchResults.assignAll(products);
+    } catch (e) {
+      GLoaders.errorSnackBar(title: 'خطایی رخ داده', message: e.toString());
+    } finally {
+      isLoading.value = false;
+    }
   }
 }

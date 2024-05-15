@@ -8,6 +8,7 @@ import 'package:gemglow/constants/widgets/appbar.dart';
 import 'package:gemglow/controller/favourit-controller.dart';
 import 'package:gemglow/view/home-screen.dart';
 import 'package:gemglow/view/navigation-bar-screen.dart';
+import 'package:gemglow/view/store-screen.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 
@@ -41,10 +42,10 @@ class WishListScreen extends StatelessWidget {
                 builder: (context, snapshot) {
                   final emptyWidget = GAnimationLoaderWidget(
                     text: 'لیست علاقه مندی ها خالی است...',
-                    animation: 'assets/png/proccesing.png',
+                    animation: 'assets/animation/favorite.json',
                     showAcction: true,
                     actionText: 'افزودن محصول',
-                    onActionPressed: () => Get.off(() => NavigationBarScreen()),
+                    onActionPressed: () => Get.to(() => StoreScreen()),
                   );
 
                   const loder = GVerticalProductShimmer(itemCount: 6);

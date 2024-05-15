@@ -23,13 +23,16 @@ class LoginScreen extends StatelessWidget {
               children: [
                 // logo & title & subtitle
                 Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     Text('GemGlow',
-                        style: Theme.of(context).textTheme.headlineMedium),
+                        style: Theme.of(context)
+                            .textTheme
+                            .headlineMedium!
+                            .apply(color: GColor.primaryColor1)),
                     SizedBox(height: 8),
                     Text('به دنیای درخشان سنگ‌های قیمتی خوش آمدید!',
-                        style: Theme.of(context).textTheme.headlineSmall),
+                        style: Theme.of(context).textTheme.labelMedium),
                   ],
                 ),
                 SizedBox(height: 32),

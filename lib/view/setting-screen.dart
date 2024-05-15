@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:gemglow/constants/widgets/appbar.dart';
 import 'package:gemglow/constants/widgets/main-widgates.dart';
 import 'package:gemglow/constants/widgets/setting-widgets.dart';
+import 'package:gemglow/controller/user-controller.dart';
+import 'package:gemglow/view/card-screen.dart';
 import 'package:gemglow/view/order-screen.dart';
 import 'package:gemglow/view/profile-screen.dart';
 import 'package:gemglow/view/user-address-screen.dart';
@@ -13,6 +15,8 @@ class SettingScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final controller = UserController.instance;
+
     return Scaffold(
       body: SingleChildScrollView(
         child: Column(
@@ -60,84 +64,84 @@ class SettingScreen extends StatelessWidget {
                       icon: Iconsax.shopping_cart,
                       title: 'کارت من',
                       subtitle: 'اضافه حذف محصول ',
-                      onTap: () {}),
+                      onTap: () => CardScreen()),
                   SetteingMenuTile(
                     icon: Iconsax.bag_tick,
                     title: 'سفارشات من',
                     subtitle: 'در حال بررسی یا تکمیل شده',
                     onTap: () => Get.to(() => OrderScreen()),
                   ),
-                  SetteingMenuTile(
-                      icon: Iconsax.bank,
-                      title: 'بانک من',
-                      subtitle: 'پرداخت',
-                      onTap: () {}),
-                  SetteingMenuTile(
-                      icon: Iconsax.discount_shape,
-                      title: 'تخفیفات من',
-                      subtitle: 'لیستی از تخفیفات',
-                      onTap: () {}),
-                  SetteingMenuTile(
-                      icon: Iconsax.notification,
-                      title: 'نوتیفیکیشن من',
-                      subtitle: 'تنظیم نوتیف پیام ها',
-                      onTap: () {}),
-                  SetteingMenuTile(
-                      icon: Iconsax.security_card,
-                      title: 'امنیت حساب',
-                      subtitle: 'مدیریت حساب ',
-                      onTap: () {}),
+                  // SetteingMenuTile(
+                  //     icon: Iconsax.bank,
+                  //     title: 'بانک من',
+                  //     subtitle: 'پرداخت',
+                  //     onTap: () {}),
+                  // SetteingMenuTile(
+                  //     icon: Iconsax.discount_shape,
+                  //     title: 'تخفیفات من',
+                  //     subtitle: 'لیستی از تخفیفات',
+                  //     onTap: () {}),
+                  // SetteingMenuTile(
+                  //     icon: Iconsax.notification,
+                  //     title: 'نوتیفیکیشن من',
+                  //     subtitle: 'تنظیم نوتیف پیام ها',
+                  //     onTap: () {}),
+                  // SetteingMenuTile(
+                  //     icon: Iconsax.security_card,
+                  //     title: 'امنیت حساب',
+                  //     subtitle: 'مدیریت حساب ',
+                  //     onTap: () {}),
                   SizedBox(
                     height: 24,
                   ),
-                  SectionHeading(
-                    title: 'تنظیمات برنامه',
-                    textColor: Colors.black,
-                    showActionButton: false,
-                  ),
-                  SizedBox(
-                    height: 16,
-                  ),
-                  SetteingMenuTile(
-                      icon: Iconsax.document_upload,
-                      title: 'بارگداری داده',
-                      subtitle: 'داده ها را در فایربیس ذخیره سازی کنید'),
-                  SetteingMenuTile(
-                    icon: Iconsax.location,
-                    title: 'موقیعت جغرافیایی',
-                    subtitle: 'تنظیم موقعیت جغرافیایی',
-                    trailing: Switch(value: true, onChanged: (value) {}),
-                  ),
-                  SetteingMenuTile(
-                    icon: Iconsax.security_user,
-                    title: 'حالت امن',
-                    subtitle: 'جست و جو برای تمام سنین',
-                    trailing: Switch(value: false, onChanged: (value) {}),
-                  ),
-                  SetteingMenuTile(
-                    icon: Iconsax.image,
-                    title: 'کیفیت HD',
-                    subtitle: 'تنظیم کیفیت عکس',
-                    trailing: Switch(value: false, onChanged: (value) {}),
-                  ),
-                  SizedBox(
-                    height: 16,
-                  ),
-                  SizedBox(
-                    width: double.infinity,
-                    height: 50,
-                    child: OutlinedButton(
-                      child: Text('خروج از حساب کاربری'),
-                      style: ButtonStyle(
-                        shape: MaterialStateProperty.all<OutlinedBorder>(
-                          RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(10),
-                          ),
-                        ),
-                      ),
-                      onPressed: () {},
-                    ),
-                  ),
+                  // SectionHeading(
+                  //   title: 'تنظیمات برنامه',
+                  //   textColor: Colors.black,
+                  //   showActionButton: false,
+                  // ),
+                  // SizedBox(
+                  //   height: 16,
+                  // ),
+                  // SetteingMenuTile(
+                  //     icon: Iconsax.document_upload,
+                  //     title: 'بارگداری داده',
+                  //     subtitle: 'داده ها را در فایربیس ذخیره سازی کنید'),
+                  // SetteingMenuTile(
+                  //   icon: Iconsax.location,
+                  //   title: 'موقیعت جغرافیایی',
+                  //   subtitle: 'تنظیم موقعیت جغرافیایی',
+                  //   trailing: Switch(value: true, onChanged: (value) {}),
+                  // ),
+                  // SetteingMenuTile(
+                  //   icon: Iconsax.security_user,
+                  //   title: 'حالت امن',
+                  //   subtitle: 'جست و جو برای تمام سنین',
+                  //   trailing: Switch(value: false, onChanged: (value) {}),
+                  // ),
+                  // SetteingMenuTile(
+                  //   icon: Iconsax.image,
+                  //   title: 'کیفیت HD',
+                  //   subtitle: 'تنظیم کیفیت عکس',
+                  //   trailing: Switch(value: false, onChanged: (value) {}),
+                  // ),
+                  // SizedBox(
+                  //   height: 16,
+                  // ),
+                  // SizedBox(
+                  //   width: double.infinity,
+                  //   height: 50,
+                  //   child: OutlinedButton(
+                  //     child: Text('خروج از حساب کاربری'),
+                  //     style: ButtonStyle(
+                  //       shape: MaterialStateProperty.all<OutlinedBorder>(
+                  //         RoundedRectangleBorder(
+                  //           borderRadius: BorderRadius.circular(10),
+                  //         ),
+                  //       ),
+                  //     ),
+                  //     onPressed: () => controller.logout(),
+                  //   ),
+                  // ),
                   SizedBox(
                     height: 24 * 2.5,
                   ),
@@ -145,6 +149,24 @@ class SettingScreen extends StatelessWidget {
               ),
             ),
           ],
+        ),
+      ),
+      bottomNavigationBar: Padding(
+        padding: const EdgeInsets.all(24),
+        child: SizedBox(
+          width: double.infinity,
+          height: 50,
+          child: OutlinedButton(
+            child: Text('خروج از حساب کاربری'),
+            style: ButtonStyle(
+              shape: MaterialStateProperty.all<OutlinedBorder>(
+                RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(10),
+                ),
+              ),
+            ),
+            onPressed: () => controller.logout(),
+          ),
         ),
       ),
     );

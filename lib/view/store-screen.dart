@@ -4,6 +4,7 @@ import 'package:gemglow/constants/widgets/main-widgates.dart';
 import 'package:gemglow/constants/widgets/tabbar.dart';
 import 'package:gemglow/controller/brand-controller.dart';
 import 'package:gemglow/controller/category-controller.dart';
+import 'package:gemglow/controller/product-controller.dart';
 import 'package:gemglow/view/home-screen.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';

@@ -29,9 +29,9 @@ class CardScreen extends StatelessWidget {
       body: Obx(() {
         final emptyWidget = GAnimationLoaderWidget(
           text: 'سبد خرید خالی است',
-          animation: '',
+          animation: 'assets/animation/empty-cart.json',
           showAcction: true,
-          actionText: 'برای افزودن محصول به فروشگاه بروید',
+          actionText: 'افزودن محصول',
           onActionPressed: () => Get.off(() => NavigationBarScreen()),
         );
 

@@ -20,7 +20,7 @@ class GOrderListItems extends StatelessWidget {
       builder: (_, snapshot) {
         final emptyWidget = GAnimationLoaderWidget(
           text: 'سفارشی وجود ندارد',
-          animation: '',
+          animation: 'assets/animation/empty-cart.json',
           showAcction: true,
           actionText: 'برای ثبت سفارش به فروشگاه بروید',
           onActionPressed: () => Get.off(() => NavigationBarScreen()),

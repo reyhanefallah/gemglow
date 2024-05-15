@@ -166,13 +166,14 @@ class GBillingAddressSection extends StatelessWidget {
             ? Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text('gemglow', style: Theme.of(context).textTheme.bodyLarge),
+                  Text(addressController.selectedAddress.value.name,
+                      style: Theme.of(context).textTheme.bodyLarge),
                   SizedBox(height: 24),
                   Row(
                     children: [
                       Icon(Icons.phone, color: Colors.grey, size: 16),
                       SizedBox(width: 16),
-                      Text('+98 9174588124',
+                      Text(addressController.selectedAddress.value.phoneNumber,
                           style: Theme.of(context).textTheme.bodyMedium),
                     ],
                   ),
@@ -182,7 +183,7 @@ class GBillingAddressSection extends StatelessWidget {
                       Icon(Icons.location_history,
                           color: Colors.grey, size: 16),
                       SizedBox(width: 16),
-                      Text('tehran,tehranpars,tohid street',
+                      Text(addressController.selectedAddress.value.toString(),
                           style: Theme.of(context).textTheme.bodyMedium,
                           softWrap: true),
                     ],

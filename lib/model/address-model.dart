@@ -88,6 +88,6 @@ class AddressModel {
 
   @override
   String toString() {
-    return '$street, $city, $state, $postalCode, $country';
+    return '$street, $city, $state, $country ,$postalCode';
   }
 }

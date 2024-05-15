@@ -12,6 +12,7 @@ class UpdateNameController extends GetxController {
 
   final firstName = TextEditingController();
   final lastName = TextEditingController();
+  // final userName = TextEditingController();
   final userController = UserController.instance;
   final userRepository = Get.put(UserRepository());
   GlobalKey<FormState> updateUserNameFormKey = GlobalKey<FormState>();
@@ -25,6 +26,7 @@ class UpdateNameController extends GetxController {
   Future<void> initializeNames() async {
     firstName.text = userController.user.value.firstName;
     lastName.text = userController.user.value.lastName;
+    // userName.text = userController.user.value.userName;
   }
 
   Future<void> updateUserName() async {
@@ -45,12 +47,14 @@ class UpdateNameController extends GetxController {
 
       Map<String, dynamic> name = {
         'FirstName': firstName.text.trim(),
-        'LastName': lastName.text.trim()
+        'LastName': lastName.text.trim(),
+        // 'Username': userName.text.trim(),
       };
       await userRepository.updateSingleField(name);
 
       userController.user.value.firstName = firstName.text.trim();
       userController.user.value.lastName = lastName.text.trim();
+      // userController.user.value.userName = userName.text.trim();
 
       GFullScreenLoader.stopLoading();
 

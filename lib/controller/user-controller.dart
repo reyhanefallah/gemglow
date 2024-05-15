@@ -178,4 +178,30 @@ class UserController extends GetxController {
       imageUploading.value = false;
     }
   }
+
+  void logout() async {
+    try {
+      GFullScreenLoader.openLoadingDialog(
+          'در حال پردازش', 'assets/animation/loading.json');
+
+      final auth = AuthenticationRepository.instance;
+      final provider =
+          auth.authUser!.providerData.map((e) => e.providerId).first;
+
+      if (provider.isNotEmpty) {
+        if (provider == 'google.com') {
+          await auth.signInWithGoogle();
+          await auth.logout();
+        } else if (provider == 'password') {
+          await auth.logout();
+        }
+
+        GFullScreenLoader.stopLoading();
+        Get.offAll(() => LoginScreen());
+      }
+    } catch (e) {
+      GFullScreenLoader.stopLoading();
+      GLoaders.warningSnackBar(title: 'خطایی رخ داده', message: e.toString());
+    }
+  }
 }

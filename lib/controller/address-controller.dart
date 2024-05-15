@@ -132,48 +132,50 @@ class AddressController extends GetxController {
       context: context,
       builder: (_) => Container(
         padding: EdgeInsets.all(16),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            SectionHeading(
-              title: 'انتخاب ادرس',
-              textColor: Colors.black,
-              showActionButton: false,
-            ),
-            FutureBuilder(
-              future: getAllUserAddresses(),
-              builder: (_, snapshot) {
-                final response = GCloudHelperFunctions.checkMultiRecordState(
-                    snapshot: snapshot);
-                if (response != null) return response;
-
-                return ListView.builder(
-                  shrinkWrap: true,
-                  itemCount: snapshot.data!.length,
-                  itemBuilder: (_, index) => GSingleAddress(
-                    address: snapshot.data![index],
-                    onTap: () async {
-                      await selectedAddress(snapshot.data![index]);
-                      Get.back();
-                    },
-                  ),
-                );
-              },
-            ),
-            SizedBox(height: 16 * 2),
-            SizedBox(
-              width: double.infinity,
-              child: GElevatedButton(
-                Gcolor: GColor.primaryColor1,
-                Gtitle: 'افزودن ادرس جدید',
-                Gstyle: Theme.of(context)
-                    .textTheme
-                    .bodyMedium!
-                    .apply(color: Colors.white),
-                GonPressed: () => Get.to(() => AddNewAddressScreen()),
+        child: SingleChildScrollView(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              SectionHeading(
+                title: 'انتخاب ادرس',
+                textColor: Colors.black,
+                showActionButton: false,
               ),
-            ),
-          ],
+              FutureBuilder(
+                future: getAllUserAddresses(),
+                builder: (_, snapshot) {
+                  final response = GCloudHelperFunctions.checkMultiRecordState(
+                      snapshot: snapshot);
+                  if (response != null) return response;
+
+                  return ListView.builder(
+                    shrinkWrap: true,
+                    itemCount: snapshot.data!.length,
+                    itemBuilder: (_, index) => GSingleAddress(
+                      address: snapshot.data![index],
+                      onTap: () async {
+                        await selectedAddress(snapshot.data![index]);
+                        Get.back();
+                      },
+                    ),
+                  );
+                },
+              ),
+              SizedBox(height: 16 * 2),
+              SizedBox(
+                width: double.infinity,
+                child: GElevatedButton(
+                  Gcolor: GColor.primaryColor1,
+                  Gtitle: 'افزودن ادرس جدید',
+                  Gstyle: Theme.of(context)
+                      .textTheme
+                      .bodyMedium!
+                      .apply(color: Colors.white),
+                  GonPressed: () => Get.to(() => AddNewAddressScreen()),
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );

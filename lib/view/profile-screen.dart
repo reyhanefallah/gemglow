@@ -36,9 +36,7 @@ class ProfileScreen extends StatelessWidget {
                   children: [
                     Obx(() {
                       final networkImage = controller.user.value.profilePicture;
-                      final image = networkImage.isNotEmpty
-                          ? networkImage
-                          : 'assets/png/profile-image.png';
+                      final image = networkImage.isNotEmpty ? networkImage : '';
                       return controller.imageUploading.value
                           ? GShimmerEffect(width: 55, height: 55, radius: 80)
                           : CircleImage(
@@ -112,16 +110,16 @@ class ProfileScreen extends StatelessWidget {
                 value: controller.user.value.phoneNumber,
                 onPressed: () {},
               ),
-              GProfileMenu(
-                title: 'جنسیت',
-                value: 'مرد',
-                onPressed: () {},
-              ),
-              GProfileMenu(
-                title: 'تاریخ تولد',
-                value: '1373/6/15',
-                onPressed: () {},
-              ),
+              // GProfileMenu(
+              //   title: 'جنسیت',
+              //   value: 'مرد',
+              //   onPressed: () {},
+              // ),
+              // GProfileMenu(
+              //   title: 'تاریخ تولد',
+              //   value: '1373/6/15',
+              //   onPressed: () {},
+              // ),
               Divider(),
               SizedBox(
                 height: 16,
