@@ -5,6 +5,7 @@ import 'package:gemglow/constants/widgets/tabbar.dart';
 import 'package:gemglow/controller/brand-controller.dart';
 import 'package:gemglow/controller/category-controller.dart';
 import 'package:gemglow/view/home-screen.dart';
+import 'package:gemglow/view/search-screen.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 
@@ -54,6 +55,7 @@ class StoreScreen extends StatelessWidget {
                         showborder: true,
                         icon: Iconsax.search_normal,
                         padding: EdgeInsets.zero,
+                        onTap: () => Get.to(() => SearchScreen()),
                       ),
                       SizedBox(
                         height: 15,

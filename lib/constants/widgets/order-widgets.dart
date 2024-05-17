@@ -22,7 +22,7 @@ class GOrderListItems extends StatelessWidget {
           text: 'سفارشی وجود ندارد',
           animation: 'assets/animation/empty-cart.json',
           showAcction: true,
-          actionText: 'برای ثبت سفارش به فروشگاه بروید',
+          actionText: 'سفارش محصول',
           onActionPressed: () => Get.off(() => NavigationBarScreen()),
         );
 

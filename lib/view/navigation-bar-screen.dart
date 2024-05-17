@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:gemglow/constants/color-string.dart';
 import 'package:gemglow/view/home-screen.dart';
+import 'package:gemglow/view/price-screen.dart';
 import 'package:gemglow/view/setting-screen.dart';
 import 'package:gemglow/view/store-screen.dart';
 import 'package:gemglow/view/wishlist-screen.dart';
@@ -39,6 +40,16 @@ class NavigationBarScreen extends StatelessWidget {
                   width: 40.0,
                 ),
                 label: ''),
+            ////////////////
+            NavigationDestination(
+                icon: SvgPicture.asset(
+                  'assets/png/chart-icon.svg',
+                  height: 30.0,
+                  width: 30.0,
+                  color: Colors.black,
+                ),
+                label: ''),
+            ////////////////
             NavigationDestination(
                 icon: SvgPicture.asset(
                   'assets/svg/like-icon.svg',
@@ -65,6 +76,7 @@ class NavigationController extends GetxController {
   final screens = [
     HomeScreen(),
     StoreScreen(),
+    PriceScreen(),
     WishListScreen(),
     SettingScreen(),
   ];
