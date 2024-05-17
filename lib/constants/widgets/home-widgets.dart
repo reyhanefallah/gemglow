@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:gemglow/constants/widgets-page/shimmer.dart';
 import 'package:gemglow/constants/widgets/homewidgets.dart';
 import 'package:gemglow/controller/category-controller.dart';
-import 'package:gemglow/view/sub-categories-screen.dart';
+import 'package:gemglow/view/category-product-screen.dart';
 import 'package:get/get.dart';
 
 class GHomeCategories extends StatelessWidget {
@@ -39,8 +39,9 @@ class GHomeCategories extends StatelessWidget {
               backgroundcolor: Colors.white,
               image: category.image,
               title: category.name,
-              onTap: () =>
-                  Get.to(() => SubCategoriesScreen(category: category)),
+              onTap: () => Get.to(() =>
+                  // SubCategoriesScreen(category: category)
+                  CategoryProductsScreen(category: category)),
             );
           },
         ),

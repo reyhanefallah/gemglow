@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:gemglow/constants/color-string.dart';
 import 'package:gemglow/constants/widgets-page/bottom_card.dart';
 import 'package:gemglow/constants/widgets-page/product-meta-data.dart';
 import 'package:gemglow/constants/widgets/main-widgates.dart';
@@ -9,7 +8,6 @@ import 'package:gemglow/view/product-reviews-screen.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:readmore/readmore.dart';
-import '../constants/widgets/widgets.dart';
 
 class ProductDetailScreen extends StatelessWidget {
   const ProductDetailScreen({

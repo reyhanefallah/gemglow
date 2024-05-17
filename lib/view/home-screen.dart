@@ -11,6 +11,7 @@ import 'package:gemglow/constants/widgets/main-widgates.dart';
 import 'package:gemglow/constants/widgets/widgets.dart';
 import 'package:gemglow/controller/product-controller.dart';
 import 'package:gemglow/view/all-products-screen.dart';
+import 'package:gemglow/view/search-screen.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 
@@ -20,6 +21,7 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final controller = Get.put(ProductController());
+
     return Scaffold(
       body: SingleChildScrollView(
         child: Column(
@@ -34,7 +36,7 @@ class HomeScreen extends StatelessWidget {
                   GSearchBar(
                     text: 'جستجو در فروشگاه',
                     icon: Iconsax.search_normal,
-                    onTap: () {},
+                    onTap: () => Get.to(() => SearchScreen()),
                   ),
                   SizedBox(
                     height: 24,

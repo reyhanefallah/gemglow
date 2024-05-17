@@ -92,11 +92,30 @@ class ProductController extends GetxController {
     return stock > 0 ? 'موجود در انبار' : 'ناموجود';
   }
 
-  Future<void> searchProducts(String name) async {
+  // Future<void> searchProducts(String name) async {
+  //   try {
+  //     isLoading.value = true;
+  //     final products = await productRepository.searchProductsByName(name);
+  //     searchResults.assignAll(products);
+  //   } catch (e) {
+  //     GLoaders.errorSnackBar(title: 'خطایی رخ داده', message: e.toString());
+  //   } finally {
+  //     isLoading.value = false;
+  //   }
+  // }
+  Future<void> searchProductsLocally(String query) async {
     try {
       isLoading.value = true;
-      final products = await productRepository.searchProductsByName(name);
-      searchResults.assignAll(products);
+      if (query.isEmpty) {
+        searchResults.assignAll(featuredProducts);
+      } else {
+        searchResults.assignAll(
+          featuredProducts
+              .where((product) =>
+                  product.title.toLowerCase().contains(query.toLowerCase()))
+              .toList(),
+        );
+      }
     } catch (e) {
       GLoaders.errorSnackBar(title: 'خطایی رخ داده', message: e.toString());
     } finally {
