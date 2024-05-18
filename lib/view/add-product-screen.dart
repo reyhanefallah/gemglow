@@ -298,24 +298,22 @@ class _AddProductScreenState extends State<AddProductScreen> {
 
   Future<void> _pickMultipleImages() async {
     final pickedFiles = await _picker.pickMultiImage();
-    if (pickedFiles != null) {
-      setState(() {
-        _isLoading = true;
-      });
-      for (var pickedFile in pickedFiles) {
-        final storageRef = FirebaseStorage.instance
-            .ref()
-            .child('product_images/${pickedFile.name}');
-        final uploadTask = storageRef.putFile(File(pickedFile.path));
-        final snapshot = await uploadTask.whenComplete(() {});
-        final downloadUrl = await snapshot.ref.getDownloadURL();
-        _images.add(downloadUrl);
-      }
-      setState(() {
-        _isLoading = false;
-      });
+    setState(() {
+      _isLoading = true;
+    });
+    for (var pickedFile in pickedFiles) {
+      final storageRef = FirebaseStorage.instance
+          .ref()
+          .child('product_images/${pickedFile.name}');
+      final uploadTask = storageRef.putFile(File(pickedFile.path));
+      final snapshot = await uploadTask.whenComplete(() {});
+      final downloadUrl = await snapshot.ref.getDownloadURL();
+      _images.add(downloadUrl);
     }
-  }
+    setState(() {
+      _isLoading = false;
+    });
+    }
 
   Future<void> _saveProduct(ProductModel product) async {
     final productController = Get.put(ProductController());

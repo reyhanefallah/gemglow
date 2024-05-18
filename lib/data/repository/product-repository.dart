@@ -159,7 +159,6 @@ class ProductRepository extends GetxController {
     }
   }
 
-//////////////////////////////////////////////////
   Future<List<ProductModel>> getProductsByCategory(String categoryId) async {
     try {
       // دریافت محصولاتی که در دسته‌بندی مشخص شده هستند
@@ -210,6 +209,19 @@ class ProductRepository extends GetxController {
       await _db.collection('Products').add(product.toJson());
     } catch (e) {
       throw 'خطایی رخ داده. دوباره سعی کنید';
+    }
+  }
+
+  Future<List<ProductModel>> getAllProducts() async {
+    try {
+      final snapshot = await _db.collection('Products').get();
+      return snapshot.docs.map((e) => ProductModel.fromSnapshot(e)).toList();
+    } on FirebaseException catch (e) {
+      throw GFirebaseException(e.code).message;
+    } on PlatformException catch (e) {
+      throw GPlatformException(e.code).message;
+    } catch (e) {
+      throw 'مشکلی پیش آمده. دوباره سعی کنید';
     }
   }
 }

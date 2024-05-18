@@ -70,42 +70,25 @@ class ProductController extends GetxController {
     return stock > 0 ? 'موجود در انبار' : 'ناموجود';
   }
 
-  Future<void> searchProductsLocally(String query) async {
-    try {
-      isLoading.value = true;
-      if (query.isEmpty) {
-        searchResults.assignAll(featuredProducts);
-      } else {
-        searchResults.assignAll(
-          featuredProducts
-              .where((product) =>
-                  product.title.toLowerCase().contains(query.toLowerCase()))
-              .toList(),
-        );
-      }
-    } catch (e) {
-      GLoaders.errorSnackBar(title: 'خطایی رخ داده', message: e.toString());
-    } finally {
-      isLoading.value = false;
-    }
-  }
-
-  // void addProduct(ProductModel product) async {
+  // Future<void> searchProductsLocally(String query) async {
   //   try {
   //     isLoading.value = true;
-  //     final newProductRef = _db.collection('Products').doc();
-  //     product.id = newProductRef.id;
-  //     await newProductRef.set(product.toJson());
-  //     GLoaders.customToast(message: 'محصول با موفقیت اضافه شد');
+  //     if (query.isEmpty) {
+  //       searchResults.assignAll(featuredProducts);
+  //     } else {
+  //       searchResults.assignAll(
+  //         featuredProducts
+  //             .where((product) =>
+  //                 product.title.toLowerCase().contains(query.toLowerCase()))
+  //             .toList(),
+  //       );
+  //     }
   //   } catch (e) {
-  //     GLoaders.errorSnackBar(
-  //         title: 'خطا در افزودن محصول', message: e.toString());
+  //     GLoaders.errorSnackBar(title: 'خطایی رخ داده', message: e.toString());
   //   } finally {
   //     isLoading.value = false;
   //   }
   // }
-
-  /////////////////////////////////////////////
 
   Future<void> fetchProductsByCategory(String categoryId) async {
     try {
@@ -143,6 +126,27 @@ class ProductController extends GetxController {
       GLoaders.errorSnackBar(
           title: 'خطا در افزودن محصول', message: e.toString());
       return '';
+    } finally {
+      isLoading.value = false;
+    }
+  }
+
+  Future<void> searchProductsLocally(String query) async {
+    try {
+      isLoading.value = true;
+      final products = await productRepository.getAllProducts();
+      if (query.isEmpty) {
+        searchResults.assignAll(products);
+      } else {
+        searchResults.assignAll(
+          products
+              .where((product) =>
+                  product.title.toLowerCase().contains(query.toLowerCase()))
+              .toList(),
+        );
+      }
+    } catch (e) {
+      GLoaders.errorSnackBar(title: 'خطایی رخ داده', message: e.toString());
     } finally {
       isLoading.value = false;
     }

@@ -99,21 +99,6 @@ class _SearchScreenState extends State<SearchScreen> {
             icon: Icon(Iconsax.arrow_right_3),
             onPressed: () => Get.back(),
           ),
-          // title: TextField(
-          //   onChanged: (value) {
-          //     setState(() {
-          //       searchName = value;
-          //       controller.searchProductsLocally(value);
-          //     });
-          //   },
-          //   decoration: InputDecoration(
-          //       hintText: 'جست و جو در فروشگاه',
-          //       border: OutlineInputBorder(
-          //           borderRadius: BorderRadius.circular(10),
-          //           borderSide: BorderSide(
-          //             color: GColor.primaryColor2,
-          //           ))),
-          // ),
         ),
         body: NestedScrollView(
           headerSliverBuilder: (context, innerBoxIsScrolled) {
