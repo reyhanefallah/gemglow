@@ -22,7 +22,8 @@ class ProductRepository extends GetxController {
     } on PlatformException catch (e) {
       throw GPlatformException(e.code).message;
     } catch (e) {
-      throw 'مشکلی پیش آمده. دوباره سعی کنید';
+      print('Exception: ${e.toString()}');
+      throw 'مشکلی پیش آمده. دوباره سعی کنید: ${e.toString()}';
     }
   }
 
@@ -155,6 +156,60 @@ class ProductRepository extends GetxController {
       throw GPlatformException(e.code).message;
     } catch (e) {
       throw 'مشکلی پیش آمده. دوباره سعی کنید';
+    }
+  }
+
+//////////////////////////////////////////////////
+  Future<List<ProductModel>> getProductsByCategory(String categoryId) async {
+    try {
+      // دریافت محصولاتی که در دسته‌بندی مشخص شده هستند
+      QuerySnapshot productCategorySnapshot = await _db
+          .collection('ProductCategory')
+          .where('categoryId', isEqualTo: categoryId)
+          .get();
+
+      List<String> productIds = productCategorySnapshot.docs
+          .map((doc) => doc['productId'] as String)
+          .toList();
+
+      if (productIds.isEmpty) {
+        return [];
+      }
+
+      QuerySnapshot productsSnapshot = await _db
+          .collection('Products')
+          .where(FieldPath.documentId, whereIn: productIds)
+          .get();
+
+      return productsSnapshot.docs
+          .map((doc) => ProductModel.fromSnapshot(
+              doc as DocumentSnapshot<Map<String, dynamic>>))
+          .toList();
+    } on FirebaseException catch (e) {
+      throw GFirebaseException(e.code).message;
+    } on PlatformException catch (e) {
+      throw GPlatformException(e.code).message;
+    } catch (e) {
+      throw 'مشکلی پیش آمده. دوباره سعی کنید';
+    }
+  }
+
+  Future<void> addProductToCategory(String productId, String categoryId) async {
+    try {
+      await _db.collection('ProductCategory').add({
+        'productId': productId,
+        'categoryId': categoryId,
+      });
+    } catch (e) {
+      throw 'خطایی رخ داده. دوباره سعی کنید';
+    }
+  }
+
+  Future<void> addProduct(ProductModel product) async {
+    try {
+      await _db.collection('Products').add(product.toJson());
+    } catch (e) {
+      throw 'خطایی رخ داده. دوباره سعی کنید';
     }
   }
 }

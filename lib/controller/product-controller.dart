@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:gemglow/constants/widgets-page/loader.dart';
 import 'package:gemglow/data/repository/product-repository.dart';
 import 'package:gemglow/model/product-model.dart';
@@ -10,6 +11,7 @@ class ProductController extends GetxController {
   final productRepository = Get.put(ProductRepository());
   RxList<ProductModel> featuredProducts = <ProductModel>[].obs;
   final RxList<ProductModel> searchResults = <ProductModel>[].obs;
+  final FirebaseFirestore _db = FirebaseFirestore.instance;
 
   @override
   void onInit() {
@@ -53,22 +55,6 @@ class ProductController extends GetxController {
     return '${discountedPrice.toStringAsFixed(0)} تومان';
   }
 
-  // String getProductPrice(ProductModel product) {
-  //   double smallestPrice = double.infinity;
-  //   double largestPrice = 0.0;
-
-  //   if (product.productType == ProductType.single.toString()) {
-  //     return (product.salePrice > 0 ? product.salePrice : product.price)
-  //         .toString();
-  //   } else {
-  //     if (smallestPrice.isEqual(largestPrice)) {
-  //       return largestPrice.toString();
-  //     } else {
-  //       return '$smallestPrice - \$$largestPrice';
-  //     }
-  //   }
-  // }
-
   String? calculateSalePercentage(
       double originalPrice, double discountPercentage) {
     if (discountPercentage <= 0.0) return null;
@@ -80,29 +66,10 @@ class ProductController extends GetxController {
     return percentage.toStringAsFixed(0);
   }
 
-  // String? calculateSalePercentage(double originalPrice, double? salePrice) {
-  //   if (salePrice == null || salePrice <= 0.0) return null;
-  //   if (originalPrice <= 0) return null;
-
-  //   double percentage = ((originalPrice - salePrice) / originalPrice) * 100;
-  //   return percentage.toStringAsFixed(0);
-  // }
-
   String getProductStockStatus(int stock) {
     return stock > 0 ? 'موجود در انبار' : 'ناموجود';
   }
 
-  // Future<void> searchProducts(String name) async {
-  //   try {
-  //     isLoading.value = true;
-  //     final products = await productRepository.searchProductsByName(name);
-  //     searchResults.assignAll(products);
-  //   } catch (e) {
-  //     GLoaders.errorSnackBar(title: 'خطایی رخ داده', message: e.toString());
-  //   } finally {
-  //     isLoading.value = false;
-  //   }
-  // }
   Future<void> searchProductsLocally(String query) async {
     try {
       isLoading.value = true;
@@ -118,6 +85,64 @@ class ProductController extends GetxController {
       }
     } catch (e) {
       GLoaders.errorSnackBar(title: 'خطایی رخ داده', message: e.toString());
+    } finally {
+      isLoading.value = false;
+    }
+  }
+
+  // void addProduct(ProductModel product) async {
+  //   try {
+  //     isLoading.value = true;
+  //     final newProductRef = _db.collection('Products').doc();
+  //     product.id = newProductRef.id;
+  //     await newProductRef.set(product.toJson());
+  //     GLoaders.customToast(message: 'محصول با موفقیت اضافه شد');
+  //   } catch (e) {
+  //     GLoaders.errorSnackBar(
+  //         title: 'خطا در افزودن محصول', message: e.toString());
+  //   } finally {
+  //     isLoading.value = false;
+  //   }
+  // }
+
+  /////////////////////////////////////////////
+
+  Future<void> fetchProductsByCategory(String categoryId) async {
+    try {
+      isLoading.value = true;
+      final products =
+          await productRepository.getProductsByCategory(categoryId);
+      featuredProducts.assignAll(products);
+    } catch (e) {
+      GLoaders.errorSnackBar(title: 'خطایی رخ داده', message: e.toString());
+    } finally {
+      isLoading.value = false;
+    }
+  }
+
+  Future<void> addProductToCategory(String productId, String categoryId) async {
+    try {
+      isLoading.value = true;
+      await productRepository.addProductToCategory(productId, categoryId);
+    } catch (e) {
+      GLoaders.errorSnackBar(title: 'خطایی رخ داده', message: e.toString());
+    } finally {
+      isLoading.value = false;
+    }
+  }
+
+  Future<String> addProduct(ProductModel product) async {
+    try {
+      isLoading.value = true;
+      final newProductRef = _db.collection('Products').doc();
+      product.id = newProductRef.id;
+      await newProductRef.set(product.toJson());
+      GLoaders.customToast(message: 'محصول با موفقیت اضافه شد');
+      return newProductRef.id;
+    } catch (e) {
+      GLoaders.errorSnackBar(
+          title: 'خطا در افزودن محصول', message: e.toString());
+      return '';
     } finally {
       isLoading.value = false;
     }

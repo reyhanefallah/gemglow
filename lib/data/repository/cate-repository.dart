@@ -47,29 +47,4 @@ class CategoryRepository extends GetxController {
       throw 'مشکلی پیش آمده. دوباره سعی کنید';
     }
   }
-  // Future<void> uploadDummyData(List<CategoryModel> categories) async {
-  //   try {
-  //     final storage = Get.put(GFirebaseStorageService());
-
-  //     for (var category in categories) {
-  //       final file = await storage.getImageDataFromAssets(category.image);
-
-  //       final url =
-  //           await storage.uploadImageData('Categories', file, category.name);
-
-  //       category.image = url;
-
-  //       await _db
-  //           .collection("Categories")
-  //           .doc(category.id)
-  //           .set(category.toJson());
-  //     }
-  //   } on FirebaseException catch (e) {
-  //     throw GFirebaseException(e.code).message;
-  //   } on PlatformException catch (e) {
-  //     throw GPlatformException(e.code).message;
-  //   } catch (e) {
-  //     throw 'مشکلی پیش آمده. دوباره سعی کنید';
-  //   }
-  // }
 }

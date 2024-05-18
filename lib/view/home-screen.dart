@@ -23,104 +23,122 @@ class HomeScreen extends StatelessWidget {
     final controller = Get.put(ProductController());
 
     return Scaffold(
-      body: SingleChildScrollView(
-        child: Column(
-          children: [
-            PrimaryHeader(
-              child: Column(
-                children: [
-                  GHomeAppBar(),
-                  SizedBox(
-                    height: 24,
-                  ),
-                  GSearchBar(
-                    text: 'جستجو در فروشگاه',
-                    icon: Iconsax.search_normal,
-                    onTap: () => Get.to(() => SearchScreen()),
-                  ),
-                  SizedBox(
-                    height: 24,
-                  ),
-                  Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 16.0),
-                    child: Column(
-                      children: [
-                        SectionHeading(
-                          title: 'دسته بندی ها',
-                          showActionButton: false,
-                        ),
-                        SizedBox(
-                          height: 16,
-                        ),
-                        GHomeCategories(),
-                      ],
+      body: RefreshIndicator(
+        onRefresh: () async {
+          controller.fetchFeaturedProducts();
+        },
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              PrimaryHeader(
+                child: Column(
+                  children: [
+                    GHomeAppBar(),
+                    SizedBox(
+                      height: 24,
                     ),
-                  ),
-                ],
+                    GSearchBar(
+                      text: 'جستجو در فروشگاه',
+                      icon: Iconsax.search_normal,
+                      onTap: () => Get.to(() => SearchScreen()),
+                    ),
+                    SizedBox(
+                      height: 24,
+                    ),
+                    Padding(
+                      padding: EdgeInsets.symmetric(horizontal: 16.0),
+                      child: Column(
+                        children: [
+                          SectionHeading(
+                            title: 'دسته بندی ها',
+                            showActionButton: false,
+                          ),
+                          SizedBox(
+                            height: 16,
+                          ),
+                          GHomeCategories(),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
               ),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(24),
-              child: Column(
-                children: [
-                  PromoSlider(),
-                  SizedBox(
-                    height: 15,
-                  ),
-                  Obx(() {
-                    if (controller.isLoading.value)
-                      return GVerticalProductShimmer();
+              Padding(
+                padding: const EdgeInsets.all(24),
+                child: Column(
+                  children: [
+                    PromoSlider(),
+                    SizedBox(
+                      height: 15,
+                    ),
+                    SectionHeading(
+                      title: '',
+                      textColor: Colors.black,
+                      showActionButton: true,
+                      onPressed: () => Get.to(() => AllProductsScreen(
+                            title: '',
+                            query: FirebaseFirestore.instance
+                                .collection('Products')
+                                .where('IsFeatured', isEqualTo: true)
+                                .limit(6),
+                            futureMethod: controller.fetchAllFeaturedProducts(),
+                          )),
+                    ),
+                    Obx(() {
+                      if (controller.isLoading.value)
+                        return GVerticalProductShimmer();
 
-                    if (controller.featuredProducts.isEmpty) {
-                      return Center(
-                          child: Text(
-                        'داده ای یافت نشد',
-                        style: Theme.of(context).textTheme.bodyMedium,
-                      ));
-                    }
-                    return GGridLayout(
-                      itemcount: controller.featuredProducts.length,
-                      itembuilder: (_, index) => GProductCardVertical(
-                          product: controller.featuredProducts[index]),
-                    );
-                  }),
-                  SectionHeading(
-                    title: 'محبوب ترین ها',
-                    textColor: Colors.black,
-                    showActionButton: true,
-                    onPressed: () => Get.to(() => AllProductsScreen(
-                          title: 'محبوب ترین ها',
-                          query: FirebaseFirestore.instance
-                              .collection('Products')
-                              .where('IsFeatured', isEqualTo: true)
-                              .limit(6),
-                          futureMethod: controller.fetchAllFeaturedProducts(),
-                        )),
-                  ),
-                  SizedBox(
-                    height: 16,
-                  ),
-                  Obx(() {
-                    if (controller.isLoading.value)
-                      return GVerticalProductShimmer();
+                      if (controller.featuredProducts.isEmpty) {
+                        return Center(
+                            child: Text(
+                          'داده ای یافت نشد',
+                          style: Theme.of(context).textTheme.bodyMedium,
+                        ));
+                      }
+                      return GGridLayout(
+                        itemcount: controller.featuredProducts.length,
+                        itembuilder: (_, index) => GProductCardVertical(
+                            product: controller.featuredProducts[index]),
+                      );
+                    }),
+                    SectionHeading(
+                      title: 'محبوب ترین ها',
+                      textColor: Colors.black,
+                      showActionButton: true,
+                      onPressed: () => Get.to(() => AllProductsScreen(
+                            title: 'محبوب ترین ها',
+                            query: FirebaseFirestore.instance
+                                .collection('Products')
+                                .where('IsFeatured', isEqualTo: true)
+                                .limit(6),
+                            futureMethod: controller.fetchAllFeaturedProducts(),
+                          )),
+                    ),
+                    SizedBox(
+                      height: 16,
+                    ),
+                    Obx(() {
+                      if (controller.isLoading.value)
+                        return GVerticalProductShimmer();
 
-                    if (controller.featuredProducts.isEmpty) {
-                      return Center(
-                          child: Text(
-                        'داده ای یافت نشد',
-                        style: Theme.of(context).textTheme.bodyMedium,
-                      ));
-                    }
-                    return GGridLayout(
-                      itemcount: controller.featuredProducts.length,
-                      itembuilder: (_, index) => GProductCardVertical(
-                          product: controller.featuredProducts[index]),
-                    );
-                  }),
-                ],
+                      if (controller.featuredProducts.isEmpty) {
+                        return Center(
+                            child: Text(
+                          'داده ای یافت نشد',
+                          style: Theme.of(context).textTheme.bodyMedium,
+                        ));
+                      }
+                      return GGridLayout(
+                        itemcount: controller.featuredProducts.length,
+                        itembuilder: (_, index) => GProductCardVertical(
+                            product: controller.featuredProducts[index]),
+                      );
+                    }),
+                  ],
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );

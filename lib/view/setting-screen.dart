@@ -3,6 +3,7 @@ import 'package:gemglow/constants/widgets/appbar.dart';
 import 'package:gemglow/constants/widgets/main-widgates.dart';
 import 'package:gemglow/constants/widgets/setting-widgets.dart';
 import 'package:gemglow/controller/user-controller.dart';
+import 'package:gemglow/view/add-product-screen.dart';
 import 'package:gemglow/view/card-screen.dart';
 import 'package:gemglow/view/order-screen.dart';
 import 'package:gemglow/view/profile-screen.dart';
@@ -64,7 +65,7 @@ class SettingScreen extends StatelessWidget {
                       icon: Iconsax.shopping_cart,
                       title: 'کارت من',
                       subtitle: 'اضافه حذف محصول ',
-                      onTap: () => CardScreen()),
+                      onTap: () => Get.to(() => CardScreen())),
                   SetteingMenuTile(
                     icon: Iconsax.bag_tick,
                     title: 'سفارشات من',
@@ -142,6 +143,12 @@ class SettingScreen extends StatelessWidget {
                   //     onPressed: () => controller.logout(),
                   //   ),
                   // ),
+                  ElevatedButton(
+                    onPressed: () {
+                      Get.to(() => AddProductScreen());
+                    },
+                    child: Text('Add New Product'),
+                  ),
                   SizedBox(
                     height: 24 * 2.5,
                   ),
