@@ -239,9 +239,15 @@
 
 import 'dart:io';
 
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
+import 'package:gemglow/constants/color-string.dart';
+import 'package:gemglow/constants/widgets/appbar.dart';
+import 'package:gemglow/constants/widgets/widgets.dart';
 import 'package:gemglow/model/brand-model.dart';
 import 'package:get/get.dart';
+import 'package:iconsax/iconsax.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:gemglow/constants/widgets-page/loader.dart';
 import 'package:gemglow/controller/product-controller.dart';
@@ -313,7 +319,7 @@ class _AddProductScreenState extends State<AddProductScreen> {
     setState(() {
       _isLoading = false;
     });
-    }
+  }
 
   Future<void> _saveProduct(ProductModel product) async {
     final productController = Get.put(ProductController());
@@ -331,8 +337,12 @@ class _AddProductScreenState extends State<AddProductScreen> {
     final categoryController = Get.find<CategoryController>();
 
     return Scaffold(
-      appBar: AppBar(
+      appBar: GAppBar(
         title: Text('افزودن محصول'),
+        leadingIcon: IconButton(
+          icon: Icon(Iconsax.arrow_right_3),
+          onPressed: () => Get.back(),
+        ),
       ),
       body: SingleChildScrollView(
         padding: EdgeInsets.all(16.0),
@@ -341,8 +351,14 @@ class _AddProductScreenState extends State<AddProductScreen> {
           child: Column(
             children: [
               TextFormField(
+                decoration: InputDecoration(
+                  prefixIcon: Icon(Iconsax.message_edit),
+                  labelText: 'عنوان محصول',
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                ),
                 controller: titleController,
-                decoration: InputDecoration(labelText: 'عنوان محصول'),
                 validator: (value) {
                   if (value == null || value.isEmpty) {
                     return 'لطفاً عنوان محصول را وارد کنید';
@@ -350,9 +366,16 @@ class _AddProductScreenState extends State<AddProductScreen> {
                   return null;
                 },
               ),
+              SizedBox(height: 16),
               TextFormField(
                 controller: descriptionController,
-                decoration: InputDecoration(labelText: 'توضیحات'),
+                decoration: InputDecoration(
+                  prefixIcon: Icon(Iconsax.clipboard_text),
+                  labelText: 'توضیحات',
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                ),
                 validator: (value) {
                   if (value == null || value.isEmpty) {
                     return 'لطفاً توضیحات را وارد کنید';
@@ -360,25 +383,55 @@ class _AddProductScreenState extends State<AddProductScreen> {
                   return null;
                 },
               ),
-              TextFormField(
-                controller: priceController,
-                decoration: InputDecoration(labelText: 'قیمت'),
-                keyboardType: TextInputType.number,
-                validator: (value) {
-                  if (value == null || value.isEmpty) {
-                    return 'لطفاً قیمت را وارد کنید';
-                  }
-                  return null;
-                },
+              SizedBox(height: 16),
+              Row(
+                children: [
+                  Expanded(
+                    child: TextFormField(
+                      controller: priceController,
+                      decoration: InputDecoration(
+                        prefixIcon: Icon(Iconsax.money),
+                        labelText: 'قیمت',
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                      ),
+                      keyboardType: TextInputType.number,
+                      validator: (value) {
+                        if (value == null || value.isEmpty) {
+                          return 'لطفاً قیمت را وارد کنید';
+                        }
+                        return null;
+                      },
+                    ),
+                  ),
+                  SizedBox(width: 16),
+                  Expanded(
+                    child: TextFormField(
+                      controller: salePriceController,
+                      decoration: InputDecoration(
+                        prefixIcon: Icon(Iconsax.percentage_circle),
+                        labelText: 'تخفیف',
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                      ),
+                      keyboardType: TextInputType.number,
+                    ),
+                  ),
+                ],
               ),
-              TextFormField(
-                controller: salePriceController,
-                decoration: InputDecoration(labelText: 'قیمت فروش'),
-                keyboardType: TextInputType.number,
-              ),
+              SizedBox(height: 16),
+
               TextFormField(
                 controller: stockController,
-                decoration: InputDecoration(labelText: 'موجودی'),
+                decoration: InputDecoration(
+                  prefixIcon: Icon(Iconsax.box_add),
+                  labelText: 'موجودی',
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                ),
                 keyboardType: TextInputType.number,
                 validator: (value) {
                   if (value == null || value.isEmpty) {
@@ -387,12 +440,17 @@ class _AddProductScreenState extends State<AddProductScreen> {
                   return null;
                 },
               ),
+              SizedBox(height: 16),
+
               Obx(() {
                 if (categoryController.isLoading.value) {
                   return CircularProgressIndicator();
                 }
                 return DropdownButtonFormField<String>(
-                  decoration: InputDecoration(labelText: 'دسته‌بندی'),
+                  decoration: InputDecoration(
+                      labelText: 'دسته‌بندی',
+                      border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(10))),
                   items: categoryController.allCategories
                       .map((category) => DropdownMenuItem(
                             value: category.id,
@@ -412,9 +470,17 @@ class _AddProductScreenState extends State<AddProductScreen> {
                   },
                 );
               }),
+              SizedBox(height: 16),
+
               TextFormField(
                 controller: brandNameController,
-                decoration: InputDecoration(labelText: 'نام برند'),
+                decoration: InputDecoration(
+                  prefixIcon: Icon(Iconsax.shop),
+                  labelText: 'نام برند',
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                ),
                 validator: (value) {
                   if (value == null || value.isEmpty) {
                     return 'لطفاً نام برند را وارد کنید';
@@ -422,43 +488,59 @@ class _AddProductScreenState extends State<AddProductScreen> {
                   return null;
                 },
               ),
-              TextFormField(
-                controller: skuController,
-                decoration: InputDecoration(labelText: 'SKU'),
-              ),
-              SizedBox(height: 10),
+              // TextFormField(
+              //   controller: skuController,
+              //   decoration: InputDecoration(labelText: 'SKU'),
+              // ),
+              SizedBox(height: 16),
               _isLoading
                   ? CircularProgressIndicator()
-                  : ElevatedButton(
-                      onPressed: _pickImage,
-                      child: Text('انتخاب تصویر شاخص'),
-                    ),
+                  : GElevatedButton(
+                      Gcolor: GColor.primaryColor2,
+                      Gtitle: 'انتخاب تصویر',
+                      Gstyle: Theme.of(context)
+                          .textTheme
+                          .bodyMedium!
+                          .apply(color: Colors.white),
+                      GonPressed: _pickImage),
+
               if (_thumbnailUrl != null)
-                Image.network(
-                  _thumbnailUrl!,
-                  height: 100,
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Image.network(
+                    _thumbnailUrl!,
+                    height: 100,
+                  ),
                 ),
               SizedBox(height: 10),
               _isLoading
                   ? CircularProgressIndicator()
-                  : ElevatedButton(
-                      onPressed: _pickMultipleImages,
-                      child: Text('انتخاب تصاویر بیشتر'),
-                    ),
+                  : GElevatedButton(
+                      Gcolor: GColor.primaryColor2,
+                      Gtitle: 'انتخاب تصاویر بیشتر',
+                      Gstyle: Theme.of(context)
+                          .textTheme
+                          .bodyMedium!
+                          .apply(color: Colors.white),
+                      GonPressed: _pickMultipleImages),
+
               if (_images.isNotEmpty)
                 SizedBox(
                   height: 100,
-                  child: ListView.builder(
-                    scrollDirection: Axis.horizontal,
-                    itemCount: _images.length,
-                    itemBuilder: (context, index) => Image.network(
-                      _images[index],
-                      height: 100,
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: ListView.builder(
+                      scrollDirection: Axis.horizontal,
+                      itemCount: _images.length,
+                      itemBuilder: (context, index) => Image.network(
+                        _images[index],
+                        height: 100,
+                      ),
                     ),
                   ),
                 ),
               SwitchListTile(
-                title: Text('ویژه باشد؟'),
+                title: Text('به فروشگاه اضافه شود؟'),
                 value: _isFeatured,
                 onChanged: (value) {
                   setState(() {
@@ -467,8 +549,8 @@ class _AddProductScreenState extends State<AddProductScreen> {
                 },
               ),
               SizedBox(height: 20),
-              ElevatedButton(
-                onPressed: () {
+              GElevatedButton(
+                GonPressed: () {
                   if (_formKey.currentState!.validate()) {
                     final product = ProductModel(
                       id: '',
@@ -498,7 +580,12 @@ class _AddProductScreenState extends State<AddProductScreen> {
                     Get.back();
                   }
                 },
-                child: Text('افزودن محصول'),
+                Gtitle: 'افزودن محصول',
+                Gstyle: Theme.of(context)
+                    .textTheme
+                    .bodyMedium!
+                    .apply(color: Colors.white),
+                Gcolor: GColor.primaryColor1,
               ),
             ],
           ),

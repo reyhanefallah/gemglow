@@ -95,18 +95,20 @@ class SettingScreen extends StatelessWidget {
                   SizedBox(
                     height: 24,
                   ),
-                  // SectionHeading(
-                  //   title: 'تنظیمات برنامه',
-                  //   textColor: Colors.black,
-                  //   showActionButton: false,
-                  // ),
-                  // SizedBox(
-                  //   height: 16,
-                  // ),
-                  // SetteingMenuTile(
-                  //     icon: Iconsax.document_upload,
-                  //     title: 'بارگداری داده',
-                  //     subtitle: 'داده ها را در فایربیس ذخیره سازی کنید'),
+                  SectionHeading(
+                    title: 'تنظیمات برنامه',
+                    textColor: Colors.black,
+                    showActionButton: false,
+                  ),
+                  SizedBox(
+                    height: 16,
+                  ),
+                  SetteingMenuTile(
+                    icon: Iconsax.document_upload,
+                    title: 'بارگذاری داده',
+                    subtitle: 'داده ها را در فایربیس ذخیره سازی کنید',
+                    onTap: () => Get.to(() => AddProductScreen()),
+                  ),
                   // SetteingMenuTile(
                   //   icon: Iconsax.location,
                   //   title: 'موقیعت جغرافیایی',
@@ -143,12 +145,6 @@ class SettingScreen extends StatelessWidget {
                   //     onPressed: () => controller.logout(),
                   //   ),
                   // ),
-                  ElevatedButton(
-                    onPressed: () {
-                      Get.to(() => AddProductScreen());
-                    },
-                    child: Text('Add New Product'),
-                  ),
                   SizedBox(
                     height: 24 * 2.5,
                   ),

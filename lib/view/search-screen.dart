@@ -94,6 +94,7 @@ class _SearchScreenState extends State<SearchScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        backgroundColor: Colors.white,
         appBar: GAppBar(
           leadingIcon: IconButton(
             icon: Icon(Iconsax.arrow_right_3),
@@ -109,25 +110,28 @@ class _SearchScreenState extends State<SearchScreen> {
                 floating: true,
                 backgroundColor: Colors.white,
                 //expandedHeight: 440,
-                expandedHeight: 150,
+                expandedHeight: 85,
                 flexibleSpace: Padding(
                   padding: EdgeInsets.all(16),
-                  child: TextField(
-                    onChanged: (value) {
-                      setState(() {
-                        searchName = value;
-                        controller.searchProductsLocally(value);
-                      });
-                    },
-                    decoration: InputDecoration(
-                        hintText: 'جست و جو در فروشگاه',
-                        prefixIcon: Icon(Iconsax.search_normal),
-                        border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(10),
-                            borderSide: BorderSide(
-                              color: GColor.primaryColor2,
-                              width: 1,
-                            ))),
+                  child: SizedBox(
+                    height: 50,
+                    child: TextField(
+                      onChanged: (value) {
+                        setState(() {
+                          searchName = value;
+                          controller.searchProductsLocally(value);
+                        });
+                      },
+                      decoration: InputDecoration(
+                          hintText: 'جست و جو در فروشگاه',
+                          prefixIcon: Icon(Iconsax.search_normal),
+                          border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(10),
+                              borderSide: BorderSide(
+                                color: GColor.primaryColor2,
+                                width: 1,
+                              ))),
+                    ),
                   ),
                 ),
               )
@@ -142,12 +146,15 @@ class _SearchScreenState extends State<SearchScreen> {
               return Center(child: Text('محصولی یافت نشد'));
             }
 
-            return GGridLayout(
-              itemcount: controller.searchResults.length,
-              itembuilder: (context, index) {
-                return GProductCardVertical(
-                    product: controller.searchResults[index]);
-              },
+            return Padding(
+              padding: const EdgeInsets.all(24.0),
+              child: GGridLayout(
+                itemcount: controller.searchResults.length,
+                itembuilder: (context, index) {
+                  return GProductCardVertical(
+                      product: controller.searchResults[index]);
+                },
+              ),
             );
           }),
         ));

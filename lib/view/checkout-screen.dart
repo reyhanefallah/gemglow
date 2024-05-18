@@ -37,8 +37,8 @@ class CheckoutScreen extends StatelessWidget {
           child: Column(
             children: [
               GCardItems(showAddRemoveButton: false),
-              SizedBox(height: 32),
-              GCouponCode(),
+              //SizedBox(height: 32),
+              //GCouponCode(),
               SizedBox(height: 32),
               RoundedContainer(
                 showBorder: true,
