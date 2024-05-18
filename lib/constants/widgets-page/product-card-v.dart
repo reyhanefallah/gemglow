@@ -139,7 +139,7 @@ class GProductCardVertical extends StatelessWidget {
                         Padding(
                           padding: const EdgeInsets.only(right: 5),
                           child: Text(
-                            '${double.parse(product.price.toString()).toStringAsFixed(0)} تومان',
+                            '${double.parse(product.price.toString())} تومان',
                             style:
                                 Theme.of(context).textTheme.labelMedium!.apply(
                                       decoration: TextDecoration.lineThrough,

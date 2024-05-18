@@ -27,18 +27,19 @@ class ProductMetaData extends StatelessWidget {
       children: [
         Row(
           children: [
-            RoundedContainer(
-              radius: 10,
-              backgroundColor: GColor.primaryColor3.withOpacity(0.8),
-              padding: EdgeInsets.symmetric(horizontal: 10, vertical: 15),
-              child: Text(
-                '$salePercentage%',
-                style: Theme.of(context)
-                    .textTheme
-                    .labelLarge!
-                    .apply(color: Colors.black),
+            if (salePercentage != null)
+              RoundedContainer(
+                radius: 10,
+                backgroundColor: GColor.primaryColor3.withOpacity(0.8),
+                padding: EdgeInsets.symmetric(horizontal: 10, vertical: 15),
+                child: Text(
+                  '$salePercentage%',
+                  style: Theme.of(context)
+                      .textTheme
+                      .labelLarge!
+                      .apply(color: Colors.black),
+                ),
               ),
-            ),
             SizedBox(width: 16),
             if (product.productType == ProductType.single.toString() &&
                 product.salePrice > 0)

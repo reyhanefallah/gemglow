@@ -197,12 +197,11 @@ class CartController extends GetxController {
         cartItem.variationId == item.variationId);
 
     if (index >= 0) {
-      if (cartItems[index].quantity > 1) ;
-      cartItems[index].quantity -= 1;
-    } else {
-      cartItems[index].quantity == 1
-          ? removeFromCartDialog(index)
-          : cartItems.removeAt(index);
+      if (cartItems[index].quantity > 1) {
+        cartItems[index].quantity -= 1;
+      } else {
+        removeFromCartDialog(index);
+      }
     }
 
     updateCart();
@@ -211,17 +210,48 @@ class CartController extends GetxController {
   void removeFromCartDialog(int index) {
     Get.defaultDialog(
       title: 'حذف محصول',
-      middleText: 'ایا از حذف محصول اطمینان دارید',
+      middleText: 'آیا از حذف محصول اطمینان دارید؟',
       onConfirm: () {
         cartItems.removeAt(index);
         updateCart();
         GLoaders.customToast(message: 'محصول از سبد خرید حذف شد');
         Get.back();
       },
-      onCancel: () => () => Get.back(),
-      // onCancel: () => Get.back(),
+      onCancel: () => Get.back(),
     );
   }
+
+  // void removeOneFromCart(CartItemModel item) {
+  //   int index = cartItems.indexWhere((cartItem) =>
+  //       cartItem.productId == item.productId &&
+  //       cartItem.variationId == item.variationId);
+
+  //   if (index >= 0) {
+  //     if (cartItems[index].quantity > 1) ;
+  //     cartItems[index].quantity -= 1;
+  //   } else {
+  //     cartItems[index].quantity == 1
+  //         ? removeFromCartDialog(index)
+  //         : cartItems.removeAt(index);
+  //   }
+
+  //   updateCart();
+  // }
+
+  // void removeFromCartDialog(int index) {
+  //   Get.defaultDialog(
+  //     title: 'حذف محصول',
+  //     middleText: 'ایا از حذف محصول اطمینان دارید',
+  //     onConfirm: () {
+  //       cartItems.removeAt(index);
+  //       updateCart();
+  //       GLoaders.customToast(message: 'محصول از سبد خرید حذف شد');
+  //       Get.back();
+  //     },
+  //     onCancel: () => () => Get.back(),
+  //     // onCancel: () => Get.back(),
+  //   );
+  // }
 
   void updateAlreadyAddedProductCount(ProductModel product) {
     if (product.productType == ProductType.single.toString()) {
