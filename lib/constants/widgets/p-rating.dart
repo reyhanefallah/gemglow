@@ -99,100 +99,100 @@ class GRatingBarIndicator extends StatelessWidget {
   }
 }
 
-class UserReviewCard extends StatelessWidget {
-  const UserReviewCard({super.key});
+// class UserReviewCard extends StatelessWidget {
+//   const UserReviewCard({super.key});
 
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Row(
-              children: [
-                CircleAvatar(
-                  backgroundImage: AssetImage('assets/png/profile-image.png'),
-                ),
-                SizedBox(width: 16),
-                Text('reyhane fallah',
-                    style: Theme.of(context).textTheme.titleLarge),
-              ],
-            ),
-            IconButton(
-              onPressed: () {},
-              icon: Icon(Icons.more_vert),
-            ),
-          ],
-        ),
-        SizedBox(height: 16),
-        Row(
-          children: [
-            GRatingBarIndicator(rating: 4),
-            SizedBox(width: 16),
-            Text('01 feb 2024', style: Theme.of(context).textTheme.bodyMedium),
-          ],
-        ),
-        SizedBox(height: 16),
-        ReadMoreText(
-          'در این بخش نظر مشتری باید نوشته بشه',
-          trimLines: 2,
-          trimExpandedText: 'نمایش کمتر',
-          trimCollapsedText: 'نمایش بیشتر',
-          trimMode: TrimMode.Line,
-          moreStyle: TextStyle(
-              fontSize: 14,
-              fontWeight: FontWeight.bold,
-              color: GColor.primaryColor1),
-          lessStyle: TextStyle(
-              fontSize: 14,
-              fontWeight: FontWeight.bold,
-              color: GColor.primaryColor1),
-        ),
-        SizedBox(height: 16),
-        RoundedContainer(
-          backgroundColor: Colors.black26,
-          child: Padding(
-            padding: EdgeInsets.all(10),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text(
-                      'gemglow',
-                      style: Theme.of(context).textTheme.titleMedium,
-                    ),
-                    Text(
-                      '02 feb 2024',
-                      style: Theme.of(context).textTheme.bodyMedium,
-                    ),
-                  ],
-                ),
-                SizedBox(height: 16),
-                ReadMoreText(
-                  'در این بخش نظر مشتری باید نوشته بشه',
-                  trimLines: 2,
-                  trimExpandedText: 'نمایش کمتر',
-                  trimCollapsedText: 'نمایش بیشتر',
-                  trimMode: TrimMode.Line,
-                  moreStyle: TextStyle(
-                      fontSize: 14,
-                      fontWeight: FontWeight.bold,
-                      color: GColor.primaryColor1),
-                  lessStyle: TextStyle(
-                      fontSize: 14,
-                      fontWeight: FontWeight.bold,
-                      color: GColor.primaryColor1),
-                ),
-              ],
-            ),
-          ),
-        ),
-        SizedBox(height: 32),
-      ],
-    );
-  }
-}
+//   @override
+//   Widget build(BuildContext context) {
+//     return Column(
+//       crossAxisAlignment: CrossAxisAlignment.start,
+//       children: [
+//         Row(
+//           mainAxisAlignment: MainAxisAlignment.spaceBetween,
+//           children: [
+//             Row(
+//               children: [
+//                 CircleAvatar(
+//                   backgroundImage: AssetImage('assets/png/profile-image.png'),
+//                 ),
+//                 SizedBox(width: 16),
+//                 Text('reyhane fallah',
+//                     style: Theme.of(context).textTheme.titleLarge),
+//               ],
+//             ),
+//             IconButton(
+//               onPressed: () {},
+//               icon: Icon(Icons.more_vert),
+//             ),
+//           ],
+//         ),
+//         SizedBox(height: 16),
+//         Row(
+//           children: [
+//             GRatingBarIndicator(rating: 4),
+//             SizedBox(width: 16),
+//             Text('01 feb 2024', style: Theme.of(context).textTheme.bodyMedium),
+//           ],
+//         ),
+//         SizedBox(height: 16),
+//         ReadMoreText(
+//           'در این بخش نظر مشتری باید نوشته بشه',
+//           trimLines: 2,
+//           trimExpandedText: 'نمایش کمتر',
+//           trimCollapsedText: 'نمایش بیشتر',
+//           trimMode: TrimMode.Line,
+//           moreStyle: TextStyle(
+//               fontSize: 14,
+//               fontWeight: FontWeight.bold,
+//               color: GColor.primaryColor1),
+//           lessStyle: TextStyle(
+//               fontSize: 14,
+//               fontWeight: FontWeight.bold,
+//               color: GColor.primaryColor1),
+//         ),
+//         SizedBox(height: 16),
+//         RoundedContainer(
+//           backgroundColor: Colors.black26,
+//           child: Padding(
+//             padding: EdgeInsets.all(10),
+//             child: Column(
+//               crossAxisAlignment: CrossAxisAlignment.start,
+//               children: [
+//                 Row(
+//                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
+//                   children: [
+//                     Text(
+//                       'gemglow',
+//                       style: Theme.of(context).textTheme.titleMedium,
+//                     ),
+//                     Text(
+//                       '02 feb 2024',
+//                       style: Theme.of(context).textTheme.bodyMedium,
+//                     ),
+//                   ],
+//                 ),
+//                 SizedBox(height: 16),
+//                 ReadMoreText(
+//                   'در این بخش نظر مشتری باید نوشته بشه',
+//                   trimLines: 2,
+//                   trimExpandedText: 'نمایش کمتر',
+//                   trimCollapsedText: 'نمایش بیشتر',
+//                   trimMode: TrimMode.Line,
+//                   moreStyle: TextStyle(
+//                       fontSize: 14,
+//                       fontWeight: FontWeight.bold,
+//                       color: GColor.primaryColor1),
+//                   lessStyle: TextStyle(
+//                       fontSize: 14,
+//                       fontWeight: FontWeight.bold,
+//                       color: GColor.primaryColor1),
+//                 ),
+//               ],
+//             ),
+//           ),
+//         ),
+//         SizedBox(height: 32),
+//       ],
+//     );
+//   }
+//}

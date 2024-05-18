@@ -29,7 +29,7 @@ class ProductDetailScreen extends StatelessWidget {
               padding: EdgeInsets.all(16),
               child: Column(
                 children: [
-                  RatingAndShare(),
+                  //RatingAndShare(),
                   ProductMetaData(product: product),
                   // if (product.productType == ProductType.variable.toString())
                   //   ProductAttributes(product: product),
@@ -68,12 +68,13 @@ class ProductDetailScreen extends StatelessWidget {
                     children: [
                       SectionHeading(
                         showActionButton: false,
-                        title: 'نظرات(199)',
+                        title: 'نظرات',
                         textColor: Colors.black,
                         onPressed: () {},
                       ),
                       IconButton(
-                        onPressed: () => Get.to(() => ProductReviewsScreen()),
+                        onPressed: () => Get.to(
+                            () => ProductReviewsScreen(productId: product.id)),
                         icon: Icon(
                           Iconsax.arrow_left_3,
                           size: 18,

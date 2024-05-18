@@ -21,8 +21,8 @@ class AppRoutes {
     GetPage(name: GRoutes.store, page: () => const StoreScreen()),
     GetPage(name: GRoutes.favourites, page: () => const WishListScreen()),
     GetPage(name: GRoutes.settings, page: () => const SettingScreen()),
-    GetPage(
-        name: GRoutes.productReviews, page: () => const ProductReviewsScreen()),
+    // GetPage(
+    //     name: GRoutes.productReviews, page: () => const ProductReviewsScreen()),
     GetPage(name: GRoutes.order, page: () => const OrderScreen()),
     GetPage(name: GRoutes.checkout, page: () => const CheckoutScreen()),
     // GetPage(name: GRoutes.cart, page: () => const CartScreen()),
