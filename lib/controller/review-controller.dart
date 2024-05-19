@@ -34,7 +34,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:gemglow/data/repository/review-repository.dart';
 import 'package:get/get.dart';
-import 'package:gemglow/data/repository/auth-repository.dart';
 import 'package:gemglow/model/review-model.dart';
 
 class ReviewController extends GetxController {

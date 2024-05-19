@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:gemglow/constants/color-string.dart';
-import 'package:gemglow/constants/widgets-page/containers.dart';
 import 'package:iconsax/iconsax.dart';
-import 'package:readmore/readmore.dart';
 
 class GOverallProductRating extends StatelessWidget {
   const GOverallProductRating({

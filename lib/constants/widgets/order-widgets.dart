@@ -60,7 +60,7 @@ class GOrderListItems extends StatelessWidget {
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Text(
-                                    order.orderStatusText,
+                                    order.status.name,
                                     style: Theme.of(context)
                                         .textTheme
                                         .bodyLarge!

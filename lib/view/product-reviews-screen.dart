@@ -7,7 +7,6 @@ import 'package:gemglow/constants/widgets/store-widgets.dart';
 import 'package:gemglow/constants/widgets/widgets.dart';
 import 'package:gemglow/controller/review-controller.dart';
 import 'package:gemglow/controller/user-controller.dart';
-import 'package:gemglow/model/product-model.dart';
 import 'package:gemglow/model/review-model.dart';
 import 'package:gemglow/view/add-new-review-screen.dart';
 import 'package:get/get.dart';

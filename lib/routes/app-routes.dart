@@ -5,7 +5,6 @@ import 'package:gemglow/view/home-screen.dart';
 import 'package:gemglow/view/login-screen.dart';
 import 'package:gemglow/view/onboarding-screen.dart';
 import 'package:gemglow/view/order-screen.dart';
-import 'package:gemglow/view/product-reviews-screen.dart';
 import 'package:gemglow/view/profile-screen.dart';
 import 'package:gemglow/view/setting-screen.dart';
 import 'package:gemglow/view/signup-screen.dart';
