@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gemglow/constants/color-string.dart';
 import 'package:gemglow/model/gem-price-model.dart';
 
 class GPriceItem extends StatelessWidget {
@@ -24,11 +25,11 @@ class GPriceItem extends StatelessWidget {
                   ? Theme.of(context)
                       .textTheme
                       .bodyMedium!
-                      .apply(color: Colors.red)
+                      .apply(color: GColor.primaryColor3)
                   : Theme.of(context)
                       .textTheme
                       .bodyMedium!
-                      .apply(color: Colors.green)),
+                      .apply(color: GColor.primaryColor1)),
         ],
       ),
     );

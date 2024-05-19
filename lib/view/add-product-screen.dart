@@ -493,14 +493,29 @@ class _AddProductScreenState extends State<AddProductScreen> {
               SizedBox(height: 16),
               _isLoading
                   ? CircularProgressIndicator()
-                  : GElevatedButton(
-                      Gcolor: GColor.primaryColor2,
-                      Gtitle: 'انتخاب تصویر',
-                      Gstyle: Theme.of(context)
-                          .textTheme
-                          .bodyMedium!
-                          .apply(color: Colors.white),
-                      GonPressed: _pickImage),
+                  : SizedBox(
+                      width: double.infinity,
+                      height: 50,
+                      child: OutlinedButton(
+                        child: Text('انتخاب تصویر'),
+                        style: ButtonStyle(
+                          shape: MaterialStateProperty.all<OutlinedBorder>(
+                            RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(10),
+                            ),
+                          ),
+                        ),
+                        onPressed: _pickImage,
+                      ),
+                    ),
+              // GElevatedButton(
+              //     Gcolor: GColor.primaryColor2,
+              //     Gtitle: 'انتخاب تصویر',
+              //     Gstyle: Theme.of(context)
+              //         .textTheme
+              //         .bodyMedium!
+              //         .apply(color: Colors.white),
+              //     GonPressed: _pickImage),
 
               if (_thumbnailUrl != null)
                 Padding(
@@ -510,17 +525,32 @@ class _AddProductScreenState extends State<AddProductScreen> {
                     height: 100,
                   ),
                 ),
-              SizedBox(height: 10),
+              SizedBox(height: 16),
               _isLoading
                   ? CircularProgressIndicator()
-                  : GElevatedButton(
-                      Gcolor: GColor.primaryColor2,
-                      Gtitle: 'انتخاب تصاویر بیشتر',
-                      Gstyle: Theme.of(context)
-                          .textTheme
-                          .bodyMedium!
-                          .apply(color: Colors.white),
-                      GonPressed: _pickMultipleImages),
+                  : SizedBox(
+                      width: double.infinity,
+                      height: 50,
+                      child: OutlinedButton(
+                        child: Text('انتخاب تصاویر بیشتر'),
+                        style: ButtonStyle(
+                          shape: MaterialStateProperty.all<OutlinedBorder>(
+                            RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(10),
+                            ),
+                          ),
+                        ),
+                        onPressed: _pickMultipleImages,
+                      ),
+                    ),
+              // GElevatedButton(
+              //     Gcolor: GColor.primaryColor2,
+              //     Gtitle: 'انتخاب تصاویر بیشتر',
+              //     Gstyle: Theme.of(context)
+              //         .textTheme
+              //         .bodyMedium!
+              //         .apply(color: Colors.white),
+              //     GonPressed: _pickMultipleImages),
 
               if (_images.isNotEmpty)
                 SizedBox(
@@ -537,6 +567,7 @@ class _AddProductScreenState extends State<AddProductScreen> {
                     ),
                   ),
                 ),
+              SizedBox(height: 16),
               SwitchListTile(
                 title: Text('به فروشگاه اضافه شود؟'),
                 value: _isFeatured,

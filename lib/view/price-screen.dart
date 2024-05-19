@@ -217,7 +217,7 @@ class _PriceScreenState extends State<PriceScreen> {
                 padding: EdgeInsets.all(8),
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(10),
-                    border: Border.all(color: GColor.primaryColor2)),
+                    border: Border.all(color: GColor.primaryColor2, width: 2)),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
@@ -263,7 +263,7 @@ class _PriceScreenState extends State<PriceScreen> {
       bottomNavigationBar: Padding(
         padding: EdgeInsets.all(16),
         child: GElevatedButton(
-          Gcolor: GColor.primaryColor2,
+          Gcolor: GColor.primaryColor1,
           Gtitle: 'به روزرسانی',
           Gstyle: Theme.of(context)
               .textTheme
