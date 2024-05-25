@@ -72,13 +72,6 @@ class UserProfileTile extends StatelessWidget {
                 padding: 0.0,
                 isNetworkImage: networkImage.isNotEmpty);
       }),
-      //  CircleImage(
-      //   image: 'assets/png/profile-image.png',
-      //   fit: BoxFit.cover,
-      //   width: 50,
-      //   height: 50,
-      //   padding: 0.0,
-      // ),
       title: Text(
         controller.user.value.fullName,
         style: Theme.of(context)

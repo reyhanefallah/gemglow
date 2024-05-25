@@ -72,26 +72,6 @@ class SettingScreen extends StatelessWidget {
                     subtitle: 'در حال بررسی یا تکمیل شده',
                     onTap: () => Get.to(() => OrderScreen()),
                   ),
-                  // SetteingMenuTile(
-                  //     icon: Iconsax.bank,
-                  //     title: 'بانک من',
-                  //     subtitle: 'پرداخت',
-                  //     onTap: () {}),
-                  // SetteingMenuTile(
-                  //     icon: Iconsax.discount_shape,
-                  //     title: 'تخفیفات من',
-                  //     subtitle: 'لیستی از تخفیفات',
-                  //     onTap: () {}),
-                  // SetteingMenuTile(
-                  //     icon: Iconsax.notification,
-                  //     title: 'نوتیفیکیشن من',
-                  //     subtitle: 'تنظیم نوتیف پیام ها',
-                  //     onTap: () {}),
-                  // SetteingMenuTile(
-                  //     icon: Iconsax.security_card,
-                  //     title: 'امنیت حساب',
-                  //     subtitle: 'مدیریت حساب ',
-                  //     onTap: () {}),
                   SizedBox(
                     height: 24,
                   ),
@@ -109,42 +89,6 @@ class SettingScreen extends StatelessWidget {
                     subtitle: 'داده ها را در فایربیس ذخیره سازی کنید',
                     onTap: () => Get.to(() => AddProductScreen()),
                   ),
-                  // SetteingMenuTile(
-                  //   icon: Iconsax.location,
-                  //   title: 'موقیعت جغرافیایی',
-                  //   subtitle: 'تنظیم موقعیت جغرافیایی',
-                  //   trailing: Switch(value: true, onChanged: (value) {}),
-                  // ),
-                  // SetteingMenuTile(
-                  //   icon: Iconsax.security_user,
-                  //   title: 'حالت امن',
-                  //   subtitle: 'جست و جو برای تمام سنین',
-                  //   trailing: Switch(value: false, onChanged: (value) {}),
-                  // ),
-                  // SetteingMenuTile(
-                  //   icon: Iconsax.image,
-                  //   title: 'کیفیت HD',
-                  //   subtitle: 'تنظیم کیفیت عکس',
-                  //   trailing: Switch(value: false, onChanged: (value) {}),
-                  // ),
-                  // SizedBox(
-                  //   height: 16,
-                  // ),
-                  // SizedBox(
-                  //   width: double.infinity,
-                  //   height: 50,
-                  //   child: OutlinedButton(
-                  //     child: Text('خروج از حساب کاربری'),
-                  //     style: ButtonStyle(
-                  //       shape: MaterialStateProperty.all<OutlinedBorder>(
-                  //         RoundedRectangleBorder(
-                  //           borderRadius: BorderRadius.circular(10),
-                  //         ),
-                  //       ),
-                  //     ),
-                  //     onPressed: () => controller.logout(),
-                  //   ),
-                  // ),
                   SizedBox(
                     height: 24 * 2.5,
                   ),

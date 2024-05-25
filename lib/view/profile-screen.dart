@@ -110,16 +110,6 @@ class ProfileScreen extends StatelessWidget {
                 value: controller.user.value.phoneNumber,
                 onPressed: () {},
               ),
-              // GProfileMenu(
-              //   title: 'جنسیت',
-              //   value: 'مرد',
-              //   onPressed: () {},
-              // ),
-              // GProfileMenu(
-              //   title: 'تاریخ تولد',
-              //   value: '1373/6/15',
-              //   onPressed: () {},
-              // ),
               Divider(),
               SizedBox(
                 height: 16,

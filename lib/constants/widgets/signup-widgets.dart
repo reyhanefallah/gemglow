@@ -175,19 +175,6 @@ class GConditionCheckbox extends StatelessWidget {
               TextSpan(
                   text: ' می پذیرم',
                   style: Theme.of(context).textTheme.bodySmall),
-              // TextSpan(
-              //     text: 'و',
-              //     style: Theme.of(context).textTheme.bodySmall),
-              // TextSpan(
-              //   text: 'termOfuse',
-              //   style: Theme.of(context)
-              //       .textTheme
-              //       .bodyMedium!
-              //       .apply(
-              //           color: GColor.primaryColor1,
-              //           decoration: TextDecoration.underline,
-              //           decorationColor: GColor.primaryColor1),
-              // ),
             ],
           ),
         ),

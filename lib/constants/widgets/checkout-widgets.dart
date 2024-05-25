@@ -120,18 +120,8 @@ class GBillingAmountSection extends StatelessWidget {
             Text('هزینه ارسال', style: Theme.of(context).textTheme.bodyMedium),
             Text('${GPricingCalculator.calculateShippingCost(subTotal, 'IR')}',
                 style: Theme.of(context).textTheme.labelLarge),
-            //Text('\$40.0', style: Theme.of(context).textTheme.labelLarge),
           ],
         ),
-        // SizedBox(height: 24 / 2),
-        // Row(
-        //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        //   children: [
-        //     Text('مالیات', style: Theme.of(context).textTheme.bodyMedium),
-        //     Text('${GPricingCalculator.calculateTax(subTotal, 'IR')}',
-        //         style: Theme.of(context).textTheme.labelLarge),
-        //   ],
-        // ),
         SizedBox(height: 24 / 2),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,

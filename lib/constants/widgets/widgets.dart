@@ -2,62 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:gemglow/constants/color-string.dart';
 import 'package:gemglow/constants/curved.dart';
 
-//ELEVATEDBUTTON
-// class GElevatedButton extends StatelessWidget {
-//   const GElevatedButton({
-//     super.key,
-//     required this.Gcolor,
-//     required this.Gtitle,
-//     required this.Gstyle,
-//     this.Gicon,
-//     this.GborderSide,
-//     this.Gelevation = 0,
-//     required this.GonPressed, this.GelevatedStyle,
-//   });
-//   final Color Gcolor;
-//   final String Gtitle;
-//   final TextStyle Gstyle;
-//   final Widget? Gicon;
-//   final BorderSide? GborderSide;
-//   final double Gelevation;
-//   final VoidCallback GonPressed;
-//   final ButtonStyle? GelevatedStyle;
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return Padding(
-//       padding: const EdgeInsets.symmetric(horizontal: 0.0),
-//       child: SizedBox(
-//         width: double.infinity,
-//         child: ElevatedButton(
-//           style: ElevatedButton.styleFrom(
-//             elevation: Gelevation,
-//             backgroundColor: Gcolor,
-//             fixedSize: Size.fromHeight(60),
-//             side: GborderSide,
-//             shape: RoundedRectangleBorder(
-//               borderRadius: BorderRadius.circular(10),
-//             ),
-//           ),
-//           onPressed: GonPressed,
-//           child: Row(
-//             mainAxisAlignment: MainAxisAlignment.center,
-//             children: [
-//               Text(
-//                 Gtitle,
-//                 style: Gstyle,
-//               ),
-//               if (Gicon != null) ...[
-//                 Gicon!,
-//               ],
-//             ],
-//           ),
-//         ),
-//       ),
-//     );
-//   }
-// }
-
 class GElevatedButton extends StatelessWidget {
   const GElevatedButton({
     super.key,

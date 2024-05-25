@@ -12,7 +12,6 @@ class UpdateNameController extends GetxController {
 
   final firstName = TextEditingController();
   final lastName = TextEditingController();
-  // final userName = TextEditingController();
   final userController = UserController.instance;
   final userRepository = Get.put(UserRepository());
   GlobalKey<FormState> updateUserNameFormKey = GlobalKey<FormState>();
@@ -26,7 +25,6 @@ class UpdateNameController extends GetxController {
   Future<void> initializeNames() async {
     firstName.text = userController.user.value.firstName;
     lastName.text = userController.user.value.lastName;
-    // userName.text = userController.user.value.userName;
   }
 
   Future<void> updateUserName() async {

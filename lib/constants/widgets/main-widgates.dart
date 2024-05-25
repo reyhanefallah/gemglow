@@ -66,10 +66,6 @@ class GHomeAppBar extends StatelessWidget {
       title: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
-          // Text(
-          //   'روز خوبی برای خرید کردنه!',
-          //   style: GTextStyle.displaySmall,
-          // ),
           Text(
             'GemGlow',
             style: GTextStyle.displayTitle,

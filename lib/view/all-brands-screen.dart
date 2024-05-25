@@ -64,15 +64,6 @@ class AllBrandsScreen extends StatelessWidget {
                   },
                 );
               }),
-              // GGridLayout(
-              //   itemcount: 8,
-              //   maxextent: 80,
-              //   itembuilder: (context, index) => BrandCard(
-              //     showBorder: true,
-              //     onTap: () => Get.to(() => BrandProductsScreen()),
-              //     brand: BrandModel.empty(),
-              //   ),
-              // ),
             ],
           ),
         ),

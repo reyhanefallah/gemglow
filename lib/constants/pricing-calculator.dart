@@ -9,11 +9,6 @@ class GPricingCalculator {
     return totalPrice;
   }
 
-  // static String calculateShippingCost(double productPrice, String location) {
-  //   double shippingCost = getShippingCost(location);
-  //   return shippingCost.toStringAsFixed(2);
-  // }
-
   static String calculateShippingCost(double productPrice, String location) {
     double shippingCost = 40000;
     return shippingCost.toStringAsFixed(0);

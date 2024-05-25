@@ -27,45 +27,5 @@ class GSocialButtons extends StatelessWidget {
       Gelevation: 0.0,
       GborderSide: BorderSide(color: Colors.black45),
     );
-
-    // Row(
-    //   mainAxisAlignment: MainAxisAlignment.center,
-    //   children: [
-    //     Container(
-    //       decoration: BoxDecoration(
-    //         border: Border.all(color: GColor.primaryColor2),
-    //         borderRadius: BorderRadius.circular(100),
-    //       ),
-    //       child: IconButton(
-    //         onPressed: () => controller.googleSignIn(),
-    //         icon: SvgPicture.asset(
-    //           "assets/svg/google.svg",
-    //           height: 24,
-    //           width: 24,
-    //         ),
-    //       ),
-    //     ),
-    //     SizedBox(width: 16),
-    //     Container(
-    //       decoration: BoxDecoration(
-    //         border: Border.all(color: GColor.primaryColor2),
-    //         borderRadius: BorderRadius.circular(100),
-    //       ),
-    //       child: IconButton(
-    //         onPressed: () {},
-    //         icon: SvgPicture.asset(
-    //           "assets/svg/google.svg",
-    //           height: 24,
-    //           width: 24,
-    //         ),
-    //         // Image(
-    //         //   width: 24,
-    //         //   height: 24,
-    //         //   image: AssetImage('assets/svg/google.svg'),
-    //         // ),
-    //       ),
-    //     ),
-    //   ],
-    // );
   }
 }

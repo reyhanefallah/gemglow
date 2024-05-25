@@ -29,18 +29,7 @@ class ProductDetailScreen extends StatelessWidget {
               padding: EdgeInsets.all(16),
               child: Column(
                 children: [
-                  //RatingAndShare(),
                   ProductMetaData(product: product),
-                  // if (product.productType == ProductType.variable.toString())
-                  //   ProductAttributes(product: product),
-                  // if (product.productType == ProductType.variable.toString())
-                  // SizedBox(height: 32),
-                  // GElevatedButton(
-                  //   Gcolor: GColor.primaryColor1,
-                  //   Gstyle: TextStyle(color: Colors.white),
-                  //   GonPressed: () {},
-                  //   Gtitle: 'پرداخت',
-                  // ),
                   SizedBox(height: 32),
                   SectionHeading(
                     title: 'توضیحات',

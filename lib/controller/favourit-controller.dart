@@ -43,20 +43,6 @@ class FavouritesController extends GetxController {
     favorites.refresh();
   }
 
-  // void toggleFavoriteProduct(String productId) {
-  //   if (favorites.containsKey(productId)) {
-  //     favorites[productId] = true;
-  //     saveFavoritesToStorage();
-  //     GLoaders.customToast(message: 'محصول به لیست علاقه مندی ها اضافه شد');
-  //   } else {
-  //     GLocalStorage.instance().removeData(productId);
-  //     favorites.remove(productId);
-  //     saveFavoritesToStorage();
-  //     favorites.refresh();
-  //     GLoaders.customToast(message: 'محصول از لیست علاقه مندی ها حذف شد');
-  //   }
-  // }
-
   void saveFavoritesToStorage() {
     final encodeFavorites = json.encode(favorites);
     GLocalStorage.instance().saveData('favorites', encodeFavorites);

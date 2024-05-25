@@ -59,20 +59,6 @@ class GCardItem extends StatelessWidget {
                         ),
                       )
                       .toList(),
-                  //children: [
-                  // TextSpan(
-                  //     text: 'رنگ',
-                  //     style: Theme.of(context).textTheme.bodySmall),
-                  // TextSpan(
-                  //     text: 'سیاه',
-                  //     style: Theme.of(context).textTheme.bodyLarge),
-                  // TextSpan(
-                  //     text: 'اندازه',
-                  //     style: Theme.of(context).textTheme.bodySmall),
-                  // TextSpan(
-                  //     text: '5 اینچ',
-                  //     style: Theme.of(context).textTheme.bodyLarge),
-                  // ],
                 ),
               ),
             ],

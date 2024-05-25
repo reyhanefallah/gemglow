@@ -35,7 +35,6 @@ class ProductController extends GetxController {
 
   Future<List<ProductModel>> fetchAllFeaturedProducts() async {
     try {
-      //final products = await productRepository.getFeaturedProducts();
       final products = await productRepository.getAllFeaturedProducts();
 
       return products;
@@ -69,26 +68,6 @@ class ProductController extends GetxController {
   String getProductStockStatus(int stock) {
     return stock > 0 ? 'موجود در انبار' : 'ناموجود';
   }
-
-  // Future<void> searchProductsLocally(String query) async {
-  //   try {
-  //     isLoading.value = true;
-  //     if (query.isEmpty) {
-  //       searchResults.assignAll(featuredProducts);
-  //     } else {
-  //       searchResults.assignAll(
-  //         featuredProducts
-  //             .where((product) =>
-  //                 product.title.toLowerCase().contains(query.toLowerCase()))
-  //             .toList(),
-  //       );
-  //     }
-  //   } catch (e) {
-  //     GLoaders.errorSnackBar(title: 'خطایی رخ داده', message: e.toString());
-  //   } finally {
-  //     isLoading.value = false;
-  //   }
-  // }
 
   Future<void> fetchProductsByCategory(String categoryId) async {
     try {

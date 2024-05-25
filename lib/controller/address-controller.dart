@@ -42,16 +42,6 @@ class AddressController extends GetxController {
 
   Future selectAddress(AddressModel newSelectedAddress) async {
     try {
-      // Get.defaultDialog(
-      //   title: '',
-      //   onWillPop: () async {
-      //     return false;
-      //   },
-      //   barrierDismissible: false,
-      //   backgroundColor: Colors.transparent,
-      //   //content: GCircularLoader(),
-      // );
-
       if (selectedAddress.value.id.isNotEmpty) {
         await addressRepository.updateSelectedField(
             selectedAddress.value.id, false);

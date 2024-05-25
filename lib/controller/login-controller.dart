@@ -17,12 +17,6 @@ class LoginController extends GetxController {
   GlobalKey<FormState> loginFormKey = GlobalKey<FormState>();
   final userController = Get.put(UserController());
 
-  // void onInit() {
-  //   email.text = localStorage.read('remember me email');
-  //   password.text = localStorage.read('remember me password');
-  //   super.onInit();
-  // }
-
   Future<void> emailAndPasswordSignIn() async {
     try {
       GFullScreenLoader.openLoadingDialog(

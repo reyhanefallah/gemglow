@@ -145,10 +145,6 @@ class AddNewAddressScreen extends StatelessWidget {
                   Gcolor: GColor.primaryColor1,
                   Gstyle: GTextStyle.bodyboldSmall,
                 ),
-                // ElevatedButton(
-                //   child: Text('دخیره'),
-                //   onPressed: () {},
-                // ),
               ),
             ],
           ),

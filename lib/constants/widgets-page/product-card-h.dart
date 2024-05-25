@@ -142,33 +142,6 @@ class GProductCardHorizontal extends StatelessWidget {
                       ),
                     ],
                   )
-                  // Row(
-                  //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  //   children: [
-                  //     Flexible(
-                  //       child: GProductPriceText(price: controller.getProductPrice(product)),
-                  //     ),
-                  //     Container(
-                  //       decoration: BoxDecoration(
-                  //         color: GColor.primaryColor2,
-                  //         borderRadius: BorderRadius.only(
-                  //           topRight: Radius.circular(12),
-                  //           bottomLeft: Radius.circular(10),
-                  //         ),
-                  //       ),
-                  //       child: SizedBox(
-                  //         width: 32 * 1.2,
-                  //         height: 32 * 1.2,
-                  //         child: Center(
-                  //           child: Icon(
-                  //             Iconsax.add,
-                  //             color: Colors.white,
-                  //           ),
-                  //         ),
-                  //       ),
-                  //     ),
-                  //   ],
-                  // )
                 ],
               ),
             ),

@@ -73,14 +73,6 @@ class CheckoutScreen extends StatelessWidget {
               : () => GLoaders.warningSnackBar(
                   title: 'سبد خرید خالی است!',
                   message: 'به فروشگاه بروید و محصول به سبد خرید اضافه کنید'),
-          // () => Get.to(
-          //   () => SuccessScreen(
-          //     title: 'پرداخت موفق!',
-          //     subtitle: 'محصولات به زودی به دست شما خواهذ رسید',
-          //     image: '',
-          //     onPressed: () => Get.offAll(() => NavigationBarScreen()),
-          //   ),
-          // ),
         ),
       ),
     );

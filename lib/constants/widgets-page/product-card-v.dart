@@ -117,24 +117,6 @@ class GProductCardVertical extends StatelessWidget {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      // if (product.productType ==
-                      //         ProductType.single.toString() &&
-                      //     product.salePrice > 0)
-                      //   Padding(
-                      //     padding: const EdgeInsets.only(right: 5),
-                      //     child: Text(
-                      //       product.price.toString(),
-                      //       style: Theme.of(context)
-                      //           .textTheme
-                      //           .labelMedium!
-                      //           .apply(decoration: TextDecoration.lineThrough),
-                      //     ),
-                      //   ),
-                      // Padding(
-                      //   padding: const EdgeInsets.only(right: 5),
-                      //   child: GProductPriceText(
-                      //       price: controller.getProductPrice(product)),
-                      // ),
                       if (product.salePrice > 0)
                         Padding(
                           padding: const EdgeInsets.only(right: 5),

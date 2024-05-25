@@ -15,7 +15,6 @@ class StoreScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final categories = CategoryController.instance.featuredCategories;
-    //final brandController = Get.put(BrandController());
 
     return DefaultTabController(
       length: categories.length,
@@ -26,9 +25,7 @@ class StoreScreen extends StatelessWidget {
             style: Theme.of(context).textTheme.headlineMedium,
           ),
           actions: [
-            CardCounter(
-                // onPressed: () {},
-                ),
+            CardCounter(),
           ],
         ),
         body: NestedScrollView(
@@ -39,7 +36,6 @@ class StoreScreen extends StatelessWidget {
                 pinned: true,
                 floating: true,
                 backgroundColor: Colors.white,
-                //expandedHeight: 440,
                 expandedHeight: 150,
                 flexibleSpace: Padding(
                   padding: EdgeInsets.all(24),
@@ -60,43 +56,6 @@ class StoreScreen extends StatelessWidget {
                       SizedBox(
                         height: 15,
                       ),
-                      // SectionHeading(
-                      //   title: 'برند ها',
-                      //   textColor: Colors.black,
-                      //   onPressed: () => Get.to(() => AllBrandsScreen()),
-                      //   space: MainAxisAlignment.spaceBetween,
-                      // ),
-                      // SizedBox(
-                      //   height: 24 / 1.5,
-                      // ),
-                      // Obx(() {
-                      //   if (brandController.isLoading.value)
-                      //     return GBrandsShimmer();
-
-                      //   if (brandController.featureBrands.isEmpty) {
-                      //     return Center(
-                      //       child: Text('داده ای یافت نشد!',
-                      //           style: Theme.of(context)
-                      //               .textTheme
-                      //               .bodyMedium!
-                      //               .apply(color: Colors.black)),
-                      //     );
-                      //   }
-
-                      //   return GGridLayout(
-                      //     itemcount: brandController.featureBrands.length,
-                      //     maxextent: 80,
-                      //     itembuilder: (_, index) {
-                      //       final brand = brandController.featureBrands[index];
-
-                      //       return BrandCard(
-                      //           showBorder: true,
-                      //           brand: brand,
-                      //           onTap: () => Get.to(
-                      //               () => BrandProductsScreen(brand: brand)));
-                      //     },
-                      //   );
-                      // }),
                     ],
                   ),
                 ),

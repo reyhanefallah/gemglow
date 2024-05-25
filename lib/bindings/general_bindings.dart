@@ -9,7 +9,5 @@ class GeneralBindings extends Bindings {
     Get.put(NetworkManager());
     Get.put(CheckoutController());
     Get.put(AddressController());
-
-    //Get.put(VariationController());
   }
 }

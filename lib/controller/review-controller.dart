@@ -1,36 +1,3 @@
-// import 'package:get/get.dart';
-// import 'package:gemglow/data/repository/review-repository.dart';
-// import 'package:gemglow/model/review-model.dart';
-
-// class ReviewController extends GetxController {
-//   static ReviewController get instance => Get.find();
-
-//   final isLoading = false.obs;
-//   final reviewRepository = Get.put(ReviewRepository());
-//   RxList<ReviewModel> productReviews = <ReviewModel>[].obs;
-
-//   Future<void> fetchReviewsForProduct(String productId) async {
-//     try {
-//       isLoading.value = true;
-//       final reviews = await reviewRepository.getReviewsForProduct(productId);
-//       productReviews.assignAll(reviews);
-//     } catch (e) {
-//       Get.snackbar('Error', e.toString());
-//     } finally {
-//       isLoading.value = false;
-//     }
-//   }
-
-//   Future<void> addReview(ReviewModel review) async {
-//     try {
-//       await reviewRepository.addReview(review);
-//       productReviews.add(review);
-//     } catch (e) {
-//       Get.snackbar('Error', e.toString());
-//     }
-//   }
-// }
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:gemglow/data/repository/review-repository.dart';
 import 'package:get/get.dart';
